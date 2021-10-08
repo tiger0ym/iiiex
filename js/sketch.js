@@ -6,10 +6,21 @@ function setup() {
   stroke(0);
 }
 
-function draw() {}
+function draw() {
+  //スマホ用
+  //ptouchX = touches[0].x;
+  //ptouchY = touches[0].y;
+}
 
+//PC用
 function mouseDragged() {
   line(mouseX, mouseY, pmouseX, pmouseY);
+  return false;
+}
+
+//スマホ用
+function touchMoved() {
+  line(touches[0].x, touches[0].y, ptouchX, ptouchY);
   return false;
 }
 
