@@ -14,12 +14,14 @@ function draw() {
 
 //PC用
 function mouseDragged() {
+  stroke('#66CDAA');
   line(mouseX, mouseY, pmouseX, pmouseY);
   return false;
 }
 
 //スマホ用
 function touchMoved() {
+  stroke('#66CDAA');
   line(touches[0].x, touches[0].y, ptouchX, ptouchY);
   return false;
 }
