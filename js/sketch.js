@@ -1,3 +1,4 @@
+/*
 function setup() {
   createCanvas(displayWidth, displayHeight);
   background(255);
@@ -29,4 +30,22 @@ function touchMoved() {
 //背景リセット
 function doubleClicked() {
   background(255);
+}
+*/
+// TouchDraw
+function setup() {
+  devicePixelScaling(false);
+  createCanvas(windowWidth, windowHeight);
+  stroke(0); // 黒く塗りつぶす
+  strokeWeight(20); // 幅を20に
+ 	background(200);
+}
+
+function draw() {
+	
+}
+
+function touchMoved() {
+	line(touchX, touchY, ptouchX, ptouchY);
+  return false;
 }
