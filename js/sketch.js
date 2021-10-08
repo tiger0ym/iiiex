@@ -35,13 +35,16 @@ function doubleClicked() {
 
 function setup(){
   createCanvas(windowWidth, windowHeight);
+  window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+  window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
+  background(255);
 }
 
 function draw(){
-  background(0);
+  background(255);
 
   if (mouseIsPressed) {
-    fill(255);
+    fill(0);
     ellipse(mouseX, mouseY, 50, 50);
   }
 }
