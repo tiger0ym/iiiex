@@ -1,0 +1,81 @@
+{
+  "title": "test",
+  "bpm": 120,
+  "notes": [
+    {
+      "timing": 1,
+      "lane": 1,
+      "length": 0
+    },
+    {
+      "timing": 2,
+      "lane": 2,
+      "length": 0
+    },
+    {
+      "timing": 3,
+      "lane": 1,
+      "length": 0
+    },
+    {
+      "timing": 4,
+      "lane": 3,
+      "length": 0
+    },
+    {
+      "timing": 5,
+      "lane": 4,
+      "length": 0
+    },
+    {
+      "timing": 5,
+      "lane": 2,
+      "length": 0
+    },
+    {
+      "timing": 7,
+      "lane": 3,
+      "length": 0
+    },
+    {
+      "timing": 8,
+      "lane": 4,
+      "length": 0
+    },
+    {
+      "timing": 10,
+      "lane": 1,
+      "length": 0
+    },
+    {
+      "timing": 12,
+      "lane": 2,
+      "length": 0
+    },
+    {
+      "timing": 13,
+      "lane": 4,
+      "length": 0
+    },
+    {
+      "timing": 14,
+      "lane": 2,
+      "length": 0
+    },
+    {
+      "timing": 16,
+      "lane": 3,
+      "length": 0
+    },
+    {
+      "timing": 18,
+      "lane": 2,
+      "length": 0
+    },
+    {
+      "timing": 20,
+      "lane": 1,
+      "length": 0
+    }
+  ]
+}

@@ -32,7 +32,7 @@ let emoji;
 let lane3Emoji = [];
 
 function preload() {
-  jsonData = loadJSON("data.json");
+  jsonData = loadJSON("./data/data.json");
 }
 
 function setup() {
