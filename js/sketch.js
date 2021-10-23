@@ -36,7 +36,7 @@ let isGreat = [false, false, false, false];
 let greatColor;
 
 function preload() {
-  jsonData = loadJSON("../data/data.json");
+  jsonData = loadJSON("./data/data.json");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
