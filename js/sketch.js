@@ -35,6 +35,8 @@ let isGreat = [false, false, false, false];
 
 let greatColor;
 
+let onPress = false;
+
 function preload() {
   jsonData = loadJSON("./data/data.json");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
@@ -282,7 +284,7 @@ function drawLane(laneNum) {
   }
 }
 
-//PC
+//キーボード
 function keyPressed() {
   if (key == "d") {
     lanePressed(0);
@@ -298,11 +300,27 @@ function keyPressed() {
   }
 }
 
-//スマホ
+//クリックを話したとき，指を離したときに実行される
+function mouseClicked() {
+  onPress = false;
+}
+
+//PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
 function mousePressed() {
-  for (let i = 0; i < 4; i++) {
-    if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-      lanePressed(i);
+  if (!isSmartPhone()) {
+    for (let i = 0; i < 4; i++) {
+      if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
+        lanePressed(i);
+      }
+    }
+  } else {
+    if (!onPress) {
+      for (let i = 0; i < 4; i++) {
+        if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
+          lanePressed(i);
+        }
+      }
+      onPress = true;
     }
   }
 }

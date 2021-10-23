@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden; /*スクロール禁止*/
-  -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化 */
+  -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化(Only Safari on iOS?←そんなこともなさそう) */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
 }
 canvas {
