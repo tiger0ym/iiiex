@@ -39,7 +39,7 @@ let frameColors = [];
 let isGreat = [false, false, false, false];
 
 function preload() {
-  jsonData = loadJSON("data.json");
+  jsonData = loadJSON("../data/data.json");
 }
 
 function setup() {
