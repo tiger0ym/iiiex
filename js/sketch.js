@@ -337,7 +337,7 @@ function lanePressed(laneNum) {
         startDelay * fps +
           (arrayLanes[laneNum][i][0] * (fps * 60)) / jsonData.bpm -
           frame
-      ) < 5
+      ) < 10
     ) {
       great = true;
     }
