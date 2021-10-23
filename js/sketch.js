@@ -1,33 +1,28 @@
-let keyTextSize = 50;
-let blockTextSize = 70;
+let keyTextSize;
+let blockTextSize;
 
 const fps = 60;
 
 let xLines = [];
 let yJudgeLine;
 
-const blockWidth = 150;
-const blockHeight = 150;
+let blockWidth;
+let blockHeight;
 const yVelocity = 5;
 
-let y_d = -blockHeight;
+let yBlock = -blockHeight;
 
 let jsonData;
 let arrayLen;
 
-const startDelay = 3; //second
+const startDelay = 5; //second
 
 let arrayLanes = [[], [], [], []];
 
 let frame = 0;
 
-let emoji;
-let lane3Emoji = [];
+let emojis = ["☀", "🚴‍♂️", [], "💤"];
 
-let frameDpressed = 0;
-let frameFpressed = 0;
-let frameJpressed = 0;
-let frameKpressed = 0;
 let framesPressed = [0, 0, 0, 0];
 
 let colorD;
@@ -38,22 +33,46 @@ let frameColors = [];
 
 let isGreat = [false, false, false, false];
 
+let greatColor;
+
 function preload() {
   jsonData = loadJSON("../data/data.json");
+  //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
 function setup() {
   frameRate(fps);
   createCanvas(windowWidth, windowHeight);
+  print(windowWidth);
   background("white");
 
-  xLines = [
-    windowWidth / 2 - blockWidth * 2,
-    windowWidth / 2 - blockWidth,
-    windowWidth / 2,
-    windowWidth / 2 + blockWidth,
-    windowWidth / 2 + blockWidth * 2,
-  ];
+  if (isSmartPhone()) {
+    print("smartphone");
+    blockWidth = windowWidth / 4;
+    blockHeight = windowWidth / 4;
+    blockTextSize = 150;
+    keyTextSize = 100;
+    xLines = [
+      0,
+      windowWidth / 4,
+      windowWidth / 2,
+      (windowWidth * 3) / 4,
+      windowWidth,
+    ];
+  } else {
+    print("pc");
+    blockWidth = 150;
+    blockHeight = 150;
+    blockTextSize = 70;
+    keyTextSize = 50;
+    xLines = [
+      windowWidth / 2 - blockWidth * 2,
+      windowWidth / 2 - blockWidth,
+      windowWidth / 2,
+      windowWidth / 2 + blockWidth,
+      windowWidth / 2 + blockWidth * 2,
+    ];
+  }
 
   yJudgeLine = windowHeight * 0.8;
 
@@ -80,21 +99,51 @@ function setup() {
 
   //lane3の絵文字をランダムで設定
   for (let i = 0; i < arrayLanes[2].length; i++) {
-    lane3Emoji.push(random(["🍙", "🍰", "🐟", "🌭"]));
+    emojis[2].push(random(["🍙", "🍰", "🐟", "🌭"]));
+  }
+}
+
+//スマホ判定
+function isSmartPhone() {
+  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+    return true;
+  } else {
+    return false;
   }
 }
 
 //ウインドウサイズが変わった時
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  print(windowWidth);
 
-  xLines = [
-    windowWidth / 2 - blockWidth * 2,
-    windowWidth / 2 - blockWidth,
-    windowWidth / 2,
-    windowWidth / 2 + blockWidth,
-    windowWidth / 2 + blockWidth * 2,
-  ];
+  if (isSmartPhone()) {
+    print("smartphone");
+    blockWidth = windowWidth / 4;
+    blockHeight = windowWidth / 4;
+    blockTextSize = 150;
+    keyTextSize = 100;
+    xLines = [
+      0,
+      windowWidth / 4,
+      windowWidth / 2,
+      (windowWidth * 3) / 4,
+      windowWidth,
+    ];
+  } else {
+    print("pc");
+    blockWidth = 150;
+    blockHeight = 150;
+    blockTextSize = 70;
+    keyTextSize = 50;
+    xLines = [
+      windowWidth / 2 - blockWidth * 2,
+      windowWidth / 2 - blockWidth,
+      windowWidth / 2,
+      windowWidth / 2 + blockWidth,
+      windowWidth / 2 + blockWidth * 2,
+    ];
+  }
 
   yJudgeLine = windowHeight * 0.8;
 }
@@ -102,7 +151,6 @@ function windowResized() {
 function draw() {
   //背景描画
   drawBG();
-  //background(255,0,0,90);
 
   fill(189, 204, 212, 50);
   noStroke();
@@ -118,12 +166,14 @@ function draw() {
     color(245, 139, 63, framesPressed[3] * 15),
   ];
 
+  //greatColor = color(255, 0, 0, framesPressed[0] * 30);
+
   //bpm[回/min]のペースで(フレームレートbase)
   if (frame % ((fps * 60) / jsonData.bpm) < 1) {
     //とりあえず点滅
     //fill("black");
-    //rect(0, 0, windowWidth/2-blockWidth*2, windowHeight);
-    //rect(windowWidth/2+blockWidth*2, 0, windowWidth/2-blockWidth*2, windowHeight);
+    //rect(0, 0, windowWidth / 2 - blockWidth * 2, windowHeight);
+    //rect(windowWidth / 2 + blockWidth * 2,0,windowWidth / 2 - blockWidth * 2,windowHeight);
   }
 
   //指定されたタイミングでブロック描画
@@ -132,7 +182,6 @@ function draw() {
   }
 
   frame++;
-  //push();
 }
 
 //背景描画
@@ -142,13 +191,13 @@ function drawBG() {
 
   //枠線
   strokeWeight(1);
-  stroke(0);
+  stroke("black");
   for (let i = 0; i < 5; i++) {
     line(xLines[i], 0, xLines[i], windowHeight);
   }
 
   strokeWeight(2);
-  //line(x_1,yJudgeLine,x_5,yJudgeLine);
+  stroke("black");
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
 
   //文字
@@ -169,19 +218,26 @@ function drawLane(laneNum) {
       framesPressed[i]--;
 
       if (isGreat[i]) {
-        fill(255, 0, 0);
+        //fill(greatColor);
+        //textFont(greatFont);
+        fill("red");
         textSize(keyTextSize);
-        //textAlign(CENTER);
+        textAlign(CENTER);
+        strokeWeight(0);
         text("Great!", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
       } else {
-        fill(255, 0, 0);
+        //fill(greatColor);
+        //textFont(greatFont);
+        fill("red");
         textSize(keyTextSize);
-        //textAlign(CENTER);
+        textAlign(CENTER);
+        strokeWeight(0);
         text("miss..", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
       }
     }
   }
 
+  strokeWeight(0);
   fill(frameColors[laneNum]);
   rect(xLines[laneNum], 0, blockWidth, windowHeight);
 
@@ -192,28 +248,16 @@ function drawLane(laneNum) {
         (yJudgeLine + 50) / yVelocity <
       frame
     ) {
-      let bgColor;
-
-      switch (laneNum) {
-        case 0:
-          emoji = "☀";
-          break;
-        case 1:
-          emoji = "🚴‍♂️";
-          break;
-        case 2:
-          emoji = lane3Emoji[i];
-          break;
-        case 3:
-          emoji = "💤";
-          break;
-        default:
-          break;
+      let emoji;
+      if (laneNum == 2) {
+        emoji = emojis[2][i];
+      } else {
+        emoji = emojis[laneNum];
       }
 
       fill("red");
       noStroke();
-      y_d =
+      yBlock =
         yVelocity *
           (frame -
             startDelay * fps -
@@ -221,11 +265,19 @@ function drawLane(laneNum) {
             (yJudgeLine + 50) / yVelocity) -
         100;
       textSize(blockTextSize);
-      text(emoji, xLines[laneNum], y_d, blockWidth, blockHeight);
+      textAlign(CENTER);
+      text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
 
-      //stroke("blue");
-      //strokeWeight(3);
-      //line(x,y_d+blockHeight/2,x+blockWidth,y_d+blockHeight/2);
+      /*
+      stroke("blue");
+      strokeWeight(3);
+      line(
+        xLines[laneNum],
+        yBlock + blockTextSize / 2,
+        xLines[laneNum] + blockWidth,
+        yBlock + blockTextSize / 2
+      );
+      */
     }
   }
 }
@@ -258,6 +310,7 @@ function mousePressed() {
 function lanePressed(laneNum) {
   //framespressed = 3;
   framesPressed[laneNum] = 6;
+  print(laneNum);
 
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
