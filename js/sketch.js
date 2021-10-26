@@ -123,6 +123,8 @@ function setup() {
     tmpMax = max(endingtime, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
   endingtime = startDelay + (tmpMax * 60) / jsonData.bpm + endWait; //second
+  //for debug
+  //endingtime = 0;
 }
 
 //スマホ判定
@@ -173,14 +175,6 @@ function windowResized() {
 function draw() {
   //背景描画
   drawBG();
-  //new Image(bgImage, xLines[0], 0);
-
-  //fill(189, 204, 212, 50);
-  //noStroke();
-  //textSize(keyTextSize * 1.4);
-  //text("Tap", (width / 4) * 1, (height / 5) * 1);
-  //text("Your", width / 2, (height / 5) * 2);
-  //text("Life", (width / 4) * 3, (height / 5) * 3);
 
   frameColors = [
     color(63, 169, 245, framesPressed[0] * 15),
@@ -205,15 +199,30 @@ function draw() {
   }
 
   if (frame > endingtime * fps) {
-    gameEnd = true;
+    //gameEnd = true;
+    for (let i = 0; i < 4; i++) {
+      resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
+    }
+    //window.location.href = "./result.html";
+
+    createCanvas(0, 0);
+    noLoop();
+    drawResult();
   }
 
   if (gameEnd) {
-    resultJson.lane1 = [1, 1];
-    resultJson.lane2 = [2, 3];
-    //saveJSON(resultJson, "./data/result.json");
-    window.location.href = "./end.html";
+    /*
+    for (let i = 0; i < 4; i++) {
+      resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
+    }
+    //window.location.href = "./result.html";
+
+    createCanvas(0, 0);
+    noLoop();
+    drawResult();
+    */
   }
+
   frame++;
 }
 
@@ -261,7 +270,7 @@ function drawBG() {
     line(xLines[i], 0, xLines[i], windowHeight);
   }
 
-  strokeWeight(2);
+  strokeWeight(4);
   stroke("black");
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
 
@@ -391,7 +400,7 @@ function mousePressed() {
 function lanePressed(laneNum) {
   //framespressed = 3;
   framesPressed[laneNum] = 6;
-  print(laneNum);
+  //print(laneNum);
 
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
@@ -407,9 +416,60 @@ function lanePressed(laneNum) {
   }
   if (great) {
     isGreat[laneNum] = true;
-    resultArray[laneNum][0]++;
+    resultArray[laneNum][0] += 1;
   } else {
     isGreat[laneNum] = false;
-    resultArray[laneNum][1]++;
   }
+}
+
+//ゲーム終了後結果を描画
+function drawResult() {
+  var parent = document.getElementById("parent");
+  const tmpP = document.createElement("p");
+  tmpP.innerHTML = "結果(デザイン，スタイリングはまだ)";
+  parent.appendChild(tmpP);
+  for (let i = 0; i < 5; i++) {
+    const resultWrapperDiv = document.createElement("div");
+    resultWrapperDiv.className = "result-wrapper";
+    parent.appendChild(resultWrapperDiv);
+
+    if (i === 0) {
+      const laneNameP = document.createElement("p");
+      laneNameP.className = "result-content";
+      laneNameP.innerHTML = "レーン番号";
+      resultWrapperDiv.appendChild(laneNameP);
+
+      const greatTimesP = document.createElement("p");
+      greatTimesP.className = "result-content";
+      greatTimesP.innerHTML = "great";
+      resultWrapperDiv.appendChild(greatTimesP);
+
+      const missTimesP = document.createElement("p");
+      missTimesP.className = "result-content";
+      missTimesP.innerHTML = "miss";
+      resultWrapperDiv.appendChild(missTimesP);
+    } else {
+      const laneNameP = document.createElement("p");
+      laneNameP.className = "result-content";
+      laneNameP.innerHTML = i;
+      resultWrapperDiv.appendChild(laneNameP);
+
+      const greatTimesP = document.createElement("p");
+      greatTimesP.className = "result-content";
+      greatTimesP.innerHTML = resultArray[i - 1][0];
+      resultWrapperDiv.appendChild(greatTimesP);
+
+      const missTimesP = document.createElement("p");
+      missTimesP.className = "result-content";
+      missTimesP.innerHTML = resultArray[i - 1][1];
+      resultWrapperDiv.appendChild(missTimesP);
+    }
+  }
+
+  /*
+  p.id = "hoge";
+  p.innerHTML = resultArray[0][1];
+  var parent = document.getElementById("parent");
+  parent.appendChild(p);
+  */
 }
