@@ -54,7 +54,7 @@ let resultArray = [
 
 function preload() {
   jsonData = loadJSON("./data/data.json");
-  bgImage = loadImage("./image/bgImg9_16.png");
+  bgImage = loadImage("./image/bgImg9_16.PNG");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
