@@ -37,8 +37,11 @@ let greatColor;
 
 let onPress = false;
 
+let bgImage;
+
 function preload() {
   jsonData = loadJSON("./data/data.json");
+  bgImage = loadImage("./image/bgImg9_16.png");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
@@ -46,7 +49,6 @@ function setup() {
   frameRate(fps);
   createCanvas(windowWidth, windowHeight);
   print(windowWidth);
-  background("white");
 
   if (isSmartPhone()) {
     print("smartphone");
@@ -117,10 +119,10 @@ function isSmartPhone() {
 //ウインドウサイズが変わった時
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  print(windowWidth);
+  //print(windowWidth);
 
   if (isSmartPhone()) {
-    print("smartphone");
+    //print("smartphone");
     blockWidth = windowWidth / 4;
     blockHeight = windowWidth / 4;
     blockTextSize = 150;
@@ -133,7 +135,7 @@ function windowResized() {
       windowWidth,
     ];
   } else {
-    print("pc");
+    //print("pc");
     blockWidth = 150;
     blockHeight = 150;
     blockTextSize = 70;
@@ -153,13 +155,14 @@ function windowResized() {
 function draw() {
   //背景描画
   drawBG();
+  //new Image(bgImage, xLines[0], 0);
 
-  fill(189, 204, 212, 50);
-  noStroke();
-  textSize(keyTextSize * 1.4);
-  text("Tap", (width / 4) * 1, (height / 5) * 1);
-  text("Your", width / 2, (height / 5) * 2);
-  text("Life", (width / 4) * 3, (height / 5) * 3);
+  //fill(189, 204, 212, 50);
+  //noStroke();
+  //textSize(keyTextSize * 1.4);
+  //text("Tap", (width / 4) * 1, (height / 5) * 1);
+  //text("Your", width / 2, (height / 5) * 2);
+  //text("Life", (width / 4) * 3, (height / 5) * 3);
 
   frameColors = [
     color(63, 169, 245, framesPressed[0] * 15),
@@ -180,7 +183,7 @@ function draw() {
 
   //指定されたタイミングでブロック描画
   for (let i = 0; i < 4; i++) {
-    drawLane(i);
+    //drawLane(i);
   }
 
   frame++;
@@ -190,6 +193,38 @@ function draw() {
 function drawBG() {
   //背景リセット
   background("white");
+  if (isSmartPhone()) {
+    if (windowWidth >= 0.45 * windowHeight) {
+      image(
+        bgImage,
+        0.5 * windowWidth - 0.225 * windowHeight,
+        0,
+        0.45 * windowHeight,
+        0.8 * windowHeight
+      );
+    } else {
+      image(
+        bgImage,
+        0,
+        0.4 * windowHeight - (windowWidth * 8) / 9,
+        windowWidth,
+        (windowWidth * 16) / 9
+      );
+    }
+  } else {
+    if (windowHeight >= 4000 / 3) {
+      image(bgImage, xLines[0], 0.4 * windowHeight - 1600 / 3, 600, 3200 / 3);
+    } else {
+      image(
+        bgImage,
+        xLines[0] + 300 - 0.225 * windowHeight,
+        0,
+        0.45 * windowHeight,
+        0.8 * windowHeight
+      );
+    }
+  }
+  //image(bgImage, xLines[0], 0, xLines[4] - xLines[0], yJudgeLine);
 
   //枠線
   strokeWeight(1);
