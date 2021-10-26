@@ -16,6 +16,7 @@ let jsonData;
 let arrayLen;
 
 const startDelay = 5; //second
+const endWait = 5; //second
 
 let arrayLanes = [[], [], [], []];
 
@@ -38,6 +39,10 @@ let greatColor;
 let onPress = false;
 
 let bgImage;
+
+let endingtime = 0;
+
+let gameEnd = false;
 
 function preload() {
   jsonData = loadJSON("./data/data.json");
@@ -87,7 +92,7 @@ function setup() {
     color(245, 139, 63, 255),
   ];
 
-  //jsonデータをlaneごとにarrayにpushし，timingでsort
+  //jsonデータをlaneごとにarrayにpushし，(timingでsort)
   arrayLen = Object.keys(jsonData.notes).length;
   for (let i = 0; i < arrayLen; i++) {
     arrayLanes[jsonData.notes[i].lane - 1].push([
@@ -105,6 +110,11 @@ function setup() {
   for (let i = 0; i < arrayLanes[2].length; i++) {
     emojis[2].push(random(["🍙", "🍰", "🐟", "🌭"]));
   }
+  let tmpMax = 0;
+  for (let i = 0; i < 4; i++) {
+    tmpMax = max(endingtime, arrayLanes[i][arrayLanes[i].length - 1][0]);
+  }
+  endingtime = startDelay + (tmpMax * 60) / jsonData.bpm + endWait; //second
 }
 
 //スマホ判定
@@ -183,9 +193,16 @@ function draw() {
 
   //指定されたタイミングでブロック描画
   for (let i = 0; i < 4; i++) {
-    //drawLane(i);
+    drawLane(i);
   }
 
+  if (frame > endingtime * fps) {
+    gameEnd = true;
+  }
+
+  if (gameEnd) {
+    window.location.href = "./end.html";
+  }
   frame++;
 }
 
