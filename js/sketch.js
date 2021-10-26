@@ -52,9 +52,12 @@ let resultArray = [
   [0, 0],
 ];
 
+let sampleSound;
+
 function preload() {
   jsonData = loadJSON("./data/data.json");
   bgImage = loadImage("./image/bgImg9_16.PNG");
+  sampleSound = loadSound("./sound/sound.mp3");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
@@ -417,6 +420,7 @@ function lanePressed(laneNum) {
   if (great) {
     isGreat[laneNum] = true;
     resultArray[laneNum][0] += 1;
+    sampleSound.play();
   } else {
     isGreat[laneNum] = false;
   }
