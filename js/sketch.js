@@ -8,7 +8,7 @@ let yJudgeLine;
 
 let blockWidth;
 let blockHeight;
-const yVelocity = 5;
+let yVelocity;
 
 let yBlock = -blockHeight;
 
@@ -42,9 +42,6 @@ let bgImage;
 
 let endingtime = 0;
 
-let gameEnd = false;
-
-let resultJson = {};
 let resultArray = [
   [0, 0],
   [0, 0],
@@ -67,7 +64,8 @@ function setup() {
   print(windowWidth);
 
   if (isSmartPhone()) {
-    print("smartphone");
+    //print("smartphone");
+    yVelocity = 10;
     blockWidth = windowWidth / 4;
     blockHeight = windowWidth / 4;
     blockTextSize = 150;
@@ -81,6 +79,7 @@ function setup() {
     ];
   } else {
     print("pc");
+    yVelocity = 5;
     blockWidth = 150;
     blockHeight = 150;
     blockTextSize = 70;
@@ -202,7 +201,6 @@ function draw() {
   }
 
   if (frame > endingtime * fps) {
-    //gameEnd = true;
     for (let i = 0; i < 4; i++) {
       resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
     }
@@ -211,19 +209,6 @@ function draw() {
     createCanvas(0, 0);
     noLoop();
     drawResult();
-  }
-
-  if (gameEnd) {
-    /*
-    for (let i = 0; i < 4; i++) {
-      resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
-    }
-    //window.location.href = "./result.html";
-
-    createCanvas(0, 0);
-    noLoop();
-    drawResult();
-    */
   }
 
   frame++;
@@ -303,13 +288,6 @@ function drawLane(laneNum) {
         strokeWeight(0);
         text("Great!", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
       } else {
-        //fill(greatColor);
-        //textFont(greatFont);
-        fill("red");
-        textSize(keyTextSize);
-        textAlign(CENTER);
-        strokeWeight(0);
-        text("miss..", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
       }
     }
   }
@@ -332,7 +310,6 @@ function drawLane(laneNum) {
         emoji = emojis[laneNum];
       }
 
-      fill("red");
       noStroke();
       yBlock =
         yVelocity *
@@ -341,6 +318,11 @@ function drawLane(laneNum) {
             (arrayLanes[laneNum][i][0] * (fps * 60)) / jsonData.bpm +
             (yJudgeLine + 50) / yVelocity) -
         100;
+      if (yBlock < yJudgeLine) {
+        fill(255, 0, 0, 255);
+      } else {
+        fill(255, 0, 0, 100);
+      }
       textSize(blockTextSize);
       textAlign(CENTER);
       text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
@@ -403,7 +385,6 @@ function mousePressed() {
 function lanePressed(laneNum) {
   //framespressed = 3;
   framesPressed[laneNum] = 6;
-  //print(laneNum);
 
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
@@ -469,11 +450,4 @@ function drawResult() {
       resultWrapperDiv.appendChild(missTimesP);
     }
   }
-
-  /*
-  p.id = "hoge";
-  p.innerHTML = resultArray[0][1];
-  var parent = document.getElementById("parent");
-  parent.appendChild(p);
-  */
 }
