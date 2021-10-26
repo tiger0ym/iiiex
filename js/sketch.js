@@ -211,7 +211,7 @@ function draw() {
   if (gameEnd) {
     resultJson.lane1 = [1, 1];
     resultJson.lane2 = [2, 3];
-    saveJSON(resultJson, "./data/result.json");
+    //saveJSON(resultJson, "./data/result.json");
     window.location.href = "./end.html";
   }
   frame++;
