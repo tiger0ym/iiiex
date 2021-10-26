@@ -44,6 +44,14 @@ let endingtime = 0;
 
 let gameEnd = false;
 
+let resultJson = {};
+let resultArray = [
+  [0, 0],
+  [0, 0],
+  [0, 0],
+  [0, 0],
+];
+
 function preload() {
   jsonData = loadJSON("./data/data.json");
   bgImage = loadImage("./image/bgImg9_16.png");
@@ -201,6 +209,9 @@ function draw() {
   }
 
   if (gameEnd) {
+    resultJson.lane1 = [1, 1];
+    resultJson.lane2 = [2, 3];
+    saveJSON(resultJson, "./data/result.json");
     window.location.href = "./end.html";
   }
   frame++;
@@ -396,7 +407,9 @@ function lanePressed(laneNum) {
   }
   if (great) {
     isGreat[laneNum] = true;
+    resultArray[laneNum][0]++;
   } else {
     isGreat[laneNum] = false;
+    resultArray[laneNum][1]++;
   }
 }
