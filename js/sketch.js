@@ -126,7 +126,7 @@ function setup() {
   }
   endingtime = startDelay + (tmpMax * 60) / jsonData.bpm + endWait; //second
   //for debug
-  endingtime = 0;
+  //endingtime = 0;
 }
 
 //スマホ判定
