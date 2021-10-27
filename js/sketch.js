@@ -126,7 +126,7 @@ function setup() {
   }
   endingtime = startDelay + (tmpMax * 60) / jsonData.bpm + endWait; //second
   //for debug
-  //endingtime = 0;
+  endingtime = 0;
 }
 
 //スマホ判定
@@ -141,7 +141,6 @@ function isSmartPhone() {
 //ウインドウサイズが変わった時
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-  //print(windowWidth);
 
   if (isSmartPhone()) {
     //print("smartphone");
@@ -204,11 +203,22 @@ function draw() {
     for (let i = 0; i < 4; i++) {
       resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
     }
-    //window.location.href = "./result.html";
-
-    createCanvas(0, 0);
-    noLoop();
-    drawResult();
+    var resultJSON = {
+      great: [
+        resultArray[0][0],
+        resultArray[1][0],
+        resultArray[2][0],
+        resultArray[3][0],
+      ],
+      miss: [
+        resultArray[0][1],
+        resultArray[1][1],
+        resultArray[2][1],
+        resultArray[3][1],
+      ],
+    };
+    sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
+    window.location.href = "./result.html";
   }
 
   frame++;
@@ -404,50 +414,5 @@ function lanePressed(laneNum) {
     sampleSound.play();
   } else {
     isGreat[laneNum] = false;
-  }
-}
-
-//ゲーム終了後結果を描画
-function drawResult() {
-  var parent = document.getElementById("parent");
-  const tmpP = document.createElement("p");
-  tmpP.innerHTML = "結果(デザイン，スタイリングはまだ)";
-  parent.appendChild(tmpP);
-  for (let i = 0; i < 5; i++) {
-    const resultWrapperDiv = document.createElement("div");
-    resultWrapperDiv.className = "result-wrapper";
-    parent.appendChild(resultWrapperDiv);
-
-    if (i === 0) {
-      const laneNameP = document.createElement("p");
-      laneNameP.className = "result-content";
-      laneNameP.innerHTML = "レーン番号";
-      resultWrapperDiv.appendChild(laneNameP);
-
-      const greatTimesP = document.createElement("p");
-      greatTimesP.className = "result-content";
-      greatTimesP.innerHTML = "great";
-      resultWrapperDiv.appendChild(greatTimesP);
-
-      const missTimesP = document.createElement("p");
-      missTimesP.className = "result-content";
-      missTimesP.innerHTML = "miss";
-      resultWrapperDiv.appendChild(missTimesP);
-    } else {
-      const laneNameP = document.createElement("p");
-      laneNameP.className = "result-content";
-      laneNameP.innerHTML = i;
-      resultWrapperDiv.appendChild(laneNameP);
-
-      const greatTimesP = document.createElement("p");
-      greatTimesP.className = "result-content";
-      greatTimesP.innerHTML = resultArray[i - 1][0];
-      resultWrapperDiv.appendChild(greatTimesP);
-
-      const missTimesP = document.createElement("p");
-      missTimesP.className = "result-content";
-      missTimesP.innerHTML = resultArray[i - 1][1];
-      resultWrapperDiv.appendChild(missTimesP);
-    }
   }
 }
