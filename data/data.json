@@ -1,81 +1,81 @@
 {
-  "title": "test",
+  "title": "data",
   "bpm": 120,
   "notes": [
     {
       "timing": 500,
       "lane": 1,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 1000,
       "lane": 2,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 1500,
       "lane": 1,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 2000,
       "lane": 3,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 2500,
-      "lane": 4,
-      "length": 0
+      "lane": 0,
+      "len": 0
     },
     {
       "timing": 2500,
       "lane": 2,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 3500,
       "lane": 3,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 4000,
-      "lane": 4,
-      "length": 0
+      "lane": 0,
+      "len": 0
     },
     {
       "timing": 5000,
       "lane": 1,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 6000,
       "lane": 2,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 6500,
-      "lane": 4,
-      "length": 0
+      "lane": 0,
+      "len": 0
     },
     {
       "timing": 7000,
       "lane": 2,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 8000,
       "lane": 3,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 9000,
       "lane": 2,
-      "length": 0
+      "len": 0
     },
     {
       "timing": 10000,
       "lane": 1,
-      "length": 0
+      "len": 0
     }
   ]
 }

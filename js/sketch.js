@@ -16,7 +16,7 @@ let jsonData;
 let arrayLen;
 
 const startDelay = 5; //second
-const endWait = 5; //second
+const endWait = 1; //second
 
 let arrayLanes = [[], [], [], []];
 
@@ -40,7 +40,7 @@ let onPress = false;
 
 let bgImage;
 
-let endingtime = 0;
+let endingTime = 0;
 
 let resultArray = [
   [0, 0],
@@ -52,7 +52,8 @@ let resultArray = [
 let sampleSound;
 
 function preload() {
-  jsonData = loadJSON("./data/data.json");
+  jsonData = loadJSON("./data/test.json");
+  //jsonData = loadJSON("./data/data.json");
   bgImage = loadImage("./image/bgImg9_16.PNG");
   sampleSound = loadSound("./sound/sound.mp3");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
@@ -101,13 +102,12 @@ function setup() {
     color(122, 201, 67, 255),
     color(245, 139, 63, 255),
   ];
-
   //jsonデータをlaneごとにarrayにpushし，(timingでsort)
   arrayLen = Object.keys(jsonData.notes).length;
   for (let i = 0; i < arrayLen; i++) {
-    arrayLanes[jsonData.notes[i].lane - 1].push([
+    arrayLanes[jsonData.notes[i].lane].push([
       jsonData.notes[i].timing,
-      jsonData.notes[i].length,
+      jsonData.notes[i].len,
     ]);
   }
   /*
@@ -124,9 +124,9 @@ function setup() {
   for (let i = 0; i < 4; i++) {
     tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
-  endingtime = startDelay + tmpMax / 1000 + endWait; //second
+  endingTime = startDelay + tmpMax / 1000 + endWait; //second
   //for debug
-  //endingtime = 0;
+  //endingTime = 0;
 }
 
 //スマホ判定
@@ -199,7 +199,7 @@ function draw() {
     drawLane(i);
   }
 
-  if (frame > endingtime * fps) {
+  if (frame > endingTime * fps) {
     for (let i = 0; i < 4; i++) {
       resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
     }

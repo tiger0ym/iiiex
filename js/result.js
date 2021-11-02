@@ -29,7 +29,7 @@ for (let i = 0; i < 5; i++) {
   } else {
     const laneNameP = document.createElement("p");
     laneNameP.className = "result-content";
-    laneNameP.innerHTML = i;
+    laneNameP.innerHTML = i - 1;
     resultWrapperDiv.appendChild(laneNameP);
 
     const greatTimesP = document.createElement("p");
