@@ -1,5 +1,7 @@
 html,
 body {
+  background-color:#E84D61;
+  
   margin: 0;
   padding: 0;
   overflow: hidden; /*スクロール禁止*/
