@@ -54,7 +54,8 @@ let sampleSound;
 function preload() {
   jsonData = loadJSON("./data/test.json");
   //jsonData = loadJSON("./data/data.json");
-  bgImage = loadImage("./image/bgImg9_16.PNG");
+  //bgImage = loadImage("./image/bgImg9_16.PNG");
+  bgImage = loadImage("./image/bgImg9_21.png");
   sampleSound = loadSound("./sound/sound.mp3");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
