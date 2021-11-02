@@ -234,8 +234,7 @@ function drawBG() {
   //背景リセット
   background("white");
   if (isSmartPhone()) {
-    background("red");
-    /*
+    //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {
       image(
         bgImage,
@@ -253,22 +252,19 @@ function drawBG() {
         (16 / 9) * windowWidth
       );
     }
-    */
   } else {
-    background("blue");
-    /*
-    if (windowHeight >= 4000 / 3) {
-      image(bgImage, xLines[0], 0.4 * windowHeight - 1600 / 3, 600, 3200 / 3);
+    //PC背景
+    if (windowHeight >= 3200 / 3) {
+      image(bgImage, xLines[0], 0.5 * windowHeight - 1600 / 3, 600, 3200 / 3);
     } else {
       image(
         bgImage,
-        xLines[0] + 300 - 0.225 * windowHeight,
+        xLines[0] + 300 - (9 / 32) * windowHeight,
         0,
-        0.45 * windowHeight,
-        0.8 * windowHeight
+        (9 / 16) * windowHeight,
+        windowHeight
       );
     }
-    */
   }
   //image(bgImage, xLines[0], 0, xLines[4] - xLines[0], yJudgeLine);
 
@@ -404,7 +400,6 @@ function mousePressed() {
 }
 
 function lanePressed(laneNum) {
-  //framespressed = 3;
   framesPressed[laneNum] = 6;
 
   let great = false;
