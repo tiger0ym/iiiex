@@ -280,14 +280,16 @@ function drawBG() {
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
 
   //文字
-  fill(0);
-  strokeWeight(0);
-  textSize(keyTextSize);
-  textAlign(CENTER);
-  text("d", (xLines[0] + xLines[1]) / 2, windowHeight * 0.9);
-  text("f", (xLines[1] + xLines[2]) / 2, windowHeight * 0.9);
-  text("j", (xLines[2] + xLines[3]) / 2, windowHeight * 0.9);
-  text("k", (xLines[3] + xLines[4]) / 2, windowHeight * 0.9);
+  if (!isSmartPhone()) {
+    fill(0);
+    strokeWeight(0);
+    textSize(keyTextSize);
+    textAlign(CENTER);
+    text("d", (xLines[0] + xLines[1]) / 2, windowHeight * 0.9);
+    text("f", (xLines[1] + xLines[2]) / 2, windowHeight * 0.9);
+    text("j", (xLines[2] + xLines[3]) / 2, windowHeight * 0.9);
+    text("k", (xLines[3] + xLines[4]) / 2, windowHeight * 0.9);
+  }
 }
 
 //レーン描画
