@@ -392,9 +392,10 @@ function keyPressed() {
   }
 }
 
-//クリックを話したとき，指を離したときに実行される
+//クリックを離したとき，指を離したときに実行される
 function mouseClicked() {
   onPress = false;
+  console.log("mouseclicked");
 }
 
 //PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
@@ -407,6 +408,7 @@ function mousePressed() {
     }
   } else {
     if (!onPress) {
+      console.log("mousepressed");
       for (let i = 0; i < 4; i++) {
         if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
           lanePressed(i);
@@ -419,7 +421,6 @@ function mousePressed() {
 
 function lanePressed(laneNum) {
   framesPressed[laneNum] = 6;
-  console.log("lanepressed");
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
