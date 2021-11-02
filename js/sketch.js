@@ -122,9 +122,9 @@ function setup() {
   }
   let tmpMax = 0;
   for (let i = 0; i < 4; i++) {
-    tmpMax = max(endingtime, arrayLanes[i][arrayLanes[i].length - 1][0]);
+    tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
-  endingtime = startDelay + (tmpMax * 60) / jsonData.bpm + endWait; //second
+  endingtime = startDelay + tmpMax / 1000 + endWait; //second
   //for debug
   //endingtime = 0;
 }
@@ -266,7 +266,6 @@ function drawBG() {
       );
     }
   }
-  //image(bgImage, xLines[0], 0, xLines[4] - xLines[0], yJudgeLine);
 
   //枠線
   strokeWeight(1);
@@ -294,13 +293,12 @@ function drawBG() {
 
 //レーン描画
 function drawLane(laneNum) {
+  //console.log("a");
   for (let i = 0; i < 4; i++) {
     if (framesPressed[i] > 0) {
       framesPressed[i]--;
 
       if (isGreat[i]) {
-        //fill(greatColor);
-        //textFont(greatFont);
         fill("red");
         textSize(keyTextSize);
         textAlign(CENTER);
@@ -316,37 +314,30 @@ function drawLane(laneNum) {
   rect(xLines[laneNum], 0, blockWidth, windowHeight);
 
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
-    if (
-      startDelay * fps +
-        (arrayLanes[laneNum][i][0] * (fps * 60)) / jsonData.bpm -
-        (yJudgeLine + 50) / yVelocity <
-      frame
-    ) {
-      let emoji;
-      if (laneNum == 2) {
-        emoji = emojis[2][i];
-      } else {
-        emoji = emojis[laneNum];
-      }
+    let emoji;
+    if (laneNum == 2) {
+      emoji = emojis[2][i];
+    } else {
+      emoji = emojis[laneNum];
+    }
 
-      noStroke();
-      yBlock =
-        yVelocity *
-          (frame -
-            startDelay * fps -
-            (arrayLanes[laneNum][i][0] * (fps * 60)) / jsonData.bpm +
-            (yJudgeLine + 50) / yVelocity) -
-        100;
-      if (yBlock < yJudgeLine) {
-        fill(255, 0, 0, 255);
-      } else {
-        fill(255, 0, 0, 100);
-      }
-      textSize(blockTextSize);
-      textAlign(CENTER);
-      text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
+    noStroke();
+    yBlock =
+      yVelocity *
+        (frame - fps * (startDelay + arrayLanes[laneNum][i][0] / 1000)) +
+      yJudgeLine -
+      blockHeight / 2;
 
-      /*
+    if (yBlock < yJudgeLine) {
+      fill(255, 0, 0, 255);
+    } else {
+      fill(255, 0, 0, 100);
+    }
+    textSize(blockTextSize);
+    textAlign(CENTER);
+    text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
+
+    /*
       stroke("blue");
       strokeWeight(3);
       line(
@@ -356,7 +347,7 @@ function drawLane(laneNum) {
         yBlock + blockTextSize / 2
       );
       */
-    }
+    //}
   }
 }
 
@@ -407,11 +398,7 @@ function lanePressed(laneNum) {
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
-      abs(
-        startDelay * fps +
-          (arrayLanes[laneNum][i][0] * (fps * 60)) / jsonData.bpm -
-          frame
-      ) < 10
+      abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) < 10
     ) {
       great = true;
     }
