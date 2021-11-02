@@ -280,10 +280,13 @@ function drawBG() {
 
   //文字
   if (!isSmartPhone()) {
-    fill(0);
+    strokeWeight(0);
+    fill(0, 0, 0);
+    ellipse((xLines[0] + xLines[1]) / 2, windowHeight * 0.9, keyTextSize * 1.5);
+    fill(255, 255, 255);
     strokeWeight(0);
     textSize(keyTextSize);
-    textAlign(CENTER);
+    textAlign(CENTER, CENTER);
     text("d", (xLines[0] + xLines[1]) / 2, windowHeight * 0.9);
     text("f", (xLines[1] + xLines[2]) / 2, windowHeight * 0.9);
     text("j", (xLines[2] + xLines[3]) / 2, windowHeight * 0.9);
@@ -333,8 +336,8 @@ function drawLane(laneNum) {
     } else {
       fill(255, 0, 0, 100);
     }
-    textSize(blockTextSize);
     textAlign(CENTER);
+    textSize(blockTextSize);
     text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
 
     /*
