@@ -15,7 +15,7 @@ let yBlock = -blockHeight;
 let jsonData;
 let arrayLen;
 
-const startDelay = 5; //second
+const startDelay = 3; //second
 const endWait = 1; //second
 
 let arrayLanes = [[], [], [], []];
@@ -419,7 +419,7 @@ function mousePressed() {
 
 function lanePressed(laneNum) {
   framesPressed[laneNum] = 6;
-
+  console.log("lanepressed");
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
