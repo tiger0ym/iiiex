@@ -275,23 +275,44 @@ function drawBG() {
     line(xLines[i], 0, xLines[i], windowHeight);
   }
 
-  strokeWeight(4);
+  strokeWeight(10);
   stroke("black");
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
 
   //文字
   if (!isSmartPhone()) {
-    strokeWeight(0);
-    fill(0, 0, 0);
-    ellipse((xLines[0] + xLines[1]) / 2, windowHeight * 0.9, keyTextSize * 1.5);
+    strokeWeight(2);
+    stroke(0, 0, 0);
     fill(255, 255, 255);
-    strokeWeight(0);
+    ellipse((xLines[0] + xLines[1]) / 2, windowHeight * 0.9, keyTextSize * 1.5);
+    ellipse((xLines[1] + xLines[2]) / 2, windowHeight * 0.9, keyTextSize * 1.5);
+    ellipse((xLines[2] + xLines[3]) / 2, windowHeight * 0.9, keyTextSize * 1.5);
+    ellipse((xLines[3] + xLines[4]) / 2, windowHeight * 0.9, keyTextSize * 1.5);
+    fill(0, 0, 0);
+    strokeWeight(5);
     textSize(keyTextSize);
-    textAlign(CENTER, CENTER);
-    text("d", (xLines[0] + xLines[1]) / 2, windowHeight * 0.9);
-    text("f", (xLines[1] + xLines[2]) / 2, windowHeight * 0.9);
-    text("j", (xLines[2] + xLines[3]) / 2, windowHeight * 0.9);
-    text("k", (xLines[3] + xLines[4]) / 2, windowHeight * 0.9);
+    //textAlign(CENTER, CENTER);
+    textAlign(CENTER);
+    text(
+      "d",
+      (xLines[0] + xLines[1]) / 2,
+      windowHeight * 0.9 + keyTextSize / 2
+    );
+    text(
+      "f",
+      (xLines[1] + xLines[2]) / 2,
+      windowHeight * 0.9 + keyTextSize / 2
+    );
+    text(
+      "j",
+      (xLines[2] + xLines[3]) / 2,
+      windowHeight * 0.9 + keyTextSize / 2
+    );
+    text(
+      "k",
+      (xLines[3] + xLines[4]) / 2,
+      windowHeight * 0.9 + keyTextSize / 2
+    );
   }
 }
 
