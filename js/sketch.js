@@ -221,6 +221,11 @@ function draw() {
     window.location.href = "./result.html";
   }
 
+  if (frame > 500) {
+    //yVelocity = 10;
+    //console.log("velocity change");
+  }
+
   frame++;
 }
 
@@ -229,24 +234,29 @@ function drawBG() {
   //背景リセット
   background("white");
   if (isSmartPhone()) {
-    if (windowWidth >= 0.45 * windowHeight) {
+    background("red");
+    /*
+    if (windowWidth >= (9 / 16) * windowHeight) {
       image(
         bgImage,
-        0.5 * windowWidth - 0.225 * windowHeight,
+        0.5 * windowWidth - (9 / 32) * windowHeight,
         0,
-        0.45 * windowHeight,
-        0.8 * windowHeight
+        (9 / 16) * windowHeight,
+        windowHeight
       );
     } else {
       image(
         bgImage,
         0,
-        0.4 * windowHeight - (windowWidth * 8) / 9,
+        0.5 * windowHeight - (8 / 9) * windowWidth,
         windowWidth,
-        (windowWidth * 16) / 9
+        (16 / 9) * windowWidth
       );
     }
+    */
   } else {
+    background("blue");
+    /*
     if (windowHeight >= 4000 / 3) {
       image(bgImage, xLines[0], 0.4 * windowHeight - 1600 / 3, 600, 3200 / 3);
     } else {
@@ -258,6 +268,7 @@ function drawBG() {
         0.8 * windowHeight
       );
     }
+    */
   }
   //image(bgImage, xLines[0], 0, xLines[4] - xLines[0], yJudgeLine);
 
