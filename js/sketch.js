@@ -476,8 +476,15 @@ function lanePressed(laneNum) {
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
+      isSmartPhone() &&
       abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
-      fps / 10
+        fps / 10
+    ) {
+      great = true;
+    } else if (
+      !isSmartPhone() &&
+      abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
+        fps / 5
     ) {
       great = true;
     }
