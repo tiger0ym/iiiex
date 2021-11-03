@@ -427,8 +427,13 @@ function mousePressed() {
       userAgent.indexOf("crios") != -1
     ) {
       //Google Chrome向けの記述
-      isSafari = true;
-      console.log("mobile chrome(埋め込み用)");
+      if (window == window.parent) {
+        isSafari = false;
+        console.log("mobile chrome(埋め込まれてない)");
+      } else {
+        isSafari = true;
+        console.log("mobile chrome(埋め込まれてる)");
+      }
     } else if (userAgent.indexOf("safari") != -1) {
       //Safari向けの記述
       isSafari = true;
