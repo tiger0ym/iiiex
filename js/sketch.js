@@ -366,8 +366,8 @@ function drawLane(laneNum) {
     }
     textAlign(CENTER);
     textSize(blockTextSize);
-    text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
-    console.log("draw emoji");
+    //text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
+    text("a", xLines[laneNum], yBlock, blockWidth, blockHeight);
 
     /*
       stroke("blue");
