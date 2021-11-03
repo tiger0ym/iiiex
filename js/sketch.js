@@ -428,7 +428,7 @@ function mousePressed() {
     ) {
       //Google Chrome向けの記述
       isSafari = true;
-      console.log("mobile chrome");
+      console.log("mobile chrome(埋め込み用)");
     } else if (userAgent.indexOf("safari") != -1) {
       //Safari向けの記述
       isSafari = true;
