@@ -420,7 +420,10 @@ function mousePressed() {
       //旧Edge向けの記述
       isSafari = false;
       console.log("mobile edge");
-    } else if (userAgent.indexOf("chrome") != -1) {
+    } else if (
+      userAgent.indexOf("chrome") != -1 ||
+      userAgent.indexOf("crios") != -1
+    ) {
       //Google Chrome向けの記述
       isSafari = false;
       console.log("mobile chrome");
