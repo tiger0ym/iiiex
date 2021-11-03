@@ -71,7 +71,7 @@ function setup() {
 
   if (isSmartPhone()) {
     //print("smartphone");
-    yVelocity = 20;
+    yVelocity = 15;
     blockWidth = windowWidth / 4;
     blockHeight = windowWidth / 4;
     blockTextSize = 150;
@@ -368,6 +368,7 @@ function drawLane(laneNum) {
     textSize(blockTextSize);
     //text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
     //text("a", xLines[laneNum], yBlock, blockWidth, blockHeight);
+    fill(0, 0, 0, 100);
     rect(xLines[laneNum], yBlock, blockWidth, blockHeight);
 
     /*
