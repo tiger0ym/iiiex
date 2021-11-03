@@ -67,6 +67,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   print(windowWidth);
   userAgent = window.navigator.userAgent.toLowerCase();
+  console.log(userAgent);
 
   if (isSmartPhone()) {
     //print("smartphone");
