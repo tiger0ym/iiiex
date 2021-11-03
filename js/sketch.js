@@ -368,6 +368,8 @@ function drawLane(laneNum) {
     textSize(blockTextSize);
     //text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
     //text("a", xLines[laneNum], yBlock, blockWidth, blockHeight);
+    strokeWeight(1);
+    stroke(255, 255, 255);
     fill(0, 0, 0);
     rect(xLines[laneNum], yBlock, blockWidth, blockHeight);
 
