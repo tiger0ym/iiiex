@@ -85,7 +85,7 @@ function setup() {
     ];
   } else {
     print("pc");
-    yVelocity = 5;
+    yVelocity = 10;
     blockWidth = 150;
     blockHeight = 50;
     blockTextSize = 70;
