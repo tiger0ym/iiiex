@@ -15,7 +15,7 @@ let yBlock = -blockHeight;
 let jsonData;
 let arrayLen;
 
-const startDelay = 3; //second
+const startDelay = 5; //second
 const endWait = 1; //second
 
 let arrayLanes = [[], [], [], []];
