@@ -71,7 +71,7 @@ function setup() {
 
   if (isSmartPhone()) {
     //print("smartphone");
-    yVelocity = 10;
+    yVelocity = 20;
     blockWidth = windowWidth / 4;
     blockHeight = windowWidth / 4;
     blockTextSize = 150;
@@ -399,12 +399,12 @@ function keyPressed() {
 //クリックを離したとき，指を離したときに実行される
 function mouseClicked() {
   onPress = false;
-  //console.log("mouseclicked");
 }
 
 //PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
 function mousePressed() {
   if (!isSmartPhone()) {
+    console.log("pc");
     for (let i = 0; i < 4; i++) {
       if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
         lanePressed(i);
@@ -415,18 +415,23 @@ function mousePressed() {
     if (userAgent.indexOf("msie") != -1 || userAgent.indexOf("trident") != -1) {
       //IE向けの記述
       isSafari = false;
+      console.log("mobile IE");
     } else if (userAgent.indexOf("edge") != -1) {
       //旧Edge向けの記述
       isSafari = false;
+      console.log("mobile edge");
     } else if (userAgent.indexOf("chrome") != -1) {
       //Google Chrome向けの記述
       isSafari = false;
+      console.log("mobile chrome");
     } else if (userAgent.indexOf("safari") != -1) {
       //Safari向けの記述
       isSafari = true;
+      console.log("mobile safari");
     } else if (userAgent.indexOf("firefox") != -1) {
       //FireFox向けの記述
       isSafari = false;
+      console.log("firefox");
     } else {
       //その他のブラウザ向けの記述
       isSafari = false;
