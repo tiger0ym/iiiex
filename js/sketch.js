@@ -1,7 +1,7 @@
 let keyTextSize;
 let blockTextSize;
 
-const fps = 60;
+const fps = 30;
 
 let xLines = [];
 let yJudgeLine;
@@ -368,6 +368,7 @@ function drawLane(laneNum) {
     textSize(blockTextSize);
     //text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
     text("a", xLines[laneNum], yBlock, blockWidth, blockHeight);
+    //rect(xLines[laneNum], yBlock, blockWidth, blockHeight);
 
     /*
       stroke("blue");
