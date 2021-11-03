@@ -71,7 +71,7 @@ function setup() {
 
   if (isSmartPhone()) {
     //print("smartphone");
-    yVelocity = 15;
+    yVelocity = 10;
     blockWidth = windowWidth / 4;
     blockHeight = windowWidth / 8;
     blockTextSize = 150;
@@ -477,7 +477,7 @@ function lanePressed(laneNum) {
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
       abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
-      fps / 6
+      fps / 10
     ) {
       great = true;
     }
