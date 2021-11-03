@@ -427,7 +427,7 @@ function mousePressed() {
       userAgent.indexOf("crios") != -1
     ) {
       //Google Chrome向けの記述
-      isSafari = false;
+      isSafari = true;
       console.log("mobile chrome");
     } else if (userAgent.indexOf("safari") != -1) {
       //Safari向けの記述
