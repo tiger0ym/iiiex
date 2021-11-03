@@ -73,7 +73,7 @@ function setup() {
     //print("smartphone");
     yVelocity = 15;
     blockWidth = windowWidth / 4;
-    blockHeight = windowWidth / 4;
+    blockHeight = windowWidth / 8;
     blockTextSize = 150;
     keyTextSize = 100;
     xLines = [
@@ -368,7 +368,7 @@ function drawLane(laneNum) {
     textSize(blockTextSize);
     //text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
     //text("a", xLines[laneNum], yBlock, blockWidth, blockHeight);
-    fill(0, 0, 0, 100);
+    fill(0, 0, 0);
     rect(xLines[laneNum], yBlock, blockWidth, blockHeight);
 
     /*
@@ -474,7 +474,8 @@ function lanePressed(laneNum) {
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
-      abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) < 10
+      abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
+      fps / 6
     ) {
       great = true;
     }
