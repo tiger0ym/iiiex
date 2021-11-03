@@ -87,7 +87,7 @@ function setup() {
     print("pc");
     yVelocity = 5;
     blockWidth = 150;
-    blockHeight = 150;
+    blockHeight = 50;
     blockTextSize = 70;
     keyTextSize = 50;
     xLines = [
@@ -152,7 +152,7 @@ function windowResized() {
   if (isSmartPhone()) {
     //print("smartphone");
     blockWidth = windowWidth / 4;
-    blockHeight = windowWidth / 4;
+    blockHeight = windowWidth / 8;
     blockTextSize = 150;
     keyTextSize = 100;
     xLines = [
