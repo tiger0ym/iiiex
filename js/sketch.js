@@ -51,6 +51,8 @@ let resultArray = [
 
 let sampleSound;
 
+let userAgent;
+
 function preload() {
   jsonData = loadJSON("./data/test.json");
   //jsonData = loadJSON("./data/data.json");
@@ -64,6 +66,7 @@ function setup() {
   frameRate(fps);
   createCanvas(windowWidth, windowHeight);
   print(windowWidth);
+  userAgent = window.navigator.userAgent.toLowerCase();
 
   if (isSmartPhone()) {
     //print("smartphone");
@@ -407,15 +410,43 @@ function mousePressed() {
       }
     }
   } else {
-    //if (!onPress) {
-    //console.log("mousepressed");
-    for (let i = 0; i < 4; i++) {
-      if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-        lanePressed(i);
+    let isSafari;
+    if (userAgent.indexOf("msie") != -1 || userAgent.indexOf("trident") != -1) {
+      //IE向けの記述
+      isSafari = false;
+    } else if (userAgent.indexOf("edge") != -1) {
+      //旧Edge向けの記述
+      isSafari = false;
+    } else if (userAgent.indexOf("chrome") != -1) {
+      //Google Chrome向けの記述
+      isSafari = false;
+    } else if (userAgent.indexOf("safari") != -1) {
+      //Safari向けの記述
+      isSafari = true;
+    } else if (userAgent.indexOf("firefox") != -1) {
+      //FireFox向けの記述
+      isSafari = false;
+    } else {
+      //その他のブラウザ向けの記述
+      isSafari = false;
+    }
+
+    if (isSafari) {
+      for (let i = 0; i < 4; i++) {
+        if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
+          lanePressed(i);
+        }
+      }
+    } else {
+      if (!onPress) {
+        for (let i = 0; i < 4; i++) {
+          if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
+            lanePressed(i);
+          }
+        }
+        onPress = true;
       }
     }
-    //onPress = true;
-    //}
   }
 }
 
