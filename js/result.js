@@ -3,7 +3,7 @@ var parent = document.getElementById("parent");
 console.log(resultData);
 
 const tmpP = document.createElement("p");
-tmpP.innerHTML = "結果(デザイン，スタイリングはまだ)";
+tmpP.innerHTML = "あなたのゲームスコア";
 parent.appendChild(tmpP);
 
 for (let i = 0; i < 5; i++) {
