@@ -165,7 +165,7 @@ function windowResized() {
   } else {
     //print("pc");
     blockWidth = 150;
-    blockHeight = 150;
+    blockHeight = 50;
     blockTextSize = 70;
     keyTextSize = 50;
     xLines = [
