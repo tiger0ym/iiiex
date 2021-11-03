@@ -146,6 +146,8 @@ function isSmartPhone() {
 //ウインドウサイズが変わった時
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  userAgent = window.navigator.userAgent.toLowerCase();
+  console.log(userAgent);
 
   if (isSmartPhone()) {
     //print("smartphone");
