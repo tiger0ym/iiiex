@@ -367,6 +367,7 @@ function drawLane(laneNum) {
     textAlign(CENTER);
     textSize(blockTextSize);
     text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
+    console.log("draw emoji");
 
     /*
       stroke("blue");
@@ -429,10 +430,10 @@ function mousePressed() {
       //Google Chrome向けの記述
       if (window == window.parent) {
         isSafari = false;
-        console.log("mobile chrome(埋め込まれてない)");
+        console.log("mobile chrome(not be embeded)");
       } else {
         isSafari = true;
-        console.log("mobile chrome(埋め込まれてる)");
+        console.log("mobile chrome(be embeded)");
       }
     } else if (userAgent.indexOf("safari") != -1) {
       //Safari向けの記述
