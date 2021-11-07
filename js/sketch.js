@@ -241,7 +241,7 @@ function draw() {
       ],
     };
     sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
-    window.location.href = "./result.html";
+    window.location.href = "./gameend.html";
   }
 
   if (frame > 500) {
