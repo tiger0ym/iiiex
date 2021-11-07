@@ -201,10 +201,10 @@ function draw() {
   drawBG();
 
   frameColors = [
-    color(63, 169, 245, framesPressed[0] * 15),
-    color(255, 123, 172, framesPressed[1] * 15),
-    color(122, 201, 67, framesPressed[2] * 15),
-    color(245, 139, 63, framesPressed[3] * 15),
+    color(63, 169, 245, framesPressed[0] * 42),
+    color(255, 123, 172, framesPressed[1] * 42),
+    color(122, 201, 67, framesPressed[2] * 42),
+    color(245, 139, 63, framesPressed[3] * 42),
   ];
 
   //greatColor = color(255, 0, 0, framesPressed[0] * 30);
@@ -222,6 +222,7 @@ function draw() {
     drawLane(i);
   }
 
+  //ゲーム終了
   if (frame > endingTime * fps) {
     for (let i = 0; i < 4; i++) {
       resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
@@ -242,11 +243,6 @@ function draw() {
     };
     sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
     window.location.href = "./gameend.html";
-  }
-
-  if (frame > 500) {
-    //yVelocity = 10;
-    //console.log("velocity change");
   }
 
   frame++;
@@ -297,6 +293,7 @@ function drawBG() {
     line(xLines[i], 0, xLines[i], windowHeight);
   }
 
+  //判定線
   strokeWeight(10);
   stroke("black");
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
@@ -351,14 +348,18 @@ function drawLane(laneNum) {
         textAlign(CENTER);
         strokeWeight(0);
         text("Great!", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
-      } else {
       }
     }
   }
 
-  strokeWeight(0);
-  fill(frameColors[laneNum]);
-  rect(xLines[laneNum], 0, laneWidth, windowHeight);
+  //レーンの色変える
+  //strokeWeight(0);
+  //fill(frameColors[laneNum]);
+  //rect(xLines[laneNum], 0, laneWidth, windowHeight);
+  //判定線の色変える
+  strokeWeight(10);
+  stroke(frameColors[laneNum]);
+  line(xLines[laneNum], yJudgeLine, xLines[laneNum + 1], yJudgeLine);
 
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     let emoji;
@@ -383,12 +384,9 @@ function drawLane(laneNum) {
       fill(255, 0, 0, 100);
     }
     textAlign(CENTER);
-    //text(emoji, xLines[laneNum], yBlock, laneWidth, emojiHeight);
-    //text("a", xLines[laneNum], yBlock, laneWidth, emojiHeight);
     strokeWeight(1);
     stroke(255, 255, 255);
     fill(0, 0, 0);
-    //rect(xLines[laneNum], yBlock, laneWidth, emojiHeight);
     image(
       emoji,
       xLines[laneNum] + (laneWidth - emojiWidth) / 2,
