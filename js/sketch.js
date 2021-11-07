@@ -1,16 +1,16 @@
 let keyTextSize;
-let blockTextSize;
 
 const fps = 30;
 
 let xLines = [];
 let yJudgeLine;
 
-let blockWidth;
-let blockHeight;
+let laneWidth;
+let emojiHeight;
+let emojiWidth;
 let yVelocity;
 
-let yBlock = -blockHeight;
+let yBlock = -emojiHeight;
 
 let jsonData;
 let arrayLen;
@@ -22,7 +22,7 @@ let arrayLanes = [[], [], [], []];
 
 let frame = 0;
 
-let emojis = ["☀", "🚴‍♂️", [], "💤"];
+let emojis = [, [], , []];
 
 let framesPressed = [0, 0, 0, 0];
 
@@ -54,12 +54,21 @@ let sampleSound;
 let userAgent;
 
 function preload() {
+  //data
   jsonData = loadJSON("./data/test.json");
-  //jsonData = loadJSON("./data/data.json");
-  //bgImage = loadImage("./image/bgImg9_16.PNG");
+  //image
   bgImage = loadImage("./image/bgImg9_21.png");
+  imgBicycle = loadImage("./image/bicycle.png");
+  imgCake = loadImage("./image/cake.png");
+  imgFish = loadImage("./image/fish.png");
+  imgHotdog = loadImage("./image/hotdog.png");
+  imgKey = loadImage("./image/key.png");
+  imgRiceball = loadImage("./image/riceball.png");
+  imgSun = loadImage("./image/sun.png");
+  imgZzz = loadImage("./image/zzz.png");
+
+  //sound
   sampleSound = loadSound("./sound/sound.mp3");
-  //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
 function setup() {
@@ -72,9 +81,9 @@ function setup() {
   if (isSmartPhone()) {
     //print("smartphone");
     yVelocity = 10;
-    blockWidth = windowWidth / 4;
-    blockHeight = windowWidth / 8;
-    blockTextSize = 150;
+    laneWidth = windowWidth / 4;
+    emojiHeight = windowWidth / 8;
+    emojiWidth = windowWidth / 8;
     keyTextSize = 100;
     xLines = [
       0,
@@ -86,16 +95,16 @@ function setup() {
   } else {
     print("pc");
     yVelocity = 10;
-    blockWidth = 150;
-    blockHeight = 50;
-    blockTextSize = 70;
+    laneWidth = 150;
+    emojiHeight = 100;
+    emojiWidth = 100;
     keyTextSize = 50;
     xLines = [
-      windowWidth / 2 - blockWidth * 2,
-      windowWidth / 2 - blockWidth,
+      windowWidth / 2 - laneWidth * 2,
+      windowWidth / 2 - laneWidth,
       windowWidth / 2,
-      windowWidth / 2 + blockWidth,
-      windowWidth / 2 + blockWidth * 2,
+      windowWidth / 2 + laneWidth,
+      windowWidth / 2 + laneWidth * 2,
     ];
   }
 
@@ -115,16 +124,24 @@ function setup() {
       jsonData.notes[i].len,
     ]);
   }
-  /*
-  for(let i=0;i<arrayLen;i++){
-    arrayLanes[i].sort(function(a,b){return(a[0] - b[0]);});
-  }
-  */
 
-  //lane3の絵文字をランダムで設定
-  for (let i = 0; i < arrayLanes[2].length; i++) {
-    emojis[2].push(random(["🍙", "🍰", "🐟", "🌭"]));
+  //emojis配列に絵文字を入れる
+  emojis[0] = imgKey;
+  for (let i = 0; i < arrayLanes[1].length; i++) {
+    emojis[1].push(random([imgRiceball, imgCake, imgFish, imgHotdog]));
   }
+  emojis[2] = imgBicycle;
+  let isAwake = true;
+  for (let i = 0; i < arrayLanes[3].length; i++) {
+    if (isAwake) {
+      emojis[3].push(imgSun);
+      isAwake = false;
+    } else {
+      emojis[3].push(imgZzz);
+      isAwake = true;
+    }
+  }
+
   let tmpMax = 0;
   for (let i = 0; i < 4; i++) {
     tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
@@ -150,10 +167,9 @@ function windowResized() {
   console.log(userAgent);
 
   if (isSmartPhone()) {
-    //print("smartphone");
-    blockWidth = windowWidth / 4;
-    blockHeight = windowWidth / 8;
-    blockTextSize = 150;
+    laneWidth = windowWidth / 4;
+    emojiHeight = windowWidth / 8;
+    emojiWidth = windowWidth / 8;
     keyTextSize = 100;
     xLines = [
       0,
@@ -164,16 +180,16 @@ function windowResized() {
     ];
   } else {
     //print("pc");
-    blockWidth = 150;
-    blockHeight = 50;
-    blockTextSize = 70;
+    laneWidth = 150;
+    emojiHeight = 100;
+    emojiWidth = 100;
     keyTextSize = 50;
     xLines = [
-      windowWidth / 2 - blockWidth * 2,
-      windowWidth / 2 - blockWidth,
+      windowWidth / 2 - laneWidth * 2,
+      windowWidth / 2 - laneWidth,
       windowWidth / 2,
-      windowWidth / 2 + blockWidth,
-      windowWidth / 2 + blockWidth * 2,
+      windowWidth / 2 + laneWidth,
+      windowWidth / 2 + laneWidth * 2,
     ];
   }
 
@@ -197,8 +213,8 @@ function draw() {
   if (frame % ((fps * 60) / jsonData.bpm) < 1) {
     //とりあえず点滅
     //fill("black");
-    //rect(0, 0, windowWidth / 2 - blockWidth * 2, windowHeight);
-    //rect(windowWidth / 2 + blockWidth * 2,0,windowWidth / 2 - blockWidth * 2,windowHeight);
+    //rect(0, 0, windowWidth / 2 - laneWidth * 2, windowHeight);
+    //rect(windowWidth / 2 + laneWidth * 2,0,windowWidth / 2 - laneWidth * 2,windowHeight);
   }
 
   //指定されたタイミングでブロック描画
@@ -342,12 +358,14 @@ function drawLane(laneNum) {
 
   strokeWeight(0);
   fill(frameColors[laneNum]);
-  rect(xLines[laneNum], 0, blockWidth, windowHeight);
+  rect(xLines[laneNum], 0, laneWidth, windowHeight);
 
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     let emoji;
-    if (laneNum == 2) {
-      emoji = emojis[2][i];
+    if (laneNum == 1) {
+      emoji = emojis[1][i];
+    } else if (laneNum == 3) {
+      emoji = emojis[3][i];
     } else {
       emoji = emojis[laneNum];
     }
@@ -357,7 +375,7 @@ function drawLane(laneNum) {
       yVelocity *
         (frame - fps * (startDelay + arrayLanes[laneNum][i][0] / 1000)) +
       yJudgeLine -
-      blockHeight / 2;
+      emojiHeight / 2;
 
     if (yBlock < yJudgeLine) {
       fill(255, 0, 0, 255);
@@ -365,13 +383,19 @@ function drawLane(laneNum) {
       fill(255, 0, 0, 100);
     }
     textAlign(CENTER);
-    textSize(blockTextSize);
-    //text(emoji, xLines[laneNum], yBlock, blockWidth, blockHeight);
-    //text("a", xLines[laneNum], yBlock, blockWidth, blockHeight);
+    //text(emoji, xLines[laneNum], yBlock, laneWidth, emojiHeight);
+    //text("a", xLines[laneNum], yBlock, laneWidth, emojiHeight);
     strokeWeight(1);
     stroke(255, 255, 255);
     fill(0, 0, 0);
-    rect(xLines[laneNum], yBlock, blockWidth, blockHeight);
+    //rect(xLines[laneNum], yBlock, laneWidth, emojiHeight);
+    image(
+      emoji,
+      xLines[laneNum] + (laneWidth - emojiWidth) / 2,
+      yBlock,
+      emojiWidth,
+      emojiHeight
+    );
 
     /*
       stroke("blue");
@@ -379,7 +403,7 @@ function drawLane(laneNum) {
       line(
         xLines[laneNum],
         yBlock + blockTextSize / 2,
-        xLines[laneNum] + blockWidth,
+        xLines[laneNum] + laneWidth,
         yBlock + blockTextSize / 2
       );
       */
