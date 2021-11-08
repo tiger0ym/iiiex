@@ -66,6 +66,7 @@ function preload() {
   imgRiceball = loadImage("./image/riceball.png");
   imgSun = loadImage("./image/sun.png");
   imgZzz = loadImage("./image/zzz.png");
+  imgNidone = loadImage("./image/nidone.png");
 
   //sound
   sampleSound = loadSound("./sound/sound.mp3");

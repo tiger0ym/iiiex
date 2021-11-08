@@ -1,13 +1,16 @@
 html,
 body {
-  background-color: #e84d61;
   font-family: system-ui;
-
+  min-height: 100%;
   margin: 0;
   padding: 0;
   /*overflow: hidden;*/ /*スクロール禁止*/
+  overscroll-behavior: none; /*　オーバースクロール禁止 */
   -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化(Only Safari on iOS?←そんなこともなさそう) */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
+}
+body {
+  background: linear-gradient(135deg, #ffffff, #e35f00);
 }
 canvas {
   display: block;
