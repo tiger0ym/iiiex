@@ -1,14 +1,67 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
+
 html,
 body {
+  font-family: "Noto Sans JP", sans-serif;
   /*overflow: hidden; /*スクロール禁止*/
   -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化 */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
 }
+body {
+  background: #ffb681;
+}
 
+#wrapper {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  width: 60%;
+}
+.sec-title-wrapper {
+  width: 100%;
+}
+.sec-contain-wrapper {
+  width: 100%;
+}
+@media only screen and (max-width: 800px) {
+  #wrapper {
+    width: 100%;
+  }
+  .sec-title-wrapper {
+    width: 90%;
+  }
+  .sec-contain-wrapper {
+    width: 90%;
+  }
+}
 .result-wrapper {
   display: flex;
 }
 
 .result-content {
   width: 100px;
+}
+
+/*title*/
+.sec-title {
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 2rem 0.8rem 3rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.sec-title:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: "";
+  border-radius: 50%;
+  background: #ffb681;
 }

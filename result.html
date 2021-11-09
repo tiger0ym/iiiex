@@ -4,18 +4,30 @@
     <meta charset="utf-8" />
     <title>デイリズム！</title>
     <link rel="stylesheet" type="text/css" href="./css/result.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body oncontextmenu="return false;" oncopy="return false;">
-    <div id="parent"></div>
-    <p>
-      このリズム譜は作者のデバイスが自動的に取得していた様々な生活のデータから生成されました
-    </p>
-    <p>左のレーンから、外出・食事・活動・睡眠のリズムを可視化していました！</p>
-    <button onclick="location.href='./game.html'">もう一度プレイ</button>
-    <div>
-      <img src="./image/hc1.png" width="50%" />
-      <img src="./image/hc5.png" width="50%" />
+    <div id="wrapper">
+      <div class="sec-title-wrapper"><p class="sec-title">ゲーム結果</p></div>
+      <div class="sec-contain-wrapper">
+        <div id="parent"></div>
+      </div>
+
+      <div class="sec-title-wrapper"><p class="sec-title">ゲーム説明</p></div>
+      <div class="sec-contain-wrapper">
+        <p>
+          このリズム譜は作者のデバイスが自動的に取得していた様々な生活のデータから生成されました
+        </p>
+        <p>
+          左のレーンから、外出・食事・活動・睡眠のリズムを可視化していました！
+        </p>
+        <div>
+          <img src="./image/hc1.png" width="100%" />
+          <img src="./image/hc5.png" width="100%" />
+        </div>
+      </div>
     </div>
+
     <script src="./js/result.js"></script>
   </body>
 </html>

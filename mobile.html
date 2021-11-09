@@ -6,19 +6,26 @@
     <link rel="stylesheet" type="text/css" href="./css/mobile.css" />
   </head>
   <body oncontextmenu="return false;" oncopy="return false;">
-    <h>作者の生活リズムをリズムゲームで体感できます</h>
-    <div class="explain">
-      <p>ゲーム操作</p>
-      <p>全画面表示にします。</p>
-      <p>
-        流れてくる絵文字がラインを通過するのと同じタイミングで、各レーンをタップしてください。
-      </p>
-      <p>正しいタイミングでタイプするとGreatと表示されます。</p>
+    <div id="wrapper">
+      <h1>デイリズム！</h1>
+      <div class="sec-contain-wrapper">
+        <h>作者の生活リズムをリズムゲームで体感できます</h>
+      </div>
+      <div class="sec-title-wrapper"><p class="sec-title">ゲーム操作</p></div>
+      <div class="sec-contain-wrapper">
+        <p>全画面表示にします。</p>
+        <p>
+          流れてくる絵文字がラインを通過するのと同じタイミングで、各レーンをタップしてください。
+        </p>
+        <p>正しいタイミングでタイプするとGreatと表示されます。</p>
+      </div>
+      <img src="./image/game_explanation.png" class="img-explanation" />
+      <div class="sec-title-wrapper"><p class="sec-title">注意事項</p></div>
+      <div class="sec-contain-wrapper">
+        <p>音を用いるゲームのため，適切な音量に調整してください</p>
+        <p id="message"></p>
+      </div>
+      <div class="gamestart-btn"><a href="./game.html">Game Start</a></div>
     </div>
-    <img src="./image/game_explanation.png" class="img-explanation" />
-    <p>注意事項</p>
-    <p>音を用いるゲームのため，適切な音量に調整してください</p>
-    <button onclick="location.href='./game.html'">Game Start</button>
-    <!--<script src="./js/restriction.js"></script>-->
   </body>
 </html>
