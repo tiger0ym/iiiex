@@ -54,7 +54,12 @@ let sampleSound;
 function preload() {
   jsonData = loadJSON("./data/data.json");
   bgImage = loadImage("./image/bgImg9_16.PNG");
-  sampleSound = loadSound("./sound/sound.mp3");
+  //sampleSound = loadSound("./sound/sound.mp3");
+  keySound = loadSound("./sound/key.mp3");
+  bicycleSound = loadSound("./sound/bicycle.mp3");
+  eatSound = loadSound("./sound/eat.mp3");
+  alarmSound = loadSound("./sound/alarm.mp3");
+  sleepSound = loadSound("./sound/sleep.mp3");
   //greatFont = loadFont("Lato-BlackItalic.ttf");
 }
 
@@ -419,7 +424,8 @@ function lanePressed(laneNum) {
   if (great) {
     isGreat[laneNum] = true;
     resultArray[laneNum][0] += 1;
-    sampleSound.play();
+    //sampleSound.play();
+    eatSound.play();
   } else {
     isGreat[laneNum] = false;
   }
