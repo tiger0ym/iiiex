@@ -37,13 +37,29 @@ body {
   text-decoration: none;
 }
 
-.btn a::before {
-  content: "";
+.replay a::before {
+  content: "もう1回プレイ";
+  padding: 20px 0 0 40px;
+  color: black;
   position: absolute;
   top: -5px;
   left: -5px;
-  width: calc(100% - 4px);
-  height: calc(100% - 4px);
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.result a::before {
+  content: "結果を見る";
+  padding: 20px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
   border: 2px solid #e46a14;
   border-radius: 50vh;
   transition: 0.2s;

@@ -55,7 +55,7 @@ let userAgent;
 
 function preload() {
   //data
-  jsonData = loadJSON("./data/test.json");
+  jsonData = loadJSON("./data/interval300.js");
   //image
   bgImage = loadImage("./image/bgImg9_21.png");
   imgBicycle = loadImage("./image/bicycle.png");
