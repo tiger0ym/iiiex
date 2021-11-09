@@ -10,7 +10,7 @@ body {
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
 }
 body {
-  background: linear-gradient(135deg, #ffffff, #e35f00);
+  background: #ffb681;
 }
 canvas {
   display: block;
