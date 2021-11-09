@@ -69,7 +69,12 @@ function preload() {
   imgNidone = loadImage("./image/nidone.png");
 
   //sound
-  sampleSound = loadSound("./sound/sound.mp3");
+  keySound = loadSound("./sound/key.mp3");
+  bicycleSound = loadSound("./sound/bicycle.mp3");
+  eatSound = loadSound("./sound/eat.mp3");
+  alarmSound = loadSound("./sound/alarm.mp3");
+  sleepSound = loadSound("./sound/sleep.mp3");
+  //sampleSound = loadSound("./sound/sound.mp3");
 }
 
 function setup() {
@@ -515,7 +520,8 @@ function lanePressed(laneNum) {
   if (great) {
     isGreat[laneNum] = true;
     resultArray[laneNum][0] += 1;
-    sampleSound.play();
+    //sampleSound.play();
+    eatSound.play();
   } else {
     isGreat[laneNum] = false;
   }

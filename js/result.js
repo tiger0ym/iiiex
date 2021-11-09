@@ -3,7 +3,7 @@ var parent = document.getElementById("parent");
 console.log(resultData);
 
 const tmpP = document.createElement("p");
-tmpP.innerHTML = "あなたのゲームスコア";
+//tmpP.innerHTML = "あなたのゲームスコア";
 parent.appendChild(tmpP);
 
 for (let i = 0; i < 5; i++) {
@@ -14,7 +14,7 @@ for (let i = 0; i < 5; i++) {
   if (i === 0) {
     const laneNameP = document.createElement("p");
     laneNameP.className = "result-content";
-    laneNameP.innerHTML = "レーン番号";
+    //laneNameP.innerHTML = "レーン番号";
     resultWrapperDiv.appendChild(laneNameP);
 
     const greatTimesP = document.createElement("p");
