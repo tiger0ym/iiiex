@@ -55,7 +55,7 @@ body {
 }
 
 /*button*/
-.gamestart-btn a {
+.gamestart a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,7 +72,24 @@ body {
   text-decoration: none;
 }
 
-.gamestart-btn a::before {
+.intro a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 100px auto;
+  padding: 1em 2em 1em 6em;
+  width: 430px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #ffe1cb;
+  border-radius: 50vh;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.gamestart a::before {
   content: "Game Start";
   padding: 20px 0 0 40px;
   color: black;
@@ -86,7 +103,21 @@ body {
   transition: 0.2s;
 }
 
-.gamestart-btn a::after {
+.intro a::before {
+  content: '生活リズムを"リズムで"体感したことがありますか？';
+  padding: 20px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.btn a::after {
   content: "";
   width: 5px;
   height: 5px;
@@ -95,12 +126,12 @@ body {
   transform: rotate(45deg);
 }
 
-.gamestart-btn a:hover::before {
+.btn a:hover::before {
   top: 0;
   left: 0;
 }
 
-.gamestart-btn a:hover {
+.btn a:hover {
   text-decoration: none;
   background-color: #e4823d;
 }
