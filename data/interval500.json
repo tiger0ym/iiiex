@@ -1,272 +1,272 @@
 {
-    "title": "sample",
-    "bpm": 60,
-    "notes": [
-        {
-            "timing": 2224,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/01-02:09:04"
-        },
-        {
-            "timing": 4192,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/02-02:41:17"
-        },
-        {
-            "timing": 6191,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/03-00:39:41"
-        },
-        {
-            "timing": 7041,
-            "type": 0,
-            "lane": 2,
-            "len": 0,
-            "datetime": "2021/07/04-12:29:11"
-        },
-        {
-            "timing": 8717,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/05-08:36:14"
-        },
-        {
-            "timing": 10791,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/06-09:29:31"
-        },
-        {
-            "timing": 12702,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/07-08:25:26"
-        },
-        {
-            "timing": 14682,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/08-08:11:02"
-        },
-        {
-            "timing": 16772,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/09-09:15:50"
-        },
-        {
-            "timing": 17432,
-            "type": 1,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/09-17:11:02"
-        },
-        {
-            "timing": 18731,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/10-08:46:19"
-        },
-        {
-            "timing": 20148,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/03-02:18:28"
-        },
-        {
-            "timing": 20929,
-            "type": 0,
-            "lane": 2,
-            "len": 0,
-            "datetime": "2021/07/11-11:09:01"
-        },
-        {
-            "timing": 21490,
-            "type": 1,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/11-17:52:48"
-        },
-        {
-            "timing": 22769,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/12-09:13:40"
-        },
-        {
-            "timing": 24753,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/13-09:02:09"
-        },
-        {
-            "timing": 26045,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/04-08:35:28"
-        },
-        {
-            "timing": 28053,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/05-04:27:28"
-        },
-        {
-            "timing": 28688,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/15-08:15:21"
-        },
-        {
-            "timing": 30246,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/05-08:18:33"
-        },
-        {
-            "timing": 30815,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/16-09:46:48"
-        },
-        {
-            "timing": 34240,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/06-03:40:54"
-        },
-        {
-            "timing": 34767,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/18-09:12:14"
-        },
-        {
-            "timing": 36688,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/19-08:15:21"
-        },
-        {
-            "timing": 38758,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/20-09:05:45"
-        },
-        {
-            "timing": 39976,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/08-03:06:36"
-        },
-        {
-            "timing": 40753,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/21-09:02:09"
-        },
-        {
-            "timing": 42753,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/22-09:02:09"
-        },
-        {
-            "timing": 44891,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/23-10:41:31"
-        },
-        {
-            "timing": 48221,
-            "type": 1,
-            "lane": 3,
-            "len": 0,
-            "datetime": "2021/07/09-04:03:07"
-        },
-        {
-            "timing": 48786,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/25-09:25:55"
-        },
-        {
-            "timing": 50816,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/26-09:47:31"
-        },
-        {
-            "timing": 52732,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/27-08:47:02"
-        },
-        {
-            "timing": 54159,
-            "type": 2,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/28-01:54:28"
-        },
-        {
-            "timing": 55137,
-            "type": 0,
-            "lane": 2,
-            "len": 0,
-            "datetime": "2021/07/28-13:38:45"
-        },
-        {
-            "timing": 56711,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/29-08:31:55"
-        },
-        {
-            "timing": 57480,
-            "type": 1,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/29-17:45:36"
-        },
-        {
-            "timing": 58769,
-            "type": 0,
-            "lane": 1,
-            "len": 0,
-            "datetime": "2021/07/30-09:13:40"
-        }
-    ]
+  "title": "sample",
+  "bpm": 60,
+  "notes": [
+    {
+      "timing": 2224,
+      "type": 1,
+      "lane": 0,
+      "len": 0,
+      "datetime": "2021/07/01-02:09:04"
+    },
+    {
+      "timing": 4192,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/02-02:41:17"
+    },
+    {
+      "timing": 6191,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/03-00:39:41"
+    },
+    {
+      "timing": 7041,
+      "type": 0,
+      "lane": 2,
+      "len": 0,
+      "datetime": "2021/07/04-12:29:11"
+    },
+    {
+      "timing": 8717,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/05-08:36:14"
+    },
+    {
+      "timing": 10791,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/06-09:29:31"
+    },
+    {
+      "timing": 12702,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/07-08:25:26"
+    },
+    {
+      "timing": 14682,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/08-08:11:02"
+    },
+    {
+      "timing": 16772,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/09-09:15:50"
+    },
+    {
+      "timing": 17432,
+      "type": 1,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/09-17:11:02"
+    },
+    {
+      "timing": 18731,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/10-08:46:19"
+    },
+    {
+      "timing": 20148,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/03-02:18:28"
+    },
+    {
+      "timing": 20929,
+      "type": 0,
+      "lane": 2,
+      "len": 0,
+      "datetime": "2021/07/11-11:09:01"
+    },
+    {
+      "timing": 21490,
+      "type": 1,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/11-17:52:48"
+    },
+    {
+      "timing": 22769,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/12-09:13:40"
+    },
+    {
+      "timing": 24753,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/13-09:02:09"
+    },
+    {
+      "timing": 26045,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/04-08:35:28"
+    },
+    {
+      "timing": 28053,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/05-04:27:28"
+    },
+    {
+      "timing": 28688,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/15-08:15:21"
+    },
+    {
+      "timing": 30246,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/05-08:18:33"
+    },
+    {
+      "timing": 30815,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/16-09:46:48"
+    },
+    {
+      "timing": 34240,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/06-03:40:54"
+    },
+    {
+      "timing": 34767,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/18-09:12:14"
+    },
+    {
+      "timing": 36688,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/19-08:15:21"
+    },
+    {
+      "timing": 38758,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/20-09:05:45"
+    },
+    {
+      "timing": 39976,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/08-03:06:36"
+    },
+    {
+      "timing": 40753,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/21-09:02:09"
+    },
+    {
+      "timing": 42753,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/22-09:02:09"
+    },
+    {
+      "timing": 44891,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/23-10:41:31"
+    },
+    {
+      "timing": 48221,
+      "type": 1,
+      "lane": 3,
+      "len": 0,
+      "datetime": "2021/07/09-04:03:07"
+    },
+    {
+      "timing": 48786,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/25-09:25:55"
+    },
+    {
+      "timing": 50816,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/26-09:47:31"
+    },
+    {
+      "timing": 52732,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/27-08:47:02"
+    },
+    {
+      "timing": 54159,
+      "type": 2,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/28-01:54:28"
+    },
+    {
+      "timing": 55137,
+      "type": 0,
+      "lane": 2,
+      "len": 0,
+      "datetime": "2021/07/28-13:38:45"
+    },
+    {
+      "timing": 56711,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/29-08:31:55"
+    },
+    {
+      "timing": 57480,
+      "type": 1,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/29-17:45:36"
+    },
+    {
+      "timing": 58769,
+      "type": 0,
+      "lane": 1,
+      "len": 0,
+      "datetime": "2021/07/30-09:13:40"
+    }
+  ]
 }
