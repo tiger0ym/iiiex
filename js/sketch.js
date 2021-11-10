@@ -75,7 +75,7 @@ function preload() {
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
   bedSound = loadSound("./sound/bed.mp3");
-  //sampleSound = loadSound("./sound/sound.mp3");
+  BGM = loadSound("./sound/test_sound.wav");
 }
 
 function setup() {
@@ -149,6 +149,17 @@ function setup() {
     tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
   endingTime = startDelay + tmpMax / 1000 + endWait; //second
+
+  //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
+  keySound.playMode("sustain");
+  bedSound.playMode("sustain");
+  sleepSound.playMode("sustain");
+  alarmSound.playMode("sustain");
+  eatSound.playMode("sustain");
+  bicycleSound.playMode("sustain");
+  BGM.playMode("sustain");
+  //BGM再生
+  BGM.loop();
 }
 
 //スマホ判定
@@ -239,6 +250,7 @@ function draw() {
         resultArray[3][1],
       ],
     };
+    BGM.pause();
     sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
     window.location.href = "./gameend.html";
   }
