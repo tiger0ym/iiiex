@@ -55,7 +55,7 @@ let userAgent;
 
 function preload() {
   //data
-  jsonData = loadJSON("./data/interval300.js");
+  jsonData = loadJSON("./data/interval300.json");
   //image
   bgImage = loadImage("./image/bgImg9_21.png");
   imgBicycle = loadImage("./image/bicycle.png");
@@ -80,12 +80,9 @@ function preload() {
 function setup() {
   frameRate(fps);
   createCanvas(windowWidth, windowHeight);
-  print(windowWidth);
   userAgent = window.navigator.userAgent.toLowerCase();
-  console.log(userAgent);
 
   if (isSmartPhone()) {
-    //print("smartphone");
     yVelocity = 10;
     laneWidth = windowWidth / 4;
     emojiHeight = windowWidth / 8;
@@ -99,7 +96,6 @@ function setup() {
       windowWidth,
     ];
   } else {
-    print("pc");
     yVelocity = 10;
     laneWidth = 150;
     emojiHeight = 100;
@@ -147,14 +143,11 @@ function setup() {
       isAwake = true;
     }
   }
-
   let tmpMax = 0;
   for (let i = 0; i < 4; i++) {
     tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
   endingTime = startDelay + tmpMax / 1000 + endWait; //second
-  //for debug
-  //endingTime = 0;
 }
 
 //スマホ判定
@@ -170,7 +163,6 @@ function isSmartPhone() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   userAgent = window.navigator.userAgent.toLowerCase();
-  console.log(userAgent);
 
   if (isSmartPhone()) {
     laneWidth = windowWidth / 4;
@@ -185,7 +177,6 @@ function windowResized() {
       windowWidth,
     ];
   } else {
-    //print("pc");
     laneWidth = 150;
     emojiHeight = 100;
     emojiWidth = 100;
@@ -343,7 +334,6 @@ function drawBG() {
 
 //レーン描画
 function drawLane(laneNum) {
-  //console.log("a");
   for (let i = 0; i < 4; i++) {
     if (framesPressed[i] > 0) {
       framesPressed[i]--;
@@ -439,7 +429,6 @@ function mouseClicked() {
 //PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
 function mousePressed() {
   if (!isSmartPhone()) {
-    console.log("pc");
     for (let i = 0; i < 4; i++) {
       if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
         lanePressed(i);
@@ -450,11 +439,9 @@ function mousePressed() {
     if (userAgent.indexOf("msie") != -1 || userAgent.indexOf("trident") != -1) {
       //IE向けの記述
       isSafari = false;
-      console.log("mobile IE");
     } else if (userAgent.indexOf("edge") != -1) {
       //旧Edge向けの記述
       isSafari = false;
-      console.log("mobile edge");
     } else if (
       userAgent.indexOf("chrome") != -1 ||
       userAgent.indexOf("crios") != -1
@@ -462,19 +449,15 @@ function mousePressed() {
       //Google Chrome向けの記述
       if (window == window.parent) {
         isSafari = false;
-        console.log("mobile chrome(not be embeded)");
       } else {
         isSafari = true;
-        console.log("mobile chrome(be embeded)");
       }
     } else if (userAgent.indexOf("safari") != -1) {
       //Safari向けの記述
       isSafari = true;
-      console.log("mobile safari");
     } else if (userAgent.indexOf("firefox") != -1) {
       //FireFox向けの記述
       isSafari = false;
-      console.log("firefox");
     } else {
       //その他のブラウザ向けの記述
       isSafari = false;
