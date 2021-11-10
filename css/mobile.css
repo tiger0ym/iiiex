@@ -81,7 +81,7 @@ body {
   padding: 1em 2em;
   min-width: 250px;
   color: #333;
-  font-size: 18px;
+  font-size: 40px;
   font-weight: 700;
   background-color: #ffe1cb;
   border-radius: 50vh;
@@ -148,8 +148,8 @@ body {
 
 .btn a::after {
   content: "";
-  width: 5px;
-  height: 5px;
+  width: 20px;
+  height: 20px;
   border-top: 3px solid #333333;
   border-right: 3px solid #333333;
   transform: rotate(45deg);
