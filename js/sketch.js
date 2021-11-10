@@ -75,7 +75,6 @@ function preload() {
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
   bedSound = loadSound("./sound/bed.mp3");
-  eatSound2 = loadSound("./sound/eat2.mp3");
   //sampleSound = loadSound("./sound/sound.mp3");
 }
 
