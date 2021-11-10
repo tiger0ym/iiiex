@@ -135,3 +135,7 @@ body {
   text-decoration: none;
   background-color: #e4823d;
 }
+
+.debug {
+  width: 90%;
+}
