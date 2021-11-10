@@ -1,6 +1,5 @@
 let resultData = JSON.parse(sessionStorage.getItem("resultJSON"));
 var parent = document.getElementById("parent");
-console.log(resultData);
 
 const tmpP = document.createElement("p");
 //tmpP.innerHTML = "あなたのゲームスコア";

@@ -20,7 +20,24 @@ body {
   margin: 0 auto;
 }
 /*button*/
-.btn a {
+.not-embedded a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 100px auto;
+  padding: 1em 2em;
+  width: 300px;
+  color: #333;
+  font-size: 40px;
+  font-weight: 700;
+  background-color: #ffe1cb;
+  border-radius: 50vh;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.embedded a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +54,35 @@ body {
   text-decoration: none;
 }
 
-.replay a::before {
+.replay.not-embedded a::before {
+  content: "もう1回プレイ";
+  padding: 40px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 44px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.result.not-embedded a::before {
+  content: "結果を見る";
+  padding: 40px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 44px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.replay.embedded a::before {
   content: "もう1回プレイ";
   padding: 20px 0 0 40px;
   color: black;
@@ -51,7 +96,7 @@ body {
   transition: 0.2s;
 }
 
-.result a::before {
+.result.embedded a::before {
   content: "結果を見る";
   padding: 20px 0 0 40px;
   color: black;
