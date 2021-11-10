@@ -79,9 +79,10 @@ body {
   position: relative;
   margin: 100px auto;
   padding: 1em 2em;
-  width: 300px;
+  min-width: 250px;
+  width: 500px;
   color: #333;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   background-color: #ffe1cb;
   border-radius: 50vh;
