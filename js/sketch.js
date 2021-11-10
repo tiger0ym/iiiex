@@ -74,6 +74,8 @@ function preload() {
   eatSound = loadSound("./sound/eat.mp3");
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
+  bedSound = loadSound("./sound/bed.mp3");
+  eatSound2 = loadSound("./sound/eat2.mp3");
   //sampleSound = loadSound("./sound/sound.mp3");
 }
 
@@ -503,8 +505,15 @@ function lanePressed(laneNum) {
   if (great) {
     isGreat[laneNum] = true;
     resultArray[laneNum][0] += 1;
-    //sampleSound.play();
-    eatSound.play();
+    if (laneNum == 0) {
+      keySound.play();
+    } else if (laneNum == 1) {
+      eatSound.play();
+    } else if (laneNum == 2) {
+      bicycleSound.play();
+    } else if (laneNum == 3) {
+      bedSound.play();
+    }
   } else {
     isGreat[laneNum] = false;
   }
