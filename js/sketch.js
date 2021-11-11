@@ -84,7 +84,6 @@ function setup() {
   userAgent = window.navigator.userAgent.toLowerCase();
 
   if (isSmartPhone()) {
-    yVelocity = 10;
     laneWidth = windowWidth / 4;
     emojiHeight = windowWidth / 8;
     emojiWidth = windowWidth / 8;
@@ -97,7 +96,6 @@ function setup() {
       windowWidth,
     ];
   } else {
-    yVelocity = 10;
     laneWidth = 150;
     emojiHeight = 100;
     emojiWidth = 100;
@@ -380,6 +378,11 @@ function drawLane(laneNum) {
       emoji = emojis[laneNum];
     }
 
+    if (arrayLanes[laneNum][i][0] < 20000) {
+      yVelocity = 10;
+    } else {
+      yVelocity = 20;
+    }
     noStroke();
     yBlock =
       yVelocity *
