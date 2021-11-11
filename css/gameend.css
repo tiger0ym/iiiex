@@ -22,6 +22,7 @@ body {
 /*button*/
 
 /*スマホの時*/
+/*
 @media only screen and (max-width: 800px) {
   .not-embedded a,
   .embedded a {
@@ -40,25 +41,6 @@ body {
     transition: 0.3s;
     text-decoration: none;
   }
-
-  /*
-  .embedded a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    margin: 50px auto;
-    padding: 1em 2em;
-    width: 150px;
-    color: #333;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: #ffe1cb;
-    border-radius: 50vh;
-    transition: 0.3s;
-    text-decoration: none;
-  }
-  */
   .replay.not-embedded a::before,
   .replay.embedded a::before {
     content: "もう1回プレイ";
@@ -88,37 +70,10 @@ body {
     border-radius: 50vh;
     transition: 0.2s;
   }
-  /*
-  .replay.embedded a::before {
-    content: "もう1回プレイ";
-    padding: 20px 0 0 40px;
-    color: black;
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: calc(100% - 44px);
-    height: calc(100% - 24px);
-    border: 2px solid #e46a14;
-    border-radius: 50vh;
-    transition: 0.2s;
-  }
-
-  .result.embedded a::before {
-    content: "結果を見る";
-    padding: 20px 0 0 40px;
-    color: black;
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    width: calc(100% - 44px);
-    height: calc(100% - 24px);
-    border: 2px solid #e46a14;
-    border-radius: 50vh;
-    transition: 0.2s;
-  }
-  */
 }
+*/
 /*PCの時*/
+/*
 @media only screen and (min-width: 800px) {
   .replay a,
   .result a {
@@ -165,6 +120,52 @@ body {
     border-radius: 50vh;
     transition: 0.2s;
   }
+}
+*/
+.replay a,
+.result a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 50px auto;
+  padding: 1em 2em;
+  width: 150px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #ffe1cb;
+  border-radius: 50vh;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.replay a::before {
+  content: "もう1回プレイ";
+  padding: 20px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.result a::before {
+  content: "結果を見る";
+  padding: 20px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
 }
 
 .btn a::after {

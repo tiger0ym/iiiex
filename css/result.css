@@ -65,3 +65,52 @@ body {
   border-radius: 50%;
   background: #ffb681;
 }
+/*button*/
+.replay a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: 50px auto;
+  padding: 1em 2em;
+  width: 150px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #ffe1cb;
+  border-radius: 50vh;
+  transition: 0.3s;
+  text-decoration: none;
+}
+.replay a::before {
+  content: "もう1回プレイ";
+  padding: 20px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
+  border: 2px solid #e46a14;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.btn a::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+  transform: rotate(45deg);
+}
+
+.btn a:hover::before {
+  top: 0;
+  left: 0;
+}
+
+.btn a:hover {
+  text-decoration: none;
+  background-color: #e4823d;
+}
