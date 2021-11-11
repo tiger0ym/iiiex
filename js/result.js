@@ -1,10 +1,5 @@
 let resultData = JSON.parse(sessionStorage.getItem("resultJSON"));
 var parent = document.getElementById("parent");
-
-const tmpP = document.createElement("p");
-//tmpP.innerHTML = "あなたのゲームスコア";
-parent.appendChild(tmpP);
-
 for (let i = 0; i < 5; i++) {
   const resultWrapperDiv = document.createElement("div");
   resultWrapperDiv.className = "result-wrapper";
