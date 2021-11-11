@@ -8,7 +8,7 @@ let yJudgeLine;
 let laneWidth;
 let emojiHeight;
 let emojiWidth;
-let yVelocity;
+let yVelocity; //  px/frame
 
 let yBlock = -emojiHeight;
 
@@ -505,13 +505,13 @@ function lanePressed(laneNum) {
     if (
       isSmartPhone() &&
       abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
-        fps / 10
+        (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
     } else if (
       !isSmartPhone() &&
       abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
-        fps / 5
+        (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
     }
