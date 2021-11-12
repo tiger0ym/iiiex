@@ -1,6 +1,6 @@
 let keyTextSize;
 
-const fps = 30;
+let fps;
 
 let xLines = [];
 let yJudgeLine;
@@ -15,8 +15,8 @@ let yBlock = -emojiHeight;
 let jsonData;
 let arrayLen;
 
-const startDelay = 5; //second
-const endWait = 1; //second
+let startDelay; //second
+let endWait; //second
 
 let arrayLanes = [[], [], [], []];
 
@@ -31,10 +31,18 @@ let colorF;
 let colorJ;
 let colorK;
 let frameColors = [];
+let greatColor;
+let colorDay;
+let colorEvening;
+let colorNight;
+
+let timeNightEnd;
+let timeDayStart;
+let timeDayEnd;
+let timeEvening;
+let timeNightStart;
 
 let isGreat = [false, false, false, false];
-
-let greatColor;
 
 let onPress = false;
 
@@ -147,6 +155,19 @@ function setup() {
     tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
   endingTime = startDelay + tmpMax / 1000 + endWait; //second
+
+  //定数設定
+  fps = 30;
+  startDelay = 5;
+  endWait = 1;
+  timeNightEnd = (23 * PI) / 24;
+  timeDayStart = (27 * PI) / 24;
+  timeDayEnd = (8 * PI) / 3;
+  timeEvening = (33 * PI) / 12;
+  timeNightStart = (17 * PI) / 6;
+  colorDay = [0, 200, 255];
+  colorEvening = [242, 99, 44];
+  colorNight = [0, 0, 10];
 
   //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
   keySound.playMode("sustain");
@@ -292,6 +313,61 @@ function drawBG() {
         windowHeight
       );
     }
+  }
+
+  //時計描画
+  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
+  stroke(0, 0, 0, 100);
+  push();
+  translate(windowWidth / 2, windowHeight / 2);
+  rotate(angle);
+  if (isSmartPhone()) {
+    strokeWeight(20);
+    line(0, 0, 0, -(windowWidth * 2) / 5);
+  } else {
+    strokeWeight(10);
+    line(0, 0, 0, -(laneWidth * 8) / 5);
+  }
+  pop();
+
+  //背景に色つける
+  noStroke();
+  let colorBG;
+  //色の場合分け
+  if (timeNightEnd <= angle && angle < timeDayStart) {
+    colorBG = timeToColor(
+      angle,
+      timeNightEnd,
+      timeDayStart,
+      colorNight,
+      colorDay
+    );
+  } else if (timeDayStart <= angle && angle < timeDayEnd) {
+    colorBG = color(colorDay[0], colorDay[1], colorDay[2], 100);
+  } else if (timeDayEnd <= angle && angle < timeEvening) {
+    colorBG = timeToColor(
+      angle,
+      timeDayEnd,
+      timeEvening,
+      colorDay,
+      colorEvening
+    );
+  } else if (timeEvening <= angle && angle < timeNightStart) {
+    colorBG = timeToColor(
+      angle,
+      timeEvening,
+      timeNightStart,
+      colorEvening,
+      colorNight
+    );
+  } else {
+    colorBG = color(colorNight[0], colorNight[1], colorNight[2], 100);
+  }
+  fill(colorBG);
+  if (isSmartPhone()) {
+    rect(0, 0, windowWidth, windowHeight);
+  } else {
+    rect(xLines[0], 0, laneWidth * 4, windowHeight);
   }
 
   //枠線
@@ -531,4 +607,19 @@ function lanePressed(laneNum) {
   } else {
     isGreat[laneNum] = false;
   }
+}
+
+function timeToColor(angle, startTime, endTime, startColor, endColor) {
+  return color(
+    ((endColor[0] - startColor[0]) / (endTime - startTime)) *
+      (angle - startTime) +
+      startColor[0],
+    ((endColor[1] - startColor[1]) / (endTime - startTime)) *
+      (angle - startTime) +
+      startColor[1],
+    ((endColor[2] - startColor[2]) / (endTime - startTime)) *
+      (angle - startTime) +
+      startColor[2],
+    100
+  );
 }
