@@ -316,7 +316,7 @@ function drawBG() {
   }
 
   //時計描画
-  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
+  let angle = ((frame * 0.2 * PI) / fps) % (2 * TWO_PI);
   stroke(0, 0, 0, 100);
   push();
   translate(windowWidth / 2, windowHeight / 2);
