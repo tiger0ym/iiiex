@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
-
 html,
 body {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Rounded Mplus 1c";
   /*overflow: hidden; /*スクロール禁止*/
   -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化 */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */

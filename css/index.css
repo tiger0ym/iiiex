@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP");
-
 html,
 body {
-  font-family: "Noto Sans JP", sans-serif;
+  font-family: "Rounded Mplus 1c";
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -137,7 +135,15 @@ body {
   background-color: #e4823d;
 }
 
-.wf-roundedmplus1c { font-family: "Rounded Mplus 1c"; }
-.wf-hannari { font-family: "Hannari"; }
-.wf-kokoro { font-family: "Kokoro"; }
-.wf-nicomoji { font-family: "Nico Moji"; }
+.wf-roundedmplus1c {
+  font-family: "Rounded Mplus 1c";
+}
+.wf-hannari {
+  font-family: "Hannari";
+}
+.wf-kokoro {
+  font-family: "Kokoro";
+}
+.wf-nicomoji {
+  font-family: "Nico Moji";
+}
