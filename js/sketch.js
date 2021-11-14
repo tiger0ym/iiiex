@@ -234,14 +234,17 @@ function draw() {
     if (isSmartPhone()) {
       if (window == window.parent) {
         textSize(100);
+        fill(255, 0, 0);
+        strokeWeight(5);
+        textAlign(CENTER);
+        text("タップしてスタート", windowWidth / 2, windowHeight / 2);
       } else {
         textSize(20);
+        fill(0, 0, 0);
+        strokeWeight(5);
+        textAlign(CENTER);
+        text("タップしてスタート", windowWidth / 2, windowHeight / 2);
       }
-      fill(0, 0, 0);
-      strokeWeight(5);
-
-      textAlign(CENTER);
-      text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
       fill(0, 0, 0);
       strokeWeight(3);
