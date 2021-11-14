@@ -232,9 +232,14 @@ function draw() {
 
   if (!isStart) {
     if (isSmartPhone()) {
+      if (window == window.parent) {
+        textSize(100);
+      } else {
+        textSize(20);
+      }
       fill(0, 0, 0);
       strokeWeight(5);
-      textSize(100);
+
       textAlign(CENTER);
       text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
