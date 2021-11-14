@@ -46,6 +46,8 @@ let isGreat = [false, false, false, false];
 
 let onPress = false;
 
+let isStart = false;
+
 let bgImage;
 
 let endingTime = 0;
@@ -178,7 +180,7 @@ function setup() {
   bicycleSound.playMode("sustain");
   BGM.playMode("sustain");
   //BGM再生
-  BGM.loop();
+  //BGM.loop();
 }
 
 //スマホ判定
@@ -228,6 +230,22 @@ function draw() {
   //背景描画
   drawBG();
 
+  if (!isStart) {
+    if (isSmartPhone()) {
+      fill(0, 0, 0);
+      strokeWeight(5);
+      textSize(100);
+      textAlign(CENTER);
+      text("タップしてスタート", windowWidth / 2, windowHeight / 2);
+    } else {
+      fill(0, 0, 0);
+      strokeWeight(3);
+      textSize(40);
+      textAlign(CENTER);
+      text("spaceキーを押してスタート", windowWidth / 2, windowHeight / 2);
+    }
+  }
+
   frameColors = [
     color(63, 169, 245, framesPressed[0] * 42),
     color(255, 123, 172, framesPressed[1] * 42),
@@ -274,7 +292,9 @@ function draw() {
     window.location.href = "./gameend.html";
   }
 
-  frame++;
+  if (isStart) {
+    frame++;
+  }
 }
 
 //背景描画
@@ -499,17 +519,24 @@ function drawLane(laneNum) {
 
 //キーボード
 function keyPressed() {
-  if (key == "d") {
+  if (key === "d") {
     lanePressed(0);
   }
-  if (key == "f") {
+  if (key === "f") {
     lanePressed(1);
   }
-  if (key == "j") {
+  if (key === "j") {
     lanePressed(2);
   }
-  if (key == "k") {
+  if (key === "k") {
     lanePressed(3);
+  }
+  if (keyCode === 32) {
+    if (!isStart) {
+      isStart = true;
+      BGM.loop();
+    }
+    return false;
   }
 }
 
@@ -527,48 +554,56 @@ function mousePressed() {
       }
     }
   } else {
-    let isSafari;
-    if (userAgent.indexOf("msie") != -1 || userAgent.indexOf("trident") != -1) {
-      //IE向けの記述
-      isSafari = false;
-    } else if (userAgent.indexOf("edge") != -1) {
-      //旧Edge向けの記述
-      isSafari = false;
-    } else if (
-      userAgent.indexOf("chrome") != -1 ||
-      userAgent.indexOf("crios") != -1
-    ) {
-      //Google Chrome向けの記述
-      if (window == window.parent) {
+    if (!isStart) {
+      isStart = true;
+      BGM.loop();
+    } else {
+      let isSafari;
+      if (
+        userAgent.indexOf("msie") != -1 ||
+        userAgent.indexOf("trident") != -1
+      ) {
+        //IE向けの記述
+        isSafari = false;
+      } else if (userAgent.indexOf("edge") != -1) {
+        //旧Edge向けの記述
+        isSafari = false;
+      } else if (
+        userAgent.indexOf("chrome") != -1 ||
+        userAgent.indexOf("crios") != -1
+      ) {
+        //Google Chrome向けの記述
+        if (window == window.parent) {
+          isSafari = false;
+        } else {
+          isSafari = true;
+        }
+      } else if (userAgent.indexOf("safari") != -1) {
+        //Safari向けの記述
+        isSafari = true;
+      } else if (userAgent.indexOf("firefox") != -1) {
+        //FireFox向けの記述
         isSafari = false;
       } else {
-        isSafari = true;
+        //その他のブラウザ向けの記述
+        isSafari = false;
       }
-    } else if (userAgent.indexOf("safari") != -1) {
-      //Safari向けの記述
-      isSafari = true;
-    } else if (userAgent.indexOf("firefox") != -1) {
-      //FireFox向けの記述
-      isSafari = false;
-    } else {
-      //その他のブラウザ向けの記述
-      isSafari = false;
-    }
 
-    if (isSafari) {
-      for (let i = 0; i < 4; i++) {
-        if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-          lanePressed(i);
-        }
-      }
-    } else {
-      if (!onPress) {
+      if (isSafari) {
         for (let i = 0; i < 4; i++) {
           if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
             lanePressed(i);
           }
         }
-        onPress = true;
+      } else {
+        if (!onPress) {
+          for (let i = 0; i < 4; i++) {
+            if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
+              lanePressed(i);
+            }
+          }
+          onPress = true;
+        }
       }
     }
   }
