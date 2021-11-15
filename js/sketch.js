@@ -68,7 +68,8 @@ function preload() {
   //data
   jsonData = loadJSON("./data/interval300.json");
   //image
-  bgImage = loadImage("./image/bgImg9_21.png");
+  //bgImage = loadImage("./image/bgImg9_21.png");
+  bgImage = loadImage("./image/kisho_demo.JPG");
   imgBicycle = loadImage("./image/bicycle.png");
   imgCake = loadImage("./image/cake.png");
   imgFish = loadImage("./image/fish.png");
