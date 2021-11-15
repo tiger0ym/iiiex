@@ -319,7 +319,8 @@ function windowResized() {
 //背景描画
 function drawBG() {
   //背景リセット
-  background("white");
+  //background("white");
+  background(0,0,0);
   if (isTapDevice()) {
     //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {
