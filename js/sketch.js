@@ -207,7 +207,7 @@ function draw() {
       text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
       fill(0, 0, 0);
-      strokeWeight(3);
+      strokeWeight(3); //明日ここからやろう
       textSize(40);
       textAlign(CENTER);
       text("spaceキーを押してスタート", windowWidth / 2, windowHeight / 2);
