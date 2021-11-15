@@ -73,7 +73,8 @@ function preload() {
   imgBicycle = loadImage("./image/bicycle.png");
   imgCake = loadImage("./image/cake.png");
   imgFish = loadImage("./image/fish.png");
-  imgHotdog = loadImage("./image/hotdog.png");
+  imgHotdog = loadImage("./image/curry.png");
+  imgCurry = loadImage("./image/hotdog.png");
   imgKey = loadImage("./image/key.png");
   imgRiceball = loadImage("./image/riceball.png");
   imgSun = loadImage("./image/sun.png");
@@ -141,7 +142,7 @@ function setup() {
   //emojis配列に絵文字を入れる
   emojis[0] = imgKey;
   for (let i = 0; i < arrayLanes[1].length; i++) {
-    emojis[1].push(random([imgRiceball, imgCake, imgFish, imgHotdog]));
+    emojis[1].push(random([imgRiceball, imgCake, imgFish, imgHotdog, imgCurry]));
   }
   emojis[2] = imgBicycle;
   let isAwake = true;
