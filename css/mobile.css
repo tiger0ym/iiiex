@@ -86,16 +86,13 @@ body {
   transition: 0.3s;
   text-decoration: none;
 }
-.intro {
-  margin: 50% auto;
-  height: 100%;
-}
+
 .intro a {
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 0 auto;
+  margin: 100px auto;
   padding: 1em 2em;
   min-width: 250px;
   color: #333;
