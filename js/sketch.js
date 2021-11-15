@@ -142,7 +142,9 @@ function setup() {
   //emojis配列に絵文字を入れる
   emojis[0] = imgKey;
   for (let i = 0; i < arrayLanes[1].length; i++) {
-    emojis[1].push(random([imgRiceball, imgCake, imgFish, imgHotdog, imgCurry]));
+    emojis[1].push(
+      random([imgRiceball, imgCake, imgFish, imgHotdog, imgCurry])
+    );
   }
   emojis[2] = imgBicycle;
   let isAwake = true;
@@ -320,7 +322,7 @@ function windowResized() {
 //背景描画
 function drawBG() {
   //背景リセット
-  background("white");
+  background(14, 14, 14);
   if (isTapDevice()) {
     //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {

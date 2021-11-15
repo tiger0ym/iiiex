@@ -1,9 +1,10 @@
 html,
 body {
   overflow: hidden; /*スクロール禁止*/
-   /*overscroll-behavior: none; /*　オーバースクロール禁止 */
+  /*overscroll-behavior: none; /*　オーバースクロール禁止 */
   -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化 */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
+  margin: 0;
 }
 
 .result-wrapper {
