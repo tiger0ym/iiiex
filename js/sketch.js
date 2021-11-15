@@ -15,12 +15,11 @@ let yBlock = -emojiHeight;
 let jsonData;
 let arrayLen;
 
-let startDelay; //second
 let endWait; //second
 
 let arrayLanes = [[], [], [], []];
 
-let frame = 0;
+let frame;
 
 let emojis = [, [], , []];
 
@@ -156,11 +155,10 @@ function setup() {
   for (let i = 0; i < 4; i++) {
     tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
   }
-  endingTime = startDelay + tmpMax / 1000 + endWait; //second
+  endingTime = tmpMax / 1000 + endWait; //second
 
   //定数設定
   fps = 30;
-  startDelay = 5;
   endWait = 1;
   timeNightEnd = (23 * PI) / 24;
   timeDayStart = (27 * PI) / 24;
@@ -171,6 +169,9 @@ function setup() {
   colorEvening = [242, 99, 44];
   colorNight = [0, 0, 10];
 
+  //frameの初期値設定
+  frame = -5 * fps;
+
   //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
   keySound.playMode("sustain");
   bedSound.playMode("sustain");
@@ -179,8 +180,6 @@ function setup() {
   eatSound.playMode("sustain");
   bicycleSound.playMode("sustain");
   BGM.playMode("sustain");
-  //BGM再生
-  //BGM.loop();
 }
 
 //スマホ判定
@@ -232,7 +231,7 @@ function draw() {
 
   if (!isStart) {
     if (isSmartPhone()) {
-      if (window == window.parent) {
+      if (window === window.parent) {
         textSize(100);
       } else {
         textSize(30);
@@ -256,8 +255,6 @@ function draw() {
     color(122, 201, 67, framesPressed[2] * 42),
     color(245, 139, 63, framesPressed[3] * 42),
   ];
-
-  //greatColor = color(255, 0, 0, framesPressed[0] * 30);
 
   //bpm[回/min]のペースで(フレームレートbase)
   if (frame % ((fps * 60) / jsonData.bpm) < 1) {
@@ -296,8 +293,13 @@ function draw() {
     window.location.href = "./gameend.html";
   }
 
+  //tap or spaceキーが押される → ゲームスタート
   if (isStart) {
     frame++;
+  }
+  //
+  if (frame === 0) {
+    BGM.loop();
   }
 }
 
@@ -355,45 +357,46 @@ function drawBG() {
   pop();
 
   //背景に色つける
-  noStroke();
-  let colorBG;
-  //色の場合分け
-  if (timeNightEnd <= angle && angle < timeDayStart) {
-    colorBG = timeToColor(
-      angle,
-      timeNightEnd,
-      timeDayStart,
-      colorNight,
-      colorDay
-    );
-  } else if (timeDayStart <= angle && angle < timeDayEnd) {
-    colorBG = color(colorDay[0], colorDay[1], colorDay[2], 100);
-  } else if (timeDayEnd <= angle && angle < timeEvening) {
-    colorBG = timeToColor(
-      angle,
-      timeDayEnd,
-      timeEvening,
-      colorDay,
-      colorEvening
-    );
-  } else if (timeEvening <= angle && angle < timeNightStart) {
-    colorBG = timeToColor(
-      angle,
-      timeEvening,
-      timeNightStart,
-      colorEvening,
-      colorNight
-    );
-  } else {
-    colorBG = color(colorNight[0], colorNight[1], colorNight[2], 100);
+  if (frame > 0) {
+    noStroke();
+    let colorBG;
+    //色の場合分け
+    if (timeNightEnd <= angle && angle < timeDayStart) {
+      colorBG = timeToColor(
+        angle,
+        timeNightEnd,
+        timeDayStart,
+        colorNight,
+        colorDay
+      );
+    } else if (timeDayStart <= angle && angle < timeDayEnd) {
+      colorBG = color(colorDay[0], colorDay[1], colorDay[2], 100);
+    } else if (timeDayEnd <= angle && angle < timeEvening) {
+      colorBG = timeToColor(
+        angle,
+        timeDayEnd,
+        timeEvening,
+        colorDay,
+        colorEvening
+      );
+    } else if (timeEvening <= angle && angle < timeNightStart) {
+      colorBG = timeToColor(
+        angle,
+        timeEvening,
+        timeNightStart,
+        colorEvening,
+        colorNight
+      );
+    } else {
+      colorBG = color(colorNight[0], colorNight[1], colorNight[2], 100);
+    }
+    fill(colorBG);
+    if (isSmartPhone()) {
+      rect(0, 0, windowWidth, windowHeight);
+    } else {
+      rect(xLines[0], 0, laneWidth * 4, windowHeight);
+    }
   }
-  fill(colorBG);
-  if (isSmartPhone()) {
-    rect(0, 0, windowWidth, windowHeight);
-  } else {
-    rect(xLines[0], 0, laneWidth * 4, windowHeight);
-  }
-
   //枠線
   strokeWeight(1);
   stroke("black");
@@ -470,9 +473,9 @@ function drawLane(laneNum) {
 
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     let emoji;
-    if (laneNum == 1) {
+    if (laneNum === 1) {
       emoji = emojis[1][i];
-    } else if (laneNum == 3) {
+    } else if (laneNum === 3) {
       emoji = emojis[3][i];
     } else {
       emoji = emojis[laneNum];
@@ -485,8 +488,7 @@ function drawLane(laneNum) {
     }
     noStroke();
     yBlock =
-      yVelocity *
-        (frame - fps * (startDelay + arrayLanes[laneNum][i][0] / 1000)) +
+      yVelocity * (frame - fps * (arrayLanes[laneNum][i][0] / 1000)) +
       yJudgeLine -
       emojiHeight / 2;
 
@@ -577,7 +579,7 @@ function mousePressed() {
         userAgent.indexOf("crios") != -1
       ) {
         //Google Chrome向けの記述
-        if (window == window.parent) {
+        if (window === window.parent) {
           isSafari = false;
         } else {
           isSafari = true;
@@ -619,13 +621,13 @@ function lanePressed(laneNum) {
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
       isSmartPhone() &&
-      abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
+      abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
     } else if (
       !isSmartPhone() &&
-      abs(fps * (startDelay + arrayLanes[laneNum][i][0] / 1000) - frame) <
+      abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
@@ -634,13 +636,13 @@ function lanePressed(laneNum) {
   if (great) {
     isGreat[laneNum] = true;
     resultArray[laneNum][0] += 1;
-    if (laneNum == 0) {
+    if (laneNum === 0) {
       keySound.play();
-    } else if (laneNum == 1) {
+    } else if (laneNum === 1) {
       eatSound.play();
-    } else if (laneNum == 2) {
+    } else if (laneNum === 2) {
       bicycleSound.play();
-    } else if (laneNum == 3) {
+    } else if (laneNum === 3) {
       bedSound.play();
     }
   } else {
