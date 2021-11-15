@@ -94,7 +94,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   userAgent = window.navigator.userAgent.toLowerCase();
 
-  if (isSmartPhone()) {
+  if (isTapDevice()) {
     laneWidth = windowWidth / 4;
     emojiHeight = windowWidth / 8;
     emojiWidth = windowWidth / 8;
@@ -191,7 +191,7 @@ function draw() {
   drawBG();
 
   if (!isStart && !isYoin) {
-    if (isSmartPhone()) {
+    if (isTapDevice()) {
       if (window === window.parent) {
         textSize(100);
       } else {
@@ -260,13 +260,33 @@ function isSmartPhone() {
     return false;
   }
 }
+//iPad判定
+function isiPad() {
+  if (/iPad|Macintosh/i.test(navigator.userAgent) && "ontouchend" in document) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//スマホ,iPad判定
+function isTapDevice() {
+  let isSmartPhone = navigator.userAgent.match(/iPhone|Android.+Mobile/);
+  let isiPad =
+    /iPad|Macintosh/i.test(navigator.userAgent) && "ontouchend" in document;
+  if (isSmartPhone || isiPad) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 //ウインドウサイズが変わった時
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   userAgent = window.navigator.userAgent.toLowerCase();
 
-  if (isSmartPhone()) {
+  if (isTapDevice()) {
     laneWidth = windowWidth / 4;
     emojiHeight = windowWidth / 8;
     emojiWidth = windowWidth / 8;
@@ -299,7 +319,7 @@ function windowResized() {
 function drawBG() {
   //背景リセット
   background("white");
-  if (isSmartPhone()) {
+  if (isTapDevice()) {
     //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {
       image(
@@ -339,7 +359,7 @@ function drawBG() {
   push();
   translate(windowWidth / 2, windowHeight / 2);
   rotate(angle);
-  if (isSmartPhone()) {
+  if (isTapDevice()) {
     strokeWeight(20);
     line(0, 0, 0, -(windowWidth * 2) / 5);
   } else {
@@ -383,7 +403,7 @@ function drawBG() {
       colorBG = color(colorNight[0], colorNight[1], colorNight[2], 100);
     }
     fill(colorBG);
-    if (isSmartPhone()) {
+    if (isTapDevice()) {
       rect(0, 0, windowWidth, windowHeight);
     } else {
       rect(xLines[0], 0, laneWidth * 4, windowHeight);
@@ -402,7 +422,7 @@ function drawBG() {
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
 
   //文字
-  if (!isSmartPhone()) {
+  if (!isTapDevice()) {
     strokeWeight(2);
     stroke(0, 0, 0);
     fill(255, 255, 255);
@@ -416,22 +436,22 @@ function drawBG() {
     //textAlign(CENTER, CENTER);
     textAlign(CENTER);
     text(
-      "d",
+      "D",
       (xLines[0] + xLines[1]) / 2,
       windowHeight * 0.9 + keyTextSize / 2
     );
     text(
-      "f",
+      "F",
       (xLines[1] + xLines[2]) / 2,
       windowHeight * 0.9 + keyTextSize / 2
     );
     text(
-      "j",
+      "J",
       (xLines[2] + xLines[3]) / 2,
       windowHeight * 0.9 + keyTextSize / 2
     );
     text(
-      "k",
+      "K",
       (xLines[3] + xLines[4]) / 2,
       windowHeight * 0.9 + keyTextSize / 2
     );
@@ -545,7 +565,7 @@ function mouseClicked() {
 
 //PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
 function mousePressed() {
-  if (!isSmartPhone()) {
+  if (!isTapDevice()) {
     for (let i = 0; i < 4; i++) {
       if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
         lanePressed(i);
@@ -612,13 +632,13 @@ function lanePressed(laneNum) {
   let great = false;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
-      isSmartPhone() &&
+      isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
     } else if (
-      !isSmartPhone() &&
+      !isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
