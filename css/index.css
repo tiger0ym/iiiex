@@ -28,6 +28,7 @@ body {
 .img-explanation {
   max-width: 100%;
   width: 500px;
+  /*background-color: red;*/
 }
 
 /*title*/
@@ -133,17 +134,4 @@ body {
 .btn a:hover {
   text-decoration: none;
   background-color: #e4823d;
-}
-
-.wf-roundedmplus1c {
-  font-family: "Rounded Mplus 1c";
-}
-.wf-hannari {
-  font-family: "Hannari";
-}
-.wf-kokoro {
-  font-family: "Kokoro";
-}
-.wf-nicomoji {
-  font-family: "Nico Moji";
 }
