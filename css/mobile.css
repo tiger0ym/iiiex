@@ -57,6 +57,7 @@ body {
 .intro {
   height: 100%;
   margin: calc(50vh - 40px) auto;
+  background-color: red;
 }
 .gamestart.not-embedded a {
   display: flex;
