@@ -186,49 +186,6 @@ function setup() {
   BGM.playMode("sustain");
 }
 
-//スマホ判定
-function isSmartPhone() {
-  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-//ウインドウサイズが変わった時
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  userAgent = window.navigator.userAgent.toLowerCase();
-
-  if (isSmartPhone()) {
-    laneWidth = windowWidth / 4;
-    emojiHeight = windowWidth / 8;
-    emojiWidth = windowWidth / 8;
-    keyTextSize = 100;
-    xLines = [
-      0,
-      windowWidth / 4,
-      windowWidth / 2,
-      (windowWidth * 3) / 4,
-      windowWidth,
-    ];
-  } else {
-    laneWidth = 150;
-    emojiHeight = 100;
-    emojiWidth = 100;
-    keyTextSize = 50;
-    xLines = [
-      windowWidth / 2 - laneWidth * 2,
-      windowWidth / 2 - laneWidth,
-      windowWidth / 2,
-      windowWidth / 2 + laneWidth,
-      windowWidth / 2 + laneWidth * 2,
-    ];
-  }
-
-  yJudgeLine = windowHeight * 0.8;
-}
-
 function draw() {
   //背景描画
   drawBG();
@@ -272,48 +229,70 @@ function draw() {
   for (let i = 0; i < 4; i++) {
     drawLane(i);
   }
-
+  //ゲーム終了&時計が12時 → 余韻タイムスタート
   if (frame > endingTime * fps && frame % (fps * 5) === 0) {
     isStart = false;
     isYoin = true;
   }
   //ゲーム終了
   if (frameYoin > 3 * fps) {
-    for (let i = 0; i < 4; i++) {
-      resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
-    }
-    var resultJSON = {
-      great: [
-        resultArray[0][0],
-        resultArray[1][0],
-        resultArray[2][0],
-        resultArray[3][0],
-      ],
-      miss: [
-        resultArray[0][1],
-        resultArray[1][1],
-        resultArray[2][1],
-        resultArray[3][1],
-      ],
-    };
-    BGM.pause();
-    sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
-    window.location.href = "./gameend.html";
+    gameEnd();
   }
-
   //tap or spaceキーが押される → ゲームスタート
   if (isStart) {
     frame++;
   }
-  //
+  //短針が1周したらゲーム開始，音楽鳴らす
   if (frame === 0) {
     BGM.loop();
   }
+  //余韻モード
   if (isYoin) {
     frameYoin++;
   }
+}
 
-  console.log(frame + " " + frameYoin + " " + endingTime * fps);
+//スマホ判定
+function isSmartPhone() {
+  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//ウインドウサイズが変わった時
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  userAgent = window.navigator.userAgent.toLowerCase();
+
+  if (isSmartPhone()) {
+    laneWidth = windowWidth / 4;
+    emojiHeight = windowWidth / 8;
+    emojiWidth = windowWidth / 8;
+    keyTextSize = 100;
+    xLines = [
+      0,
+      windowWidth / 4,
+      windowWidth / 2,
+      (windowWidth * 3) / 4,
+      windowWidth,
+    ];
+  } else {
+    laneWidth = 150;
+    emojiHeight = 100;
+    emojiWidth = 100;
+    keyTextSize = 50;
+    xLines = [
+      windowWidth / 2 - laneWidth * 2,
+      windowWidth / 2 - laneWidth,
+      windowWidth / 2,
+      windowWidth / 2 + laneWidth,
+      windowWidth / 2 + laneWidth * 2,
+    ];
+  }
+
+  yJudgeLine = windowHeight * 0.8;
 }
 
 //背景描画
@@ -676,4 +655,27 @@ function timeToColor(angle, startTime, endTime, startColor, endColor) {
       startColor[2],
     100
   );
+}
+
+function gameEnd() {
+  for (let i = 0; i < 4; i++) {
+    resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
+  }
+  var resultJSON = {
+    great: [
+      resultArray[0][0],
+      resultArray[1][0],
+      resultArray[2][0],
+      resultArray[3][0],
+    ],
+    miss: [
+      resultArray[0][1],
+      resultArray[1][1],
+      resultArray[2][1],
+      resultArray[3][1],
+    ],
+  };
+  BGM.pause();
+  sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
+  window.location.href = "./gameend.html";
 }
