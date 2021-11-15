@@ -20,6 +20,7 @@ let endWait; //second
 let arrayLanes = [[], [], [], []];
 
 let frame;
+let frameYoin;
 
 let emojis = [, [], , []];
 
@@ -46,6 +47,7 @@ let isGreat = [false, false, false, false];
 let onPress = false;
 
 let isStart = false;
+let isYoin = false;
 
 let bgImage;
 
@@ -151,13 +153,15 @@ function setup() {
       isAwake = true;
     }
   }
-  let tmpMax = 0;
+  let lastEmojiTime = 0;
   for (let i = 0; i < 4; i++) {
-    tmpMax = max(tmpMax, arrayLanes[i][arrayLanes[i].length - 1][0]);
+    lastEmojiTime = max(
+      lastEmojiTime,
+      arrayLanes[i][arrayLanes[i].length - 1][0]
+    );
   }
-  endingTime = tmpMax / 1000 + endWait; //second
 
-  //定数設定
+  //定数,変数の初期値設定
   fps = 30;
   endWait = 1;
   timeNightEnd = (23 * PI) / 24;
@@ -168,9 +172,9 @@ function setup() {
   colorDay = [0, 200, 255];
   colorEvening = [242, 99, 44];
   colorNight = [0, 0, 10];
-
-  //frameの初期値設定
   frame = -5 * fps;
+  endingTime = lastEmojiTime / 1000 + endWait; //second
+  frameYoin = 0;
 
   //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
   keySound.playMode("sustain");
@@ -229,7 +233,7 @@ function draw() {
   //背景描画
   drawBG();
 
-  if (!isStart) {
+  if (!isStart && !isYoin) {
     if (isSmartPhone()) {
       if (window === window.parent) {
         textSize(100);
@@ -269,8 +273,12 @@ function draw() {
     drawLane(i);
   }
 
+  if (frame > endingTime * fps && frame % (fps * 5) === 0) {
+    isStart = false;
+    isYoin = true;
+  }
   //ゲーム終了
-  if (frame > endingTime * fps) {
+  if (frameYoin > 3 * fps) {
     for (let i = 0; i < 4; i++) {
       resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
     }
@@ -301,6 +309,11 @@ function draw() {
   if (frame === 0) {
     BGM.loop();
   }
+  if (isYoin) {
+    frameYoin++;
+  }
+
+  console.log(frame + " " + frameYoin + " " + endingTime * fps);
 }
 
 //背景描画
