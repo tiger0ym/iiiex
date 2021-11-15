@@ -80,7 +80,7 @@ function preload() {
 
   //sound
   keySound = loadSound("./sound/key.mp3");
-  bicycleSound = loadSound("./sound/bicycle.mp3");
+  bicycleSound = loadSound("./sound/bicycle2.mp3");
   eatSound = loadSound("./sound/eat.mp3");
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
