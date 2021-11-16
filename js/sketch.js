@@ -202,12 +202,14 @@ function draw() {
         textSize(30);
       }
       fill(0, 0, 0);
-      strokeWeight(5);
+      strokeWeight(10);
+      stroke(255, 255, 255);
       textAlign(CENTER);
       text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
       fill(0, 0, 0);
-      strokeWeight(3); //明日ここからやろう
+      strokeWeight(5);
+      stroke(255, 255, 255);
       textSize(40);
       textAlign(CENTER);
       text("spaceキーを押してスタート", windowWidth / 2, windowHeight / 2);
@@ -414,7 +416,7 @@ function drawBG() {
     }
   }
   //枠線
-  strokeWeight(1);
+  strokeWeight(5);
   stroke("black");
   for (let i = 0; i < 5; i++) {
     line(xLines[i], 0, xLines[i], windowHeight);
