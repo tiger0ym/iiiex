@@ -75,7 +75,7 @@ body {
   height: 14px;
   content: "";
   border-radius: 50%;
-  background: #0000ff;
+  background: #0000ff; /*ここを変えるよ*/
 }
 /*button*/
 .gamestart.not-embedded a {
