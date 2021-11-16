@@ -470,8 +470,7 @@ function drawLane(laneNum) {
         textSize(keyTextSize);
         textAlign(CENTER);
         strokeWeight(0);
-        /*text("Great!", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);*/
-        text(keyTextSize, (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
+        text("Great!", (xLines[i] + xLines[i + 1]) / 2, windowHeight * 0.9);
       }
     }
   }
