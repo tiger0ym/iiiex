@@ -221,7 +221,7 @@ function setup() {
 }
 
 function draw() {
-  console.log((frame * 1000) / fps + " " + angle);
+  console.log(fps);
   //背景描画
   drawBG();
 
@@ -405,7 +405,6 @@ function drawBG() {
   //睡眠レーンによって背景変更
   if (sleepLaneNum < arrayLanes[3].length) {
     if ((frame * 1000) / fps > arrayLanes[3][sleepLaneNum][0]) {
-      console.log(sleepLaneNum);
       bgChanged = true;
       bgDisplay[nowBG] = false;
       sleepLaneNum++;
