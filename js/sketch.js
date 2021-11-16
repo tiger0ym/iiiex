@@ -48,6 +48,7 @@ let onPress = false;
 
 let isStart = false;
 let isYoin = false;
+let yoinTime;
 let isAwake = false;
 let bgChanged = false;
 let bgDisplay = [true, true, true, true, true];
@@ -61,6 +62,7 @@ let nowBG = 0;
 4 back
 */
 let bgChangeAngle = [];
+let sleepLaneNum = 0;
 
 let bgImage;
 
@@ -204,6 +206,7 @@ function setup() {
   frame = -5 * fps;
   endingTime = lastEmojiTime / 1000 + endWait; //second
   frameYoin = 0;
+  yoinTime = 2;
   bgImage = bgSuimin;
 
   //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
@@ -267,7 +270,7 @@ function draw() {
     isYoin = true;
   }
   //ゲーム終了
-  if (frameYoin > 3 * fps) {
+  if (frameYoin > yoinTime * fps) {
     gameEnd();
   }
   //tap or spaceキーが押される → ゲームスタート
@@ -347,6 +350,7 @@ function drawBG() {
   let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
   //背景リセット
   background(color(20, 20, 20));
+
   //時間によって背景変更
   if (bgChangeAngle[0] <= angle && angle <= bgChangeAngle[1]) {
     nowMode = 0;
@@ -394,6 +398,25 @@ function drawBG() {
       bgImage = bgBack;
     }
   }
+
+  //睡眠レーンによって背景変更
+  if (sleepLaneNum < arrayLanes[3].length) {
+    if ((frame * 1000) / fps > arrayLanes[3][sleepLaneNum][0]) {
+      console.log(sleepLaneNum);
+      bgChanged = true;
+      bgDisplay[nowBG] = false;
+      sleepLaneNum++;
+      bgImage = bgSuimin;
+      if (isAwake) {
+        isAwake = false;
+        bgImage = bgSuimin;
+      } else {
+        isAwake = true;
+        bgImage = bgKisho;
+      }
+    }
+  }
+
   if (isTapDevice()) {
     //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {
@@ -567,7 +590,8 @@ function drawLane(laneNum) {
       emoji = emojis[laneNum];
     }
 
-    if (arrayLanes[laneNum][i][0] < 20000) {
+    //4日目からスピードアップ
+    if (arrayLanes[laneNum][i][0] < 30000) {
       yVelocity = 10;
     } else {
       yVelocity = 20;
@@ -594,18 +618,6 @@ function drawLane(laneNum) {
       emojiWidth,
       emojiHeight
     );
-
-    /*
-      stroke("blue");
-      strokeWeight(3);
-      line(
-        xLines[laneNum],
-        yBlock + blockTextSize / 2,
-        xLines[laneNum] + laneWidth,
-        yBlock + blockTextSize / 2
-      );
-      */
-    //}
   }
 }
 
