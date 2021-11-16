@@ -75,13 +75,6 @@ body {
   border-color: transparent #ffb681 transparent transparent;
   border-style: solid;
 }
-top: calc(50% - 7px);
-  left: 10px;
-  width: 14px;
-  height: 14px;
-  content: "";
-  border-radius: 50%;
-  background: #ffb681;
 
 /*button*/
 .replay a {
