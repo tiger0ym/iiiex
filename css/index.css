@@ -48,7 +48,7 @@ body {
 }
 
 .intro a::before {
-  content: '生活リズムを"リズムで"体感したことがねこ？';
+  content: '生活リズムを"リズムで"体感したことがありますか？';
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
