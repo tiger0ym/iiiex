@@ -25,6 +25,7 @@ body {
 .sec-title-wrapper {
   width: 100%;
 }
+
 /*.sec-contain-wrapper {
   width: 100%;
 }*/
@@ -74,6 +75,15 @@ body {
   border-style: solid;
 }
 
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: "";
+  border-radius: 50%;
+  background: #ffb681;
+}*/
+
 /*button*/
 .intro {
   height: 100%;
@@ -85,7 +95,7 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 100px auto;
+  margin: 70px auto;
   padding: 1em 2em;
   width: 300px;
   color: #333;
