@@ -34,8 +34,7 @@ for (let i = 0; i < 5; i++) {
           laneNameP.innerHTML = "k：睡眠";
       }
     resultWrapperDiv.appendChild(laneNameP);
-		}
-/*    const greatTimesP = document.createElement("p");
+    const greatTimesP = document.createElement("p");
     greatTimesP.className = "result-content";
     greatTimesP.innerHTML = resultData.great[i - 1];
     resultWrapperDiv.appendChild(greatTimesP);
@@ -44,5 +43,5 @@ for (let i = 0; i < 5; i++) {
     missTimesP.className = "result-content";
     missTimesP.innerHTML = resultData.miss[i - 1];
     resultWrapperDiv.appendChild(missTimesP);
-  }*/
+  }
 }
