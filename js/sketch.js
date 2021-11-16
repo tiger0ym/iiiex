@@ -592,9 +592,25 @@ function drawLane(laneNum) {
 
     //4日目からスピードアップ
     if (arrayLanes[laneNum][i][0] < 30000) {
-      yVelocity = 10;
+      if (isTapDevice()) {
+        if (isEmbedded()) {
+          yVelocity = 4;
+        } else {
+          yVelocity = 10;
+        }
+      } else {
+        yVelocity = 10;
+      }
     } else {
-      yVelocity = 20;
+      if (isTapDevice()) {
+        if (isEmbedded()) {
+          yVelocity = 8;
+        } else {
+          yVelocity = 20;
+        }
+      } else {
+        yVelocity = 20;
+      }
     }
     noStroke();
     yBlock =
