@@ -3,7 +3,7 @@ var secTitleDiv = document.getElementsByClassName("sec-title");
 var secContainWrapperDiv = document.getElementsByClassName(
   "sec-contain-wrapper"
 );
-if (window == window.parent) {
+if (window === window.parent) {
   if (gamestartDiv.length != 0) {
     gamestartDiv[0].className = "btn gamestart not-embedded";
   }

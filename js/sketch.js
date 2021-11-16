@@ -258,23 +258,6 @@ function draw() {
   }
 }
 
-//スマホ判定
-function isSmartPhone() {
-  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-//iPad判定
-function isiPad() {
-  if (/iPad|Macintosh/i.test(navigator.userAgent) && "ontouchend" in document) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 //スマホ,iPad判定
 function isTapDevice() {
   let isSmartPhone = navigator.userAgent.match(/iPhone|Android.+Mobile/);
@@ -286,7 +269,14 @@ function isTapDevice() {
     return false;
   }
 }
-
+//埋め込まれているかの判定
+function isEmbedded() {
+  if (windowResized === window.parent) {
+    return false;
+  } else {
+    return true;
+  }
+}
 //ウインドウサイズが変わった時
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
@@ -296,7 +286,11 @@ function windowResized() {
     laneWidth = windowWidth / 4;
     emojiHeight = windowWidth / 8;
     emojiWidth = windowWidth / 8;
-    keyTextSize = 100;
+    if (isEmbedded()) {
+      keyTextSize = 30;
+    } else {
+      keyTextSize = 100;
+    }
     xLines = [
       0,
       windowWidth / 4,
