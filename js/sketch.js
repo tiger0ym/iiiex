@@ -48,6 +48,19 @@ let onPress = false;
 
 let isStart = false;
 let isYoin = false;
+let isAwake = false;
+let bgChanged = false;
+let bgDisplay = [true, true, true, true, true];
+
+let nowBG = 0;
+/*
+0 go
+1 active1
+2 study2
+3 reading3
+4 back
+*/
+let bgChangeAngle = [];
 
 let bgImage;
 
@@ -68,8 +81,15 @@ function preload() {
   //data
   jsonData = loadJSON("./data/interval300.json");
   //image
-  //bgImage = loadImage("./image/bgImg9_21.png");
-  bgImage = loadImage("./image/kisho_demo.JPG");
+  //bgImage = loadImage("./image/kisho_demo.JPG");
+  bgSuimin = loadImage("./image/suimin.JPG");
+  bgKisho = loadImage("./image/kisho_demo.JPG");
+  bgGo = loadImage("./image/go.JPG");
+  bgActive1 = loadImage("./image/active1.JPG");
+  bgStudy2 = loadImage("./image/study2.JPG");
+  bgReading3 = loadImage("./image/reading3.JPG");
+  bgBack = loadImage("./image/back_b.JPG");
+
   imgBicycle = loadImage("./image/bicycle.png");
   imgCake = loadImage("./image/cake.png");
   imgFish = loadImage("./image/fish.png");
@@ -180,9 +200,11 @@ function setup() {
   colorDay = [0, 200, 255];
   colorEvening = [242, 99, 44];
   colorNight = [0, 0, 10];
+  bgChangeAngle = [1.5 * PI, 2 * PI, 2.5 * PI, 3 * PI, 3.5 * PI];
   frame = -5 * fps;
   endingTime = lastEmojiTime / 1000 + endWait; //second
   frameYoin = 0;
+  bgImage = bgSuimin;
 
   //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
   keySound.playMode("sustain");
@@ -321,8 +343,57 @@ function windowResized() {
 
 //背景描画
 function drawBG() {
+  //frameから時計の角度計算[0,4*PI)
+  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
   //背景リセット
   background(color(20, 20, 20));
+  //時間によって背景変更
+  if (bgChangeAngle[0] <= angle && angle <= bgChangeAngle[1]) {
+    nowMode = 0;
+    if (!bgDisplay[4]) {
+      bgChanged = false;
+      bgDisplay[4] = true;
+    }
+    if (bgDisplay[nowBG]) {
+      bgImage = bgGo;
+    }
+  } else if (bgChangeAngle[1] <= angle && angle <= bgChangeAngle[2]) {
+    nowMode = 1;
+    if (!bgDisplay[0]) {
+      bgChanged = false;
+      bgDisplay[0] = true;
+    }
+    if (bgDisplay[nowBG]) {
+      bgImage = bgActive1;
+    }
+  } else if (bgChangeAngle[2] <= angle && angle <= bgChangeAngle[3]) {
+    nowMode = 2;
+    if (!bgDisplay[1]) {
+      bgChanged = false;
+      bgDisplay[1] = true;
+    }
+    if (bgDisplay[nowBG]) {
+      bgImage = bgStudy2;
+    }
+  } else if (bgChangeAngle[3] <= angle && angle <= bgChangeAngle[4]) {
+    nowMode = 3;
+    if (!bgDisplay[2]) {
+      bgChanged = false;
+      bgDisplay[2] = true;
+    }
+    if (bgDisplay[nowBG]) {
+      bgImage = bgReading3;
+    }
+  } else {
+    nowMode = 4;
+    if (!bgDisplay[3]) {
+      bgChanged = false;
+      bgDisplay[3] = true;
+    }
+    if (bgDisplay[nowBG]) {
+      bgImage = bgBack;
+    }
+  }
   if (isTapDevice()) {
     //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {
@@ -358,7 +429,6 @@ function drawBG() {
   }
 
   //時計描画
-  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
   stroke(0, 0, 0, 100);
   push();
   translate(windowWidth / 2, windowHeight / 2);
@@ -556,7 +626,7 @@ function keyPressed() {
   if (keyCode === 32) {
     if (!isStart) {
       isStart = true;
-      BGM.loop();
+      //BGM.loop();
     }
     return false;
   }
@@ -578,7 +648,7 @@ function mousePressed() {
   } else {
     if (!isStart) {
       isStart = true;
-      BGM.loop();
+      //BGM.loop();
     } else {
       let isSafari;
       if (
