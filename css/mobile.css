@@ -62,7 +62,7 @@ body {
   left: -5px;
   width: calc(100% - 44px);
   height: calc(100% - 24px);
-  border: 2px solid #e46a14;
+  border: 2px solid #26dd26;
   border-radius: 50vh;
   transition: 0.2s;
 }
