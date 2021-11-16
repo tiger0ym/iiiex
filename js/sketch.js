@@ -21,6 +21,7 @@ let arrayLanes = [[], [], [], []];
 
 let frame;
 let frameYoin;
+let angle = 0;
 
 let emojis = [, [], , []];
 
@@ -220,6 +221,7 @@ function setup() {
 }
 
 function draw() {
+  console.log((frame * 1000) / fps + " " + angle);
   //背景描画
   drawBG();
 
@@ -347,7 +349,8 @@ function windowResized() {
 //背景描画
 function drawBG() {
   //frameから時計の角度計算[0,4*PI)
-  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
+  angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
+
   //背景リセット
   background(color(20, 20, 20));
 
