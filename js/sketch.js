@@ -100,7 +100,11 @@ function setup() {
     laneWidth = windowWidth / 4;
     emojiHeight = windowWidth / 8;
     emojiWidth = windowWidth / 8;
-    keyTextSize = 100;
+    if (isEmbedded()) {
+      keyTextSize = 30;
+    } else {
+      keyTextSize = 100;
+    }
     xLines = [
       0,
       windowWidth / 4,
@@ -191,7 +195,6 @@ function setup() {
 }
 
 function draw() {
-  console.log(keyTextSize);
   //背景描画
   drawBG();
 
