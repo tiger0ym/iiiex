@@ -19,7 +19,7 @@ body {
 .sec-title-wrapper {
   width: 100%;
 }
-.sec-contain-wrapper {
+/*.sec-contain-wrapper {
   width: 100%;
 }
 @media only screen and (max-width: 800px) {
@@ -32,7 +32,7 @@ body {
   .sec-contain-wrapper {
     width: 90%;
   }
-}
+}/*
 .result-wrapper {
   display: flex;
 }
@@ -54,7 +54,7 @@ body {
   color: #FFF;/*文字色*/
   box-sizing: border-box;
 }
-.sec-title:before, .sec-title :after {
+.sec-title :before, .sec-title :after {
   position: absolute;
   content: '';
   width: 0px;
@@ -75,7 +75,7 @@ body {
   border-color: transparent #ffb681 transparent transparent;
   border-style: solid;
 }
-  top: calc(50% - 7px);
+top: calc(50% - 7px);
   left: 10px;
   width: 14px;
   height: 14px;
