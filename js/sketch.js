@@ -417,14 +417,14 @@ function drawBG() {
   }
   //枠線
   strokeWeight(5);
-  stroke("black");
+  stroke(70, 70, 70);
   for (let i = 0; i < 5; i++) {
     line(xLines[i], 0, xLines[i], windowHeight);
   }
 
   //判定線
   strokeWeight(10);
-  stroke("black");
+  stroke(70, 70, 70);
   line(xLines[0], yJudgeLine, xLines[4], yJudgeLine);
 
   //文字
