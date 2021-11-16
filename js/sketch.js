@@ -272,7 +272,7 @@ function isTapDevice() {
 }
 //埋め込まれているかの判定
 function isEmbedded() {
-  if (windowResized === window.parent) {
+  if (window === window.parent) {
     return false;
   } else {
     return true;
