@@ -5,6 +5,8 @@ body {
   -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化 */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .result-wrapper {
@@ -13,4 +15,23 @@ body {
 
 .result-content {
   width: 100px;
+}
+.loading-class {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.loading-content {
+  transform: translate(-50%, -50%);
+  width: 200px;
+}
+.loading-img {
+  margin: 0 36px;
+}
+.loading-text {
+  width: 200px;
+  color: #ffb681;
+  text-align: center;
+  font-size: 50px;
+  margin-top: 30px;
 }

@@ -73,8 +73,8 @@ function preload() {
   imgBicycle = loadImage("./image/bicycle.png");
   imgCake = loadImage("./image/cake.png");
   imgFish = loadImage("./image/fish.png");
-  imgHotdog = loadImage("./image/curry.png");
-  imgCurry = loadImage("./image/hotdog.png");
+  imgHotdog = loadImage("./image/hotdog.png");
+  imgCurry = loadImage("./image/curry.png");
   imgKey = loadImage("./image/key.png");
   imgRiceball = loadImage("./image/riceball.png");
   imgSun = loadImage("./image/sun.png");
