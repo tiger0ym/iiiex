@@ -115,6 +115,7 @@ function preload() {
 }
 
 function setup() {
+  fps = 30;
   frameRate(fps);
   createCanvas(windowWidth, windowHeight);
   userAgent = window.navigator.userAgent.toLowerCase();
@@ -193,7 +194,6 @@ function setup() {
   }
 
   //定数,変数の初期値設定
-  fps = 30;
   endWait = 1;
   timeNightEnd = (23 * PI) / 24;
   timeDayStart = (27 * PI) / 24;
@@ -221,7 +221,6 @@ function setup() {
 }
 
 function draw() {
-  console.log(fps);
   //背景描画
   drawBG();
 
