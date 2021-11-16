@@ -191,6 +191,7 @@ function setup() {
 }
 
 function draw() {
+  console.log(keyTextSize);
   //背景描画
   drawBG();
 
