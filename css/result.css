@@ -54,30 +54,34 @@ body {
   color: #FFF;/*文字色*/
   box-sizing: border-box;
 }
-
-.sec-title :before, .sec-title :after {
+.sec-title:before, .sec-title :after {
   position: absolute;
   content: '';
   width: 0px;
   height: 0px;
   z-index: 1;
 }
-
-.sec-title :before {
+.sec-title:before {
   top: 0;
   left: 0;
   border-width: 25px 0px 25px 15px;
   border-color: transparent transparent transparent #ffb681;
   border-style: solid;
 }
-
-.sec-title :after {
+.sec-title:after {
   top: 0;
   right: 0;
   border-width: 25px 15px 25px 0px;
   border-color: transparent #ffb681 transparent transparent;
   border-style: solid;
 }
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: "";
+  border-radius: 50%;
+  background: #ffb681;
 
 /*button*/
 .replay a {
@@ -97,7 +101,7 @@ body {
   text-decoration: none;
 }
 .replay a::before {
-  content: "もう1回プレイ";
+  content: "もう1度プレイ";
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
