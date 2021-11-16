@@ -68,8 +68,15 @@ function preload() {
   //data
   jsonData = loadJSON("./data/interval300.json");
   //image
-  //bgImage = loadImage("./image/bgImg9_21.png");
-  bgImage = loadImage("./image/kisho_demo.JPG");
+  //bgImage = loadImage("./image/kisho_demo.JPG");
+  bgSuimin = loadImage("./image/suimin.JPG");
+  bgKisho = loadImage("./image/kisho_demo.JPG");
+  bgGo = loadImage("./image/go.JPG");
+  bgActive1 = loadImage("./image/active1.JPG");
+  bgStudy2 = loadImage("./image/study2.JPG");
+  bgReading3 = loadImage("./image/reading3.JPG");
+  bgBack = loadImage("./image/back_b.JPG");
+
   imgBicycle = loadImage("./image/bicycle.png");
   imgCake = loadImage("./image/cake.png");
   imgFish = loadImage("./image/fish.png");
@@ -183,6 +190,7 @@ function setup() {
   frame = -5 * fps;
   endingTime = lastEmojiTime / 1000 + endWait; //second
   frameYoin = 0;
+  bgImage = bgSuimin;
 
   //音の設定(Aを再生中にBが再生されてもAを一時停止しない)
   keySound.playMode("sustain");
@@ -321,8 +329,13 @@ function windowResized() {
 
 //背景描画
 function drawBG() {
+  //frameから時計の角度計算[0,4*PI)
+  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
   //背景リセット
   background(color(20, 20, 20));
+  //時間によって背景変更
+  if (angle > 0) {
+  }
   if (isTapDevice()) {
     //スマホ背景
     if (windowWidth >= (9 / 16) * windowHeight) {
@@ -358,7 +371,6 @@ function drawBG() {
   }
 
   //時計描画
-  let angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
   stroke(0, 0, 0, 100);
   push();
   translate(windowWidth / 2, windowHeight / 2);
