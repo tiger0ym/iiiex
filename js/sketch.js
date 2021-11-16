@@ -595,7 +595,7 @@ function drawLane(laneNum) {
     if (arrayLanes[laneNum][i][0] < 30000) {
       if (isTapDevice()) {
         if (isEmbedded()) {
-          yVelocity = 4;
+          yVelocity = 10;
         } else {
           yVelocity = 10;
         }
@@ -605,7 +605,7 @@ function drawLane(laneNum) {
     } else {
       if (isTapDevice()) {
         if (isEmbedded()) {
-          yVelocity = 8;
+          yVelocity = 20;
         } else {
           yVelocity = 20;
         }
