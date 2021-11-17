@@ -82,7 +82,7 @@ let userAgent;
 
 function preload() {
   //data
-  jsonData = loadJSON("./data/interval300.json");
+  jsonData = loadJSON("./data/7days_interval300.json");
   //image
   //bgImage = loadImage("./image/kisho_demo.JPG");
   bgSuimin = loadImage("./image/suimin.JPG");
