@@ -233,7 +233,7 @@ function draw() {
       }
       fill(0, 0, 0);
       strokeWeight(10);
-      stroke(#26dd26);
+      stroke(38, 221, 38);
       textAlign(CENTER);
       text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
