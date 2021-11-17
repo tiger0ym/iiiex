@@ -61,27 +61,3 @@ $("#btn-k").on("click", function () {
   document.getElementById("btn-j").style.backgroundColor = "gray";
   document.getElementById("btn-k").style.backgroundColor = "orange";
 });
-
-/*
-if (showing === 0) {
-  document.getElementById("btn-d").style.backgroundColor = "orange";
-  document.getElementById("btn-f").style.backgroundColor = "gray";
-  document.getElementById("btn-j").style.backgroundColor = "gray";
-  document.getElementById("btn-k").style.backgroundColor = "gray";
-} else if (showing === 1) {
-  document.getElementById("btn-d").style.backgroundColor = "gray";
-  document.getElementById("btn-f").style.backgroundColor = "orange";
-  document.getElementById("btn-j").style.backgroundColor = "gray";
-  document.getElementById("btn-k").style.backgroundColor = "gray";
-} else if (showing === 2) {
-  document.getElementById("btn-d").style.backgroundColor = "gray";
-  document.getElementById("btn-f").style.backgroundColor = "gray";
-  document.getElementById("btn-j").style.backgroundColor = "orange";
-  document.getElementById("btn-k").style.backgroundColor = "gray";
-} else if (showing === 3) {
-  document.getElementById("btn-d").style.backgroundColor = "gray";
-  document.getElementById("btn-f").style.backgroundColor = "gray";
-  document.getElementById("btn-j").style.backgroundColor = "gray";
-  document.getElementById("btn-k").style.backgroundColor = "orange";
-}
-*/
