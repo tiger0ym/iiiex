@@ -122,7 +122,7 @@ body {
   text-decoration: none;
 }
 .replay a::before {
-  content: "もう1回プレイ";
+  content: "もう1度プレイ";
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
