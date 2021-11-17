@@ -155,24 +155,28 @@ body {
 }
 #btn-d {
   background-color: orange;
+  font-color: black;
   width: 60px;
   height: 60px;
   font-size: 40px;
 }
 #btn-f {
   background-color: gray;
+  font-color: black;
   width: 60px;
   height: 60px;
   font-size: 40px;
 }
 #btn-j {
   background-color: gray;
+  font-color: black;
   width: 60px;
   height: 60px;
   font-size: 40px;
 }
 #btn-k {
   background-color: gray;
+  font-color: black;
   width: 60px;
   height: 60px;
   font-size: 40px;
