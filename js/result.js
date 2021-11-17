@@ -23,16 +23,16 @@ for (let i = 0; i < 5; i++) {
   } else {
     const laneNameP = document.createElement("p");
     laneNameP.className = "result-content";
-		//laneNameP.innerHTML = i - 1;
-		if (i===1){
-          laneNameP.innerHTML = "d：外出";;
-      }else if (i===2){
-          laneNameP.innerHTML = "f：食事";
-      }else if (i===3){
-          laneNameP.innerHTML = "j：活動";
-      }else if (i===4){
-          laneNameP.innerHTML = "k：睡眠";
-      }
+    //laneNameP.innerHTML = i - 1;
+    if (i === 1) {
+      laneNameP.innerHTML = "d：外出";
+    } else if (i === 2) {
+      laneNameP.innerHTML = "f：食事";
+    } else if (i === 3) {
+      laneNameP.innerHTML = "j：活動";
+    } else if (i === 4) {
+      laneNameP.innerHTML = "k：睡眠";
+    }
     resultWrapperDiv.appendChild(laneNameP);
     const greatTimesP = document.createElement("p");
     greatTimesP.className = "result-content";
@@ -45,3 +45,21 @@ for (let i = 0; i < 5; i++) {
     resultWrapperDiv.appendChild(missTimesP);
   }
 }
+
+//button-tap
+$("#btn-d").on("click", function () {
+  console.log("d");
+});
+$("#btn-f").on("click", function () {
+  console.log("f");
+});
+$("#btn-j").on("click", function () {
+  console.log("j");
+});
+$("#btn-k").on("click", function () {
+  console.log("k");
+});
+
+$("button").on("click", function () {
+  console.log("button");
+});
