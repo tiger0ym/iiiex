@@ -153,3 +153,31 @@ body {
   text-decoration: none;
   background-color: #e4823d;
 }
+
+#img-d {
+  display: block;
+}
+#img-f {
+  display: none;
+}
+#img-j {
+  display: none;
+}
+#img-k {
+  display: none;
+}
+#caption-d {
+  display: block;
+}
+#caption-f {
+  display: none;
+}
+#caption-j {
+  display: none;
+}
+#caption-k {
+  display: none;
+}
+.img-frame {
+  min-height: 360px;
+}

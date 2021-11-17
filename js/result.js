@@ -45,21 +45,3 @@ for (let i = 0; i < 5; i++) {
     resultWrapperDiv.appendChild(missTimesP);
   }
 }
-
-//button-tap
-$("#btn-d").on("click", function () {
-  console.log("d");
-});
-$("#btn-f").on("click", function () {
-  console.log("f");
-});
-$("#btn-j").on("click", function () {
-  console.log("j");
-});
-$("#btn-k").on("click", function () {
-  console.log("k");
-});
-
-$("button").on("click", function () {
-  console.log("button");
-});
