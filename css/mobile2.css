@@ -36,6 +36,7 @@ body {
 }
 
 /*title*/
+/*
 .sec-title.embedded {
   position: relative;
   display: inline-block;
@@ -44,7 +45,6 @@ body {
   border-radius: 100vh 0 0 100vh;
   background: #fa4141;
   font-size: 20px;
-  /*margin-top: 50px;*/
 }
 .sec-title.embedded:before {
   position: absolute;
@@ -65,7 +65,6 @@ body {
   border-radius: 100vh 0 0 100vh;
   background: #fa4141;
   font-size: 40px;
-  margin-top: 50px;
 }
 .sec-title.not-embedded:before {
   position: absolute;
@@ -76,6 +75,76 @@ body {
   content: "";
   border-radius: 50%;
   background: #ffb681;
+}
+*/
+.sec-title.embedded {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  padding: 0 30px;
+  font-size: 18px;
+  background: #6ce46c;
+  color: #fff;
+  box-sizing: border-box;
+}
+.sec-title.embedded:before,
+.sec-title.embedded:after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+.sec-title.embedded:before {
+  top: 0;
+  left: 0;
+  border-width: 25px 0px 25px 15px;
+  border-color: transparent transparent transparent #ffb681;
+  border-style: solid;
+}
+.sec-title.embedded:after {
+  top: 0;
+  right: 0;
+  border-width: 25px 15px 25px 0px;
+  border-color: transparent #ffb681 transparent transparent;
+  border-style: solid;
+}
+
+.sec-title.not-embedded {
+  display: inline-block;
+  position: relative;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  padding: 0 60px;
+  font-size: 40px;
+  background: #6ce46c;
+  color: #fff;
+  box-sizing: border-box;
+}
+.sec-title.not-embedded:before,
+.sec-title.not-embedded:after {
+  position: absolute;
+  content: "";
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+.sec-title.not-embedded:before {
+  top: 0;
+  left: 0;
+  border-width: 50px 0px 50px 30px;
+  border-color: transparent transparent transparent #ffb681;
+  border-style: solid;
+}
+.sec-title.not-embedded:after {
+  top: 0;
+  right: 0;
+  border-width: 50px 30px 50px 0px;
+  border-color: transparent #ffb681 transparent transparent;
+  border-style: solid;
 }
 /*button*/
 .gamestart.not-embedded a {

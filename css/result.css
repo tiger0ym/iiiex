@@ -42,25 +42,52 @@ body {
 }
 
 /*title*/
+/*
+.sec-title {
+  position: relative;
+  display: inline-block;
+  padding: 0.8rem 2rem 0.8rem 3rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #fa4141;
+  font-size: 20px;
+  margin-top: 50px;
+}
+
+.sec-title:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: "";
+  border-radius: 50%;
+  background: #ffb681;
+}
+*/
+
 .sec-title {
   display: inline-block;
   position: relative;
-  height: 50px;/*リボンの高さ*/
-  line-height: 50px;/*リボンの高さ*/
+  height: 50px; /*リボンの高さ*/
+  line-height: 50px; /*リボンの高さ*/
   text-align: center;
-  padding: 0 30px;/*横の大きさ*/
-  font-size: 18px;/*文字の大きさ*/
-  background: #6ce46c;/*塗りつぶし色*/
-  color: #FFF;/*文字色*/
+  padding: 0 30px; /*横の大きさ*/
+  font-size: 18px; /*文字の大きさ*/
+  background: #6ce46c; /*塗りつぶし色*/
+  color: #fff; /*文字色*/
   box-sizing: border-box;
 }
-.sec-title :before, .sec-title :after {
+
+.sec-title:before,
+.sec-title:after {
   position: absolute;
-  content: '';
+  content: "";
   width: 0px;
   height: 0px;
   z-index: 1;
 }
+
 .sec-title:before {
   top: 0;
   left: 0;
@@ -68,6 +95,7 @@ body {
   border-color: transparent transparent transparent #ffb681;
   border-style: solid;
 }
+
 .sec-title:after {
   top: 0;
   right: 0;
