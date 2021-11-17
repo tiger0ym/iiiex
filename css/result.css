@@ -153,3 +153,61 @@ body {
   text-decoration: none;
   background-color: #e4823d;
 }
+#btn-d {
+  background-color: orange;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+}
+#btn-f {
+  background-color: gray;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+}
+#btn-j {
+  background-color: gray;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+}
+#btn-k {
+  background-color: gray;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+}
+#img-d {
+  display: block;
+}
+#img-f {
+  display: none;
+}
+#img-j {
+  display: none;
+}
+#img-k {
+  display: none;
+}
+#caption-d {
+  display: block;
+}
+#caption-f {
+  display: none;
+}
+#caption-j {
+  display: none;
+}
+#caption-k {
+  display: none;
+}
+.img-frame {
+  min-height: 510px;
+}
+.caption-frame {
+  min-height: 110px;
+}
+.btn-frame {
+  align-items: center;
+  display: flex;
+}
