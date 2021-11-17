@@ -82,7 +82,7 @@ let userAgent;
 
 function preload() {
   //data
-  jsonData = loadJSON("./data/7days_interval300.json");
+  jsonData = loadJSON("./data/7days_interval300_3.json");
   //image
   //bgImage = loadImage("./image/kisho_demo.JPG");
   bgSuimin = loadImage("./image/suimin.JPG");
@@ -592,6 +592,8 @@ function drawLane(laneNum) {
     }
 
     //4日目からスピードアップ
+    yVelocity = 10;
+    /*
     if (arrayLanes[laneNum][i][0] < 30000) {
       if (isTapDevice()) {
         if (isEmbedded()) {
@@ -613,6 +615,7 @@ function drawLane(laneNum) {
         yVelocity = 20;
       }
     }
+    */
     noStroke();
     yBlock =
       yVelocity * (frame - fps * (arrayLanes[laneNum][i][0] / 1000)) +
