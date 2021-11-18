@@ -24,10 +24,12 @@ body {
   flex-direction: column;
   align-items: center;
   width: 90%;
+  /*
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
   animation-delay: 1s;
+  */
 }
 .sec-contain-wrapper.not-embedded {
   width: 90%;
@@ -37,23 +39,26 @@ body {
   width: 90%;
   /*font-size: 40px;*/
 }
+/*
 .fade1 {
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
   animation-delay: 2.2s;
 }
+*/
 .img-explanation {
-  max-width: 90%;
-  max-width: 100%;
+  /*max-width: 90%;*/
+  max-width: 50%; /*変えるかも*/
   /* width: 420px;  */
-  height: 520px;
+  /*height: 520px;*/
+  /*
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
-  animation-delay: 3.4s;
+  animation-delay: 3.4s;*/
 }
-
+/*
 @keyframes fade {
   0% {
     opacity: 0;
@@ -61,7 +66,7 @@ body {
   100% {
     opacity: 1;
   }
-}
+}*/
 .sec-title {
   /* position:relative; */
   /* align-items:center; */
