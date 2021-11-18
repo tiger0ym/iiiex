@@ -20,7 +20,7 @@ body {
 
 .sec-contain-wrapper {
   position: absolute;
-  top: 65%;
+  /* top: 68%; */
   display: inline-block;
   height: 80px; /*リボンの高さ*/
   line-height: 50px; /*リボンの高さ*/
