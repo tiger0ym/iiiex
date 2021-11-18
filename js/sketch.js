@@ -51,6 +51,7 @@ let isStart = false;
 let isYoin = false;
 let yoinTime;
 let isAwake = false;
+let isInHome = true;
 let bgChanged = false;
 let bgDisplay = [true, true, true, true, true];
 
@@ -64,6 +65,7 @@ let nowBG = 0;
 */
 let bgChangeAngle = [];
 let sleepLaneNum = 0;
+let keyLaneNum = 0;
 
 let bgImage;
 
@@ -82,9 +84,11 @@ let userAgent;
 
 let secondPerDay = 6;
 
+let greatArray = [[], [], [], []];
+
 function preload() {
   //data
-  jsonData = loadJSON("./data/7days_interval300.json");
+  jsonData = loadJSON("./data/10days_interval300.json");
   //image
   //bgImage = loadImage("./image/kisho_demo.JPG");
   bgSuimin = loadImage("./image/suimin.JPG");
@@ -115,7 +119,7 @@ function preload() {
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
   bedSound = loadSound("./sound/bed.mp3");
-  BGM = loadSound("./sound/test_sound.wav");
+  BGM = loadSound("./sound/sound_1119.wav");
 }
 
 function setup() {
@@ -171,6 +175,13 @@ function setup() {
     ]);
   }
 
+  //greatArray
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < arrayLanes[i].length; j++) {
+      greatArray[i].push(false);
+    }
+  }
+
   //emojis配列に絵文字を入れる
   emojis[0] = imgKey;
   for (let i = 0; i < arrayLanes[1].length; i++) {
@@ -182,14 +193,14 @@ function setup() {
     emojis[2].push(random([imgBicycle, imgHeart, imgWalk]));
   }
   //emojis[2] = imgBicycle;
-  let isAwake = true;
+  let isAwake2 = true;
   for (let i = 0; i < arrayLanes[3].length; i++) {
-    if (isAwake) {
+    if (isAwake2) {
       emojis[3].push(imgSun);
-      isAwake = false;
+      isAwake2 = false;
     } else {
       emojis[3].push(imgZzz);
-      isAwake = true;
+      isAwake2 = true;
     }
   }
   let lastEmojiTime = 0;
@@ -210,7 +221,8 @@ function setup() {
   colorDay = [0, 200, 255];
   colorEvening = [242, 99, 44];
   colorNight = [0, 0, 10];
-  bgChangeAngle = [1.5 * PI, 2 * PI, 2.5 * PI, 3 * PI, 3.5 * PI];
+  //bgChangeAngle = [1.5 * PI, 2 * PI, 2.5 * PI, 3 * PI, 3.5 * PI];
+  bgChangeAngle = [1 * PI, 2 * PI, 3 * PI]; //, 3 * PI, 3.5 * PI];
   frame = -(secondPerDay / 2) * fps;
   endingTime = lastEmojiTime / 1000 + endWait; //second
   frameYoin = 0;
@@ -273,7 +285,7 @@ function draw() {
     drawLane(i);
   }
   //ゲーム終了&時計が12時 → 余韻タイムスタート
-  if (frame > endingTime * fps && frame % (fps * 5) === 0) {
+  if (frame > endingTime * fps && frame % (fps * (secondPerDay / 2)) === 0) {
     isStart = false;
     isYoin = true;
   }
@@ -363,12 +375,12 @@ function drawBG() {
   //時間によって背景変更
   if (bgChangeAngle[0] <= angle && angle <= bgChangeAngle[1]) {
     nowMode = 0;
-    if (!bgDisplay[4]) {
+    if (!bgDisplay[2]) {
       bgChanged = false;
       bgDisplay[4] = true;
     }
     if (bgDisplay[nowBG]) {
-      bgImage = bgGo;
+      bgImage = bgActive1;
     }
   } else if (bgChangeAngle[1] <= angle && angle <= bgChangeAngle[2]) {
     nowMode = 1;
@@ -377,34 +389,16 @@ function drawBG() {
       bgDisplay[0] = true;
     }
     if (bgDisplay[nowBG]) {
-      bgImage = bgActive1;
+      bgImage = bgStudy2;
     }
-  } else if (bgChangeAngle[2] <= angle && angle <= bgChangeAngle[3]) {
+  } else {
     nowMode = 2;
     if (!bgDisplay[1]) {
       bgChanged = false;
       bgDisplay[1] = true;
     }
     if (bgDisplay[nowBG]) {
-      bgImage = bgStudy2;
-    }
-  } else if (bgChangeAngle[3] <= angle && angle <= bgChangeAngle[4]) {
-    nowMode = 3;
-    if (!bgDisplay[2]) {
-      bgChanged = false;
-      bgDisplay[2] = true;
-    }
-    if (bgDisplay[nowBG]) {
       bgImage = bgReading3;
-    }
-  } else {
-    nowMode = 4;
-    if (!bgDisplay[3]) {
-      bgChanged = false;
-      bgDisplay[3] = true;
-    }
-    if (bgDisplay[nowBG]) {
-      bgImage = bgBack;
     }
   }
 
@@ -421,6 +415,21 @@ function drawBG() {
       } else {
         isAwake = true;
         bgImage = bgKisho;
+      }
+    }
+  }
+  if (keyLaneNum < arrayLanes[0].length) {
+    if ((frame * 1000) / fps > arrayLanes[0][keyLaneNum][0]) {
+      bgChanged = true;
+      bgDisplay[nowBG] = false;
+      keyLaneNum++;
+      bgImage = bgGo;
+      if (isInHome) {
+        isInHome = false;
+        bgImage = bgGo;
+      } else {
+        isInHome = true;
+        bgImage = bgBack;
       }
     }
   }
@@ -474,6 +483,7 @@ function drawBG() {
   pop();
 
   //背景に色つける
+  /*
   if (frame > 0) {
     noStroke();
     let colorBG;
@@ -514,6 +524,7 @@ function drawBG() {
       rect(xLines[0], 0, laneWidth * 4, windowHeight);
     }
   }
+  */
   //枠線
   strokeWeight(5);
   stroke(70, 70, 70);
@@ -686,79 +697,11 @@ function touchStarted() {
     }
   }
 }
-/*
-//クリックを離したとき，指を離したときに実行される
-function mouseClicked() {
-  onPress = false;
-}
 
-//PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
-function mousePressed() {
-  if (!isTapDevice()) {
-    for (let i = 0; i < 4; i++) {
-      if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-        lanePressed(i);
-      }
-    }
-  } else {
-    if (!isStart) {
-      isStart = true;
-      //BGM.loop();
-    } else {
-      let isSafari;
-      if (
-        userAgent.indexOf("msie") != -1 ||
-        userAgent.indexOf("trident") != -1
-      ) {
-        //IE向けの記述
-        isSafari = false;
-      } else if (userAgent.indexOf("edge") != -1) {
-        //旧Edge向けの記述
-        isSafari = false;
-      } else if (
-        userAgent.indexOf("chrome") != -1 ||
-        userAgent.indexOf("crios") != -1
-      ) {
-        //Google Chrome向けの記述
-        if (window === window.parent) {
-          isSafari = false;
-        } else {
-          isSafari = true;
-        }
-      } else if (userAgent.indexOf("safari") != -1) {
-        //Safari向けの記述
-        isSafari = true;
-      } else if (userAgent.indexOf("firefox") != -1) {
-        //FireFox向けの記述
-        isSafari = false;
-      } else {
-        //その他のブラウザ向けの記述
-        isSafari = false;
-      }
-
-      if (isSafari) {
-        for (let i = 0; i < 4; i++) {
-          if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-            lanePressed(i);
-          }
-        }
-      } else {
-        if (!onPress) {
-          for (let i = 0; i < 4; i++) {
-            if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-              lanePressed(i);
-            }
-          }
-          onPress = true;
-        }
-      }
-    }
-  }
-}
-*/
 function lanePressed(laneNum) {
   framesPressed[laneNum] = 6;
   let great = false;
+  let hitIndex;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
       isTapDevice() &&
@@ -766,16 +709,19 @@ function lanePressed(laneNum) {
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
+      hitIndex = i;
     } else if (
       !isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
+      hitIndex = i;
     }
   }
   if (great) {
     isGreat[laneNum] = true;
+    greatArray[laneNum][hitIndex] = true;
     resultArray[laneNum][0] += 1;
     if (laneNum === 0) {
       keySound.play();
@@ -810,18 +756,22 @@ function gameEnd() {
   for (let i = 0; i < 4; i++) {
     resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
   }
+  let greatTimes = [0, 0, 0, 0];
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < arrayLanes[i].length; j++) {
+      if (greatArray[i][j]) {
+        greatTimes[i]++;
+      }
+    }
+  }
+
   var resultJSON = {
-    great: [
-      resultArray[0][0],
-      resultArray[1][0],
-      resultArray[2][0],
-      resultArray[3][0],
-    ],
+    great: [greatTimes[0], greatTimes[1], greatTimes[2], greatTimes[3]],
     miss: [
-      resultArray[0][1],
-      resultArray[1][1],
-      resultArray[2][1],
-      resultArray[3][1],
+      arrayLanes[0].length - greatTimes[0],
+      arrayLanes[1].length - greatTimes[1],
+      arrayLanes[2].length - greatTimes[2],
+      arrayLanes[3].length - greatTimes[3],
     ],
   };
   BGM.pause();
