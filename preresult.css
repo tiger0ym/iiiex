@@ -1,0 +1,84 @@
+html,
+body {
+  font-family: "Rounded Mplus 1c";
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /*スクロール禁止*/
+  overscroll-behavior: none; /*　オーバースクロール禁止 */
+  -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化(Only Safari on iOS?←そんなこともなさそう) */
+  -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
+}
+
+body {
+  background: #ffb681;
+}
+
+#wrapper {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100vh;
+  width: 60%;
+  margin: 0 auto;
+}
+
+/*button*/
+.intro {
+  height: 100%;
+  margin: 50% auto;
+}
+
+.intro a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin: auto auto;
+  padding: 1em 2em 1em 6em;
+  width: 430px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #ffe1cb;
+  border-radius: 50vh;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.intro a::before {
+  content: 'ねこですけど？';
+  padding: 20px 0 0 40px;
+  color: black;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% - 44px);
+  height: calc(100% - 24px);
+  border: 2px solid #26dd26;
+  border-radius: 50vh;
+  transition: 0.2s;
+}
+
+.btn a::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+  transform: rotate(45deg);
+}
+
+.btn a:hover::before {
+  top: 0;
+  left: 0;
+}
+
+.btn a:hover {
+  text-decoration: none;
+  background-color: #e4823d;
+}
+.intro_mobile {
+  display: none;
+}
