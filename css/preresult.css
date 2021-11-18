@@ -145,7 +145,7 @@ body {
 }
 
 .result a::before {
-  content: "ピロートークへ";
+  content: "次へ";
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
