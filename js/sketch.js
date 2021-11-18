@@ -51,7 +51,6 @@ let isStart = false;
 let isYoin = false;
 let yoinTime;
 let isAwake = false;
-let isInHome = true;
 let bgChanged = false;
 let bgDisplay = [true, true, true, true, true];
 
@@ -65,7 +64,6 @@ let nowBG = 0;
 */
 let bgChangeAngle = [];
 let sleepLaneNum = 0;
-let keyLaneNum = 0;
 
 let bgImage;
 
@@ -86,7 +84,7 @@ let secondPerDay = 6;
 
 function preload() {
   //data
-  jsonData = loadJSON("./data/10days_interval300.json");
+  jsonData = loadJSON("./data/7days_interval300.json");
   //image
   //bgImage = loadImage("./image/kisho_demo.JPG");
   bgSuimin = loadImage("./image/suimin.JPG");
@@ -184,14 +182,14 @@ function setup() {
     emojis[2].push(random([imgBicycle, imgHeart, imgWalk]));
   }
   //emojis[2] = imgBicycle;
-  let isAwake2 = true;
+  let isAwake = true;
   for (let i = 0; i < arrayLanes[3].length; i++) {
-    if (isAwake2) {
+    if (isAwake) {
       emojis[3].push(imgSun);
-      isAwake2 = false;
+      isAwake = false;
     } else {
       emojis[3].push(imgZzz);
-      isAwake2 = true;
+      isAwake = true;
     }
   }
   let lastEmojiTime = 0;
@@ -212,8 +210,7 @@ function setup() {
   colorDay = [0, 200, 255];
   colorEvening = [242, 99, 44];
   colorNight = [0, 0, 10];
-  //bgChangeAngle = [1.5 * PI, 2 * PI, 2.5 * PI, 3 * PI, 3.5 * PI];
-  bgChangeAngle = [1 * PI, 2 * PI, 3 * PI]; //, 3 * PI, 3.5 * PI];
+  bgChangeAngle = [1.5 * PI, 2 * PI, 2.5 * PI, 3 * PI, 3.5 * PI];
   frame = -(secondPerDay / 2) * fps;
   endingTime = lastEmojiTime / 1000 + endWait; //second
   frameYoin = 0;
@@ -366,12 +363,12 @@ function drawBG() {
   //時間によって背景変更
   if (bgChangeAngle[0] <= angle && angle <= bgChangeAngle[1]) {
     nowMode = 0;
-    if (!bgDisplay[2]) {
+    if (!bgDisplay[4]) {
       bgChanged = false;
       bgDisplay[4] = true;
     }
     if (bgDisplay[nowBG]) {
-      bgImage = bgActive1;
+      bgImage = bgGo;
     }
   } else if (bgChangeAngle[1] <= angle && angle <= bgChangeAngle[2]) {
     nowMode = 1;
@@ -380,16 +377,34 @@ function drawBG() {
       bgDisplay[0] = true;
     }
     if (bgDisplay[nowBG]) {
-      bgImage = bgStudy2;
+      bgImage = bgActive1;
     }
-  } else {
+  } else if (bgChangeAngle[2] <= angle && angle <= bgChangeAngle[3]) {
     nowMode = 2;
     if (!bgDisplay[1]) {
       bgChanged = false;
       bgDisplay[1] = true;
     }
     if (bgDisplay[nowBG]) {
+      bgImage = bgStudy2;
+    }
+  } else if (bgChangeAngle[3] <= angle && angle <= bgChangeAngle[4]) {
+    nowMode = 3;
+    if (!bgDisplay[2]) {
+      bgChanged = false;
+      bgDisplay[2] = true;
+    }
+    if (bgDisplay[nowBG]) {
       bgImage = bgReading3;
+    }
+  } else {
+    nowMode = 4;
+    if (!bgDisplay[3]) {
+      bgChanged = false;
+      bgDisplay[3] = true;
+    }
+    if (bgDisplay[nowBG]) {
+      bgImage = bgBack;
     }
   }
 
@@ -406,21 +421,6 @@ function drawBG() {
       } else {
         isAwake = true;
         bgImage = bgKisho;
-      }
-    }
-  }
-  if (keyLaneNum < arrayLanes[0].length) {
-    if ((frame * 1000) / fps > arrayLanes[0][keyLaneNum][0]) {
-      bgChanged = true;
-      bgDisplay[nowBG] = false;
-      keyLaneNum++;
-      bgImage = bgGo;
-      if (isInHome) {
-        isInHome = false;
-        bgImage = bgGo;
-      } else {
-        isInHome = true;
-        bgImage = bgBack;
       }
     }
   }

@@ -26,11 +26,6 @@ $("#btn-d").on("click", function () {
     document.getElementById("btn-f").style.borderRight = "#333333 solid 1px";
     document.getElementById("btn-j").style.borderRight = "#333333 solid 1px";
   }
-  else {
-    document.getElementById("btn-d").style.borderRight = "none";
-    document.getElementById("btn-f").style.borderRight = "#333333 solid 1px";
-    document.getElementById("btn-j").style.borderRight = "#333333 solid 1px";
-  }
 });
 $("#btn-f").on("click", function () {
   showing = 1;
@@ -47,11 +42,6 @@ $("#btn-f").on("click", function () {
   document.getElementById("btn-j").style.backgroundColor = "gray";
   document.getElementById("btn-k").style.backgroundColor = "gray";
   if (isSmartPhone()) {
-    document.getElementById("btn-d").style.borderRight = "none";
-    document.getElementById("btn-f").style.borderRight = "none";
-    document.getElementById("btn-j").style.borderRight = "#333333 solid 1px";
-  }
-  else {
     document.getElementById("btn-d").style.borderRight = "none";
     document.getElementById("btn-f").style.borderRight = "none";
     document.getElementById("btn-j").style.borderRight = "#333333 solid 1px";
@@ -76,11 +66,6 @@ $("#btn-j").on("click", function () {
     document.getElementById("btn-f").style.borderRight = "none";
     document.getElementById("btn-j").style.borderRight = "none";
   }
-  else {
-    document.getElementById("btn-d").style.borderRight = "#333333 solid 1px";
-    document.getElementById("btn-f").style.borderRight = "none";
-    document.getElementById("btn-j").style.borderRight = "none";
-  }
 });
 $("#btn-k").on("click", function () {
   showing = 3;
@@ -97,11 +82,6 @@ $("#btn-k").on("click", function () {
   document.getElementById("btn-j").style.backgroundColor = "gray";
   document.getElementById("btn-k").style.backgroundColor = "#e4823d";
   if (isSmartPhone()) {
-    document.getElementById("btn-d").style.borderRight = "#333333 solid 1px";
-    document.getElementById("btn-f").style.borderRight = "#333333 solid 1px";
-    document.getElementById("btn-j").style.borderRight = "none";
-  }
-  else {
     document.getElementById("btn-d").style.borderRight = "#333333 solid 1px";
     document.getElementById("btn-f").style.borderRight = "#333333 solid 1px";
     document.getElementById("btn-j").style.borderRight = "none";
