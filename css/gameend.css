@@ -4,7 +4,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /*スクロール禁止*/
+  /*overflow: hidden; /*スクロール禁止*/
   /*overscroll-behavior: none; /*　オーバースクロール禁止 */
   -webkit-touch-callout: none; /* リンク長押しのポップアップを無効化(Only Safari on iOS?←そんなこともなさそう) */
   -user-select: none; /* テキスト長押しの選択ボックスを無効化 */
@@ -53,7 +53,7 @@ body {
 }
 
 .result a::before {
-  content: "ゲーム結果と解説へ";
+  content: "結果詳細と解説へ";
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
@@ -83,4 +83,38 @@ body {
 .btn a:hover {
   text-decoration: none;
   background-color: #e4823d;
+}
+
+.result-graph {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 300px;
+  height: 300px;
+  font-size: 100px;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+#your-rate {
+  font-size: 50px;
+}
+@media only screen and (max-width: 800px) {
+  #your-rate {
+    font-size: 35px;
+  }
+  .result-graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+    font-size: 80px;
+    font-weight: 700;
+    border-radius: 50%;
+  }
 }
