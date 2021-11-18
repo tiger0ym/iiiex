@@ -19,7 +19,7 @@ if (window === window.parent) {
   }
   */
 } else {
-  document.getElementById("message").innerHTML = `全画面表示にしてください`;
+  //document.getElementById("message").innerHTML = `全画面表示にしてください`;
   if (gamestartDiv.length != 0) {
     gamestartDiv[0].className = "btn gamestart embedded";
   }
