@@ -93,7 +93,8 @@ body {
 }
 
 /*button*/
-.replay a {
+.replay a,
+.result a {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,6 +110,7 @@ body {
   transition: 0.3s;
   text-decoration: none;
 }
+
 .replay a::before {
   content: "もう1度プレイ";
   padding: 20px 0 0 40px;
