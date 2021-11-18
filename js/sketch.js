@@ -80,6 +80,8 @@ let sampleSound;
 
 let userAgent;
 
+let secondPerDay = 6;
+
 function preload() {
   //data
   jsonData = loadJSON("./data/7days_interval300.json");
@@ -209,7 +211,7 @@ function setup() {
   colorEvening = [242, 99, 44];
   colorNight = [0, 0, 10];
   bgChangeAngle = [1.5 * PI, 2 * PI, 2.5 * PI, 3 * PI, 3.5 * PI];
-  frame = -5 * fps;
+  frame = -(secondPerDay / 2) * fps;
   endingTime = lastEmojiTime / 1000 + endWait; //second
   frameYoin = 0;
   yoinTime = 2;
@@ -353,7 +355,7 @@ function windowResized() {
 //背景描画
 function drawBG() {
   //frameから時計の角度計算[0,4*PI)
-  angle = ((frame * 0.4 * PI) / fps) % (2 * TWO_PI);
+  angle = ((frame * 4 * PI) / (fps * secondPerDay)) % (2 * TWO_PI);
 
   //背景リセット
   background(color(20, 20, 20));
