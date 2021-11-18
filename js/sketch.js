@@ -673,6 +673,20 @@ function keyPressed() {
   }
 }
 
+function touchStarted() {
+  if (!isStart) {
+    isStart = true;
+  } else {
+    for (let tap = 0; tap < touches.length; tap++) {
+      for (let i = 0; i < 4; i++) {
+        if (xLines[i] < touches[tap].x && touches[tap].x < xLines[i + 1]) {
+          lanePressed(i);
+        }
+      }
+    }
+  }
+}
+/*
 //クリックを離したとき，指を離したときに実行される
 function mouseClicked() {
   onPress = false;
@@ -741,7 +755,7 @@ function mousePressed() {
     }
   }
 }
-
+*/
 function lanePressed(laneNum) {
   framesPressed[laneNum] = 6;
   let great = false;
