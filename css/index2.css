@@ -29,12 +29,56 @@ body {
   width: 100%;
 }
 
-.img-explanation {
-  max-width: 100%;
+/* .img-explanation { */
+/*   max-width: 90%; */
+/* } */
+.sec-title{
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
 }
-.img-explanation {
+.fade1{
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 2.2s;
+}
+
+.fade2{
+    animation-name: fade;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-delay: 3.4s;
+    /* animation: fade 3s alternate; */
+}
+
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.img-explanation-screen {
   max-width: 100%;
-  width: 500px;
+  /* width: 420px;  */
+  height: 520px;
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 4.6s;
+}
+
+.img-explanation-keyboard {
+  max-width: 100%;
+  /* width: 420px;  */
+  height: 220px;
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 4.6s;
 }
 
 /*title*/

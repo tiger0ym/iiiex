@@ -9,25 +9,27 @@
       rel="stylesheet"
     />
   </head>
-  <body oncontextmenu="return false;" oncopy="return false;">
+  <body oncontextmenu="return false;" oncopy="return false;" <!-- onLoad=setTimeout("location.href='./game.html",3000) -->
+        >
+    <!-- <meta http-equiv="refresh" content="4;url='./game.html'"> -->
     <div id="wrapper">
       <div class="sec-title-wrapper"><p class="sec-title">操作方法</p></div>
       <div class="sec-contain-wrapper">
-        <p>流れてくる絵文字がラインを通過するのと同じタイミングで</p>
-        <p>キーボードの D・F・J・K をタイプしてください。</p>
+        <p class="fade1">流れてくる絵文字がラインを通過するのと同じタイミングで</p>
+        <p class="fade2">キーボードの D・F・J・K をタイプしてください。</p>
       </div>
 
-      <img src="./image/setumei_pc_kari.png" class="img-explanation" />
-      <img src="./image/homeposition.PNG" class="img-explanation" />
+      <img src="./image/setumei_pc_kari.png" class="img-explanation-screen" />
+      <img src="./image/homeposition.PNG" class="img-explanation-keyboard" />
 
-      <div class="sec-title-wrapper"><p class="sec-title">注意事項</p></div>
-      <div class="sec-contain-wrapper">
-        <p>音を用いるゲームのため，適切な音量に調整してください</p>
-        <p id="message"></p>
-      </div>
-      <div class="gamestart btn">
-        <a href="./game.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
-      </div>
+      <!-- <div class="sec-title-wrapper"><p class="sec-title">注意事項</p></div> -->
+      <!-- <div class="sec-contain-wrapper"> -->
+      <!--   <p>音を用いるゲームのため，適切な音量に調整してください</p> -->
+      <!--   <p id="message"></p> -->
+      <!-- </div> -->
+      <!-- <div class="gamestart btn"> -->
+      <!--   <a href="./game.html" style="color: rgba(0, 0, 0, 0)">transparent</a> -->
+      <!-- </div> -->
     </div>
     <script src="./js/index.js"></script>
   </body>
