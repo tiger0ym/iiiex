@@ -483,6 +483,7 @@ function drawBG() {
   pop();
 
   //背景に色つける
+  /*
   if (frame > 0) {
     noStroke();
     let colorBG;
@@ -523,6 +524,7 @@ function drawBG() {
       rect(xLines[0], 0, laneWidth * 4, windowHeight);
     }
   }
+  */
   //枠線
   strokeWeight(5);
   stroke(70, 70, 70);
