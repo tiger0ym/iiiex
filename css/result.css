@@ -25,8 +25,14 @@ body {
 .result-wrapper {
   display: flex;
 }
+
 .result-content {
   width: 100px;
+  text-align: right;
+}
+
+.result-content1 {
+  width: 150px;
 }
 
 /*title*/
@@ -62,7 +68,7 @@ body {
   text-align: center;
   padding: 0 25px; /*横の大きさ*/
   font-size: 18px; /*文字の大きさ*/
-  background: #6ce46c; /*塗りつぶし色*/
+  background: #26dd26; /*塗りつぶし色*/
   color: #fff; /*文字色*/
   box-sizing: border-box;
 }
@@ -142,32 +148,16 @@ body {
   background-color: #e4823d;
 }
 #btn-d {
-  background-color: orange;
-  font-color: black;
-  width: 60px;
-  height: 60px;
-  font-size: 40px;
+  background-color: #e4823d;
 }
 #btn-f {
   background-color: gray;
-  font-color: black;
-  width: 60px;
-  height: 60px;
-  font-size: 40px;
 }
 #btn-j {
   background-color: gray;
-  font-color: black;
-  width: 60px;
-  height: 60px;
-  font-size: 40px;
 }
 #btn-k {
   background-color: gray;
-  font-color: black;
-  width: 60px;
-  height: 60px;
-  font-size: 40px;
 }
 #img-d {
   display: block;
@@ -202,4 +192,10 @@ body {
 .btn-frame {
   align-items: center;
   display: flex;
+}
+.graph-btn {
+  color: black;
+  width: 60px;
+  height: 60px;
+  font-size: 15px;
 }

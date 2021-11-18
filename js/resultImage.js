@@ -1,4 +1,10 @@
-//button-tap
+function isSmartPhone() {
+  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 let showing;
 
 $("#btn-d").on("click", function () {
@@ -11,10 +17,15 @@ $("#btn-d").on("click", function () {
   document.getElementById("caption-f").style.display = "none";
   document.getElementById("caption-j").style.display = "none";
   document.getElementById("caption-k").style.display = "none";
-  document.getElementById("btn-d").style.backgroundColor = "orange";
+  document.getElementById("btn-d").style.backgroundColor = "#e4823d";
   document.getElementById("btn-f").style.backgroundColor = "gray";
   document.getElementById("btn-j").style.backgroundColor = "gray";
   document.getElementById("btn-k").style.backgroundColor = "gray";
+  if (isSmartPhone()) {
+    document.getElementById("btn-d").style.borderRight = "none";
+    document.getElementById("btn-f").style.borderRight = "#333333 solid 1px";
+    document.getElementById("btn-j").style.borderRight = "#333333 solid 1px";
+  }
 });
 $("#btn-f").on("click", function () {
   showing = 1;
@@ -27,9 +38,14 @@ $("#btn-f").on("click", function () {
   document.getElementById("caption-j").style.display = "none";
   document.getElementById("caption-k").style.display = "none";
   document.getElementById("btn-d").style.backgroundColor = "gray";
-  document.getElementById("btn-f").style.backgroundColor = "orange";
+  document.getElementById("btn-f").style.backgroundColor = "#e4823d";
   document.getElementById("btn-j").style.backgroundColor = "gray";
   document.getElementById("btn-k").style.backgroundColor = "gray";
+  if (isSmartPhone()) {
+    document.getElementById("btn-d").style.borderRight = "none";
+    document.getElementById("btn-f").style.borderRight = "none";
+    document.getElementById("btn-j").style.borderRight = "#333333 solid 1px";
+  }
 });
 $("#btn-j").on("click", function () {
   showing = 2;
@@ -43,8 +59,13 @@ $("#btn-j").on("click", function () {
   document.getElementById("caption-k").style.display = "none";
   document.getElementById("btn-d").style.backgroundColor = "gray";
   document.getElementById("btn-f").style.backgroundColor = "gray";
-  document.getElementById("btn-j").style.backgroundColor = "orange";
+  document.getElementById("btn-j").style.backgroundColor = "#e4823d";
   document.getElementById("btn-k").style.backgroundColor = "gray";
+  if (isSmartPhone()) {
+    document.getElementById("btn-d").style.borderRight = "#333333 solid 1px";
+    document.getElementById("btn-f").style.borderRight = "none";
+    document.getElementById("btn-j").style.borderRight = "none";
+  }
 });
 $("#btn-k").on("click", function () {
   showing = 3;
@@ -59,5 +80,10 @@ $("#btn-k").on("click", function () {
   document.getElementById("btn-d").style.backgroundColor = "gray";
   document.getElementById("btn-f").style.backgroundColor = "gray";
   document.getElementById("btn-j").style.backgroundColor = "gray";
-  document.getElementById("btn-k").style.backgroundColor = "orange";
+  document.getElementById("btn-k").style.backgroundColor = "#e4823d";
+  if (isSmartPhone()) {
+    document.getElementById("btn-d").style.borderRight = "#333333 solid 1px";
+    document.getElementById("btn-f").style.borderRight = "#333333 solid 1px";
+    document.getElementById("btn-j").style.borderRight = "none";
+  }
 });

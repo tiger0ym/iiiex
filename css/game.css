@@ -9,6 +9,29 @@ body {
   height: 100%;
 }
 
+#wrapper {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.sec-contain-wrapper {
+  position: absolute;
+  top: 65%;
+  display: inline-block;
+  height: 80px; /*リボンの高さ*/
+  line-height: 50px; /*リボンの高さ*/
+  text-align: center;
+  padding: 0 30px; /*横の大きさ*/
+  font-size: 18px; /*文字の大きさ*/
+  background: #6ce46c; /*塗りつぶし色*/
+  color: #fff; /*文字色*/
+  box-sizing: border-box;
+}
+
 .result-wrapper {
   display: flex;
 }

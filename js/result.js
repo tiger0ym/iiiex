@@ -7,7 +7,7 @@ for (let i = 0; i < 5; i++) {
 
   if (i === 0) {
     const laneNameP = document.createElement("p");
-    laneNameP.className = "result-content";
+    laneNameP.className = "result-content1";
     //laneNameP.innerHTML = "レーン番号";
     resultWrapperDiv.appendChild(laneNameP);
 
@@ -22,16 +22,16 @@ for (let i = 0; i < 5; i++) {
     resultWrapperDiv.appendChild(missTimesP);
   } else {
     const laneNameP = document.createElement("p");
-    laneNameP.className = "result-content";
+    laneNameP.className = "result-content1";
     //laneNameP.innerHTML = i - 1;
     if (i === 1) {
-      laneNameP.innerHTML = "d：外出";
+      laneNameP.innerHTML = `D（1列目）：外出`;
     } else if (i === 2) {
-      laneNameP.innerHTML = "f：食事";
+      laneNameP.innerHTML = `F（2列目）：食事`;
     } else if (i === 3) {
-      laneNameP.innerHTML = "j：活動";
+      laneNameP.innerHTML = `J（3列目）：活動`;
     } else if (i === 4) {
-      laneNameP.innerHTML = "k：睡眠";
+      laneNameP.innerHTML = `K（4列目）：睡眠`;
     }
     resultWrapperDiv.appendChild(laneNameP);
     const greatTimesP = document.createElement("p");
