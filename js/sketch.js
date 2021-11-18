@@ -115,7 +115,7 @@ function preload() {
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
   bedSound = loadSound("./sound/bed.mp3");
-  BGM = loadSound("./sound/test_sound.wav");
+  BGM = loadSound("./sound/sound_1119.wav");
 }
 
 function setup() {
