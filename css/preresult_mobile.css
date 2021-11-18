@@ -14,7 +14,7 @@ body {
   align-items: center;
   display: flex;
   margin: 0 auto;
-  width: 60%;
+  width: 95%;
 }
 .sec-title-wrapper {
   width: 100%;
@@ -61,7 +61,7 @@ body {
   line-height: 50px; /*リボンの高さ*/
   text-align: center;
   padding: 0 25px; /*横の大きさ*/
-  font-size: 18px; /*文字の大きさ*/
+  font-size: 15px; /*文字の大きさ*/
   background: #26dd26; /*塗りつぶし色*/
   color: #fff; /*文字色*/
   box-sizing: border-box;

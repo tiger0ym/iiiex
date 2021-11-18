@@ -213,7 +213,7 @@ body {
   margin: 10px auto;
   padding: 1em 2em;
   /* width: 150px; */
-  width: 120px;
+  width: 100px;
   color: #333;
   font-size: 20px;
   font-weight: 700;
@@ -238,7 +238,7 @@ body {
 }
 .gamestart.embedded a::before {
   content: "Game Start";
-  padding: 20px 0 0 30px;
+  padding: 20px 0 0 40px;
   color: black;
   position: absolute;
   top: -5px;
