@@ -17,7 +17,7 @@ body {
   align-items: center;
   display: flex;
   height: 100vh;
-  width: 100%;n
+  width: 100%;
   margin: 0 auto;
 }
 .sec-title-wrapper {
@@ -37,15 +37,15 @@ body {
   width: 90%;
   /*font-size: 40px;*/
 }
-.fade1{
-    animation-name: fade;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-delay: 2.2s;
+.fade1 {
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 2.2s;
 }
 .img-explanation {
-    max-width: 90%;
-    max-width: 100%;
+  max-width: 90%;
+  max-width: 100%;
   /* width: 420px;  */
   height: 520px;
   animation-name: fade;
@@ -54,19 +54,19 @@ body {
   animation-delay: 3.4s;
 }
 
-@keyframes fade{
-  0%{
+@keyframes fade {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
 }
-.sec-title{
-    /* position:relative; */
-    /* align-items:center; */
-     margin-left: auto;
-    margin-right: auto;
+.sec-title {
+  /* position:relative; */
+  /* align-items:center; */
+  margin-left: auto;
+  margin-right: auto;
 }
 /*title*/
 /*
@@ -146,7 +146,7 @@ body {
 }
 
 .sec-title.not-embedded {
-    /* display: inline-block; */
+  /* display: inline-block; */
   display: block;
   width: 300px;
   position: relative;
