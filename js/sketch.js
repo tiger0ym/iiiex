@@ -23,7 +23,7 @@ let frame;
 let frameYoin;
 let angle = 0;
 
-let emojis = [, [], , []];
+let emojis = [, [], [], []];
 
 let framesPressed = [0, 0, 0, 0];
 
@@ -103,6 +103,8 @@ function preload() {
   imgSun = loadImage("./image/sun.png");
   imgZzz = loadImage("./image/zzz.png");
   imgNidone = loadImage("./image/nidone.png");
+  imgHeart = loadImage("./image/heart.png");
+  imgWalk = loadImage("./image/walk.png");
 
   //sound
   keySound = loadSound("./sound/key.mp3");
@@ -174,7 +176,10 @@ function setup() {
       random([imgRiceball, imgCake, imgFish, imgHotdog, imgCurry])
     );
   }
-  emojis[2] = imgBicycle;
+  for (let i = 0; i < arrayLanes[2].length; i++) {
+    emojis[2].push(random([imgBicycle, imgHeart, imgWalk]));
+  }
+  //emojis[2] = imgBicycle;
   let isAwake = true;
   for (let i = 0; i < arrayLanes[3].length; i++) {
     if (isAwake) {
@@ -585,6 +590,8 @@ function drawLane(laneNum) {
     let emoji;
     if (laneNum === 1) {
       emoji = emojis[1][i];
+    } else if (laneNum === 2) {
+      emoji = emojis[2][i];
     } else if (laneNum === 3) {
       emoji = emojis[3][i];
     } else {

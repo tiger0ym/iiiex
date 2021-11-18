@@ -9,16 +9,24 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
   </head>
   <body oncontextmenu="return false;" oncopy="return false;">
     <div id="wrapper">
-      <div class="btn replay">
-        <a href="./game.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
+      <p id="your-rate">あなたの達成率は</p>
+      <div id="parent"></div>
+      <div class="graph-wrapper">
+        <canvas id="result-graph"></canvas>
       </div>
+      <p id="percent"></p>
       <div class="btn result">
         <a href="./result.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
       </div>
+      <div class="btn replay">
+        <a href="./game.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
+      </div>
     </div>
     <script src="js/gameend.js"></script>
+    <script src="js/movePieChart.js"></script>
   </body>
 </html>
