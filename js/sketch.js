@@ -285,7 +285,7 @@ function draw() {
     drawLane(i);
   }
   //ゲーム終了&時計が12時 → 余韻タイムスタート
-  if (frame > endingTime * fps && frame % (fps * 5) === 0) {
+  if (frame > endingTime * fps && frame % (fps * (secondPerDay / 2)) === 0) {
     isStart = false;
     isYoin = true;
   }
