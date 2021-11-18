@@ -82,3 +82,60 @@ body {
 .intro_mobile {
   display: none;
 }
+
+/*popup表示させたいコンテンツのレイアウトと位置*/
+#popup{
+	width:40%;
+  line-height:100px;
+  padding:0 4%;
+  box-sizing:border-box;
+  display:none;
+  position:fixed;
+  top:70%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+img{
+	width:100%;
+}
+label{
+  display:block;
+}
+/*ボタンの装飾*/
+label span{
+  display:block;
+  //background-color:#01b6ed;
+  color:#000;
+  width:200px;
+  line-height:40px;
+  border-radius:4px;
+  text-align:center;
+}
+label span:hover{
+  cursor:pointer;
+}
+input[type="checkbox"]{
+  display:none;
+}
+/*checkboxがチェックの状態になったらpopupを表示させる*/
+input[type="checkbox"]:checked + #popup{
+  display:block;
+}
+
+/* 閉じるアイコン（右上） */
+.icon-close{
+  background: #000;
+  color: #fff;
+  font-size: 30px;
+  padding: 0 10px;
+  position: absolute;
+  right: 0;
+}
+
+/*アンダーラインの文字の位置 */
+.checkbox{
+	text-align:center;
+	margin-right: auto;
+  margin-left: auto;
+}
