@@ -215,4 +215,25 @@ body {
   #your-rate {
     font-size: 30px;
   }
+}	
+/*ディスプレイの横並び*/
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbnail-left-box {
+  width: 100%;
+  margin: 0;
+  padding: 0 0 2.5%;
+}
+		
+.thumbnail-left-box li {
+  display: flex;
+  flex-wrap: wrap;
+  width: 45%;
+  margin: 0 0 0 auto;
+}
+.thumbnail-left-box li img {
+  width: 100%;
 }
