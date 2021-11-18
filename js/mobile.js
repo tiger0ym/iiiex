@@ -3,7 +3,7 @@ var secTitleDiv = document.getElementsByClassName("sec-title");
 var secContainWrapperDiv = document.getElementsByClassName(
   "sec-contain-wrapper"
 );
-
+console.log("aaa");
 if (window === window.parent) {
   if (gamestartDiv.length != 0) {
     gamestartDiv[0].className = "btn gamestart not-embedded";
@@ -19,7 +19,7 @@ if (window === window.parent) {
   }
   */
 } else {
-  document.getElementById("message").innerHTML = `全画面表示にしてください`;
+  //document.getElementById("message").innerHTML = `全画面表示にしてください`;
   if (gamestartDiv.length != 0) {
     gamestartDiv[0].className = "btn gamestart embedded";
   }

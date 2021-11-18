@@ -31,7 +31,6 @@ body {
   color: #6ce46c; /*文字色*/
 }
 
-
 .result-wrapper {
   display: flex;
 }
@@ -46,15 +45,22 @@ body {
 }
 .loading-content {
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 400px;
+  text-align: center;
 }
 .loading-img {
   margin: 0 36px;
 }
 .loading-text {
-  width: 200px;
+  width: 100%;
   color: #ffb681;
   text-align: center;
-  font-size: 50px;
+  font-size: 60px;
   margin-top: 30px;
+  margin-bottom: 0px;
+}
+.loading-sound {
+  color: #6ce46c;
+  font-size: 35px;
+  width: 100%;
 }
