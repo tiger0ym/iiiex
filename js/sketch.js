@@ -121,6 +121,7 @@ function preload() {
   bedSound = loadSound("./sound/bed.mp3");
   heartSound = loadSound("./sound/heart.mp3");
   runSound = loadSound("./sound/running.wav");
+  silentSound = loadSound("./sound/silent.mp3");
   BGM = loadSound("./sound/sound_1119.wav");
 }
 
@@ -253,6 +254,9 @@ function setup() {
   eatSound.playMode("sustain");
   bicycleSound.playMode("sustain");
   BGM.playMode("sustain");
+  heartSound.playMode("sustain");
+  runSound.playMode("sustain");
+  silentSound.playMode("sustain");
 }
 
 function draw() {
@@ -703,6 +707,7 @@ function keyPressed() {
 function touchStarted() {
   if (!isStart) {
     isStart = true;
+    silentSound.play();
   } else {
     for (let tap = 0; tap < touches.length; tap++) {
       for (let i = 0; i < 4; i++) {
@@ -799,12 +804,4 @@ function gameEnd() {
   BGM.pause();
   sessionStorage.setItem("resultJSON", JSON.stringify(resultJSON));
   window.location.href = "./gameend.html";
-}
-
-function mousePressed() {
-  if (isTapDevice()) {
-    if (!isStart) {
-      isStart = true;
-    }
-  }
 }
