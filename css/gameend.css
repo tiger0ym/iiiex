@@ -71,7 +71,7 @@ body {
 }
 
 .result a::before {
-  content: "結果詳細と解説へ";
+  content: "解説へ";
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
