@@ -119,6 +119,8 @@ function preload() {
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
   bedSound = loadSound("./sound/bed.mp3");
+  heartSound = loadSound("./sound/heart.mp3");
+  runSound = loadSound("./sound/running.wav");
   BGM = loadSound("./sound/sound_1119.wav");
 }
 
@@ -189,10 +191,24 @@ function setup() {
       random([imgRiceball, imgCake, imgFish, imgHotdog, imgCurry])
     );
   }
+  /*
   for (let i = 0; i < arrayLanes[2].length; i++) {
     emojis[2].push(random([imgBicycle, imgHeart, imgWalk]));
+  }*/
+  let laneJmode = 0;
+  for (let i = 0; i < arrayLanes[2].length; i++) {
+    if (laneJmode === 0) {
+      laneJmode = 1;
+      emojis[2].push(imgBicycle);
+    } else if (laneJmode === 1) {
+      laneJmode = 2;
+      emojis[2].push(imgHeart);
+    } else {
+      laneJmode = 0;
+      emojis[2].push(imgWalk);
+    }
   }
-  //emojis[2] = imgBicycle;
+
   let isAwake2 = true;
   for (let i = 0; i < arrayLanes[3].length; i++) {
     if (isAwake2) {
@@ -728,7 +744,13 @@ function lanePressed(laneNum) {
     } else if (laneNum === 1) {
       eatSound.play();
     } else if (laneNum === 2) {
-      bicycleSound.play();
+      if (hitIndex % 3 === 1) {
+        heartSound.play();
+      } else if (hitIndex % 3 === 2) {
+        runSound.play();
+      } else {
+        bicycleSound.play();
+      }
     } else if (laneNum === 3) {
       bedSound.play();
     }
