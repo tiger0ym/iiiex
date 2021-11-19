@@ -745,14 +745,14 @@ function lanePressed(laneNum) {
     if (
       isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
-        (emojiHeight * 1.5) / (2 * yVelocity)
+        (emojiHeight * 1.2) / (2 * yVelocity)
     ) {
       great = true;
       hitIndex = i;
     } else if (
       !isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
-        (emojiHeight * 1.5) / (2 * yVelocity)
+        (emojiHeight * 1.2) / (2 * yVelocity)
     ) {
       great = true;
       hitIndex = i;
