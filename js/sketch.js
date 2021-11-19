@@ -319,6 +319,7 @@ function draw() {
   }
   //短針が1周したらゲーム開始，音楽鳴らす
   if (frame === 0) {
+    BGM.amp(0.5);
     BGM.loop();
   }
   //余韻モード
