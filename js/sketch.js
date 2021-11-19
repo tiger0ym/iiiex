@@ -759,23 +759,27 @@ function lanePressed(laneNum) {
     }
   }
   if (great) {
-    isGreat[laneNum] = true;
-    greatArray[laneNum][hitIndex] = true;
-    resultArray[laneNum][0] += 1;
-    if (laneNum === 0) {
-      keySound.play();
-    } else if (laneNum === 1) {
-      eatSound.play();
-    } else if (laneNum === 2) {
-      if (hitIndex % 3 === 1) {
-        heartSound.play();
-      } else if (hitIndex % 3 === 2) {
-        runSound.play();
-      } else {
-        bicycleSound.play();
+    if (!greatArray[laneNum][hitIndex]) {
+      isGreat[laneNum] = true;
+      greatArray[laneNum][hitIndex] = true;
+      resultArray[laneNum][0] += 1;
+      if (laneNum === 0) {
+        keySound.play();
+      } else if (laneNum === 1) {
+        eatSound.play();
+      } else if (laneNum === 2) {
+        if (hitIndex % 3 === 1) {
+          heartSound.play();
+        } else if (hitIndex % 3 === 2) {
+          runSound.play();
+        } else {
+          bicycleSound.play();
+        }
+      } else if (laneNum === 3) {
+        bedSound.play();
       }
-    } else if (laneNum === 3) {
-      bedSound.play();
+    } else {
+      isGreat[laneNum] = false;
     }
   } else {
     isGreat[laneNum] = false;
