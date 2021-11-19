@@ -644,7 +644,12 @@ function drawLane(laneNum) {
     }
 
     //4日目からスピードアップ
-    yVelocity = 10;
+    if (isTapDevice() && !isEmbedded()) {
+      yVelocity = 20;
+    } else {
+      yVelocity = 10;
+    }
+
     /*
     if (arrayLanes[laneNum][i][0] < 30000) {
       if (isTapDevice()) {
