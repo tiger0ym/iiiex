@@ -702,7 +702,7 @@ function keyPressed() {
 
 function touchStarted() {
   if (!isStart) {
-    //isStart = true;
+    isStart = true;
   } else {
     for (let tap = 0; tap < touches.length; tap++) {
       for (let i = 0; i < 4; i++) {
