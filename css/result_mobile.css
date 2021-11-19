@@ -234,3 +234,8 @@ body {
 .caption-content {
   margin-bottom: 0;
 }
+#BGMbtn {
+  color: #e4823d;
+  background-color: #ffffff;
+  width: 70px;
+}
