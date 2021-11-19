@@ -503,6 +503,18 @@ function drawBG() {
   pop();
 
   //背景に色つける
+  if (frame > 0) {
+    noStroke();
+    let colorBG;
+    colorBG = angleToColor(angle);
+    fill(colorBG);
+    if (isTapDevice()) {
+      rect(0, 0, windowWidth, windowHeight);
+    } else {
+      rect(xLines[0], 0, laneWidth * 4, windowHeight);
+    }
+  }
+  //背景に色つける
   /*
   if (frame > 0) {
     noStroke();
@@ -763,7 +775,7 @@ function lanePressed(laneNum) {
     isGreat[laneNum] = false;
   }
 }
-
+/*
 function timeToColor(angle, startTime, endTime, startColor, endColor) {
   return color(
     ((endColor[0] - startColor[0]) / (endTime - startTime)) *
@@ -777,6 +789,19 @@ function timeToColor(angle, startTime, endTime, startColor, endColor) {
       startColor[2],
     100
   );
+}*/
+
+function angleToColor(ang) {
+  if (ang < 2 * PI) {
+    return color((255 * ang) / (2 * PI), (200 * ang) / (2 * PI), 0, 100);
+  } else {
+    return color(
+      (-255 * (ang - 4 * PI)) / (2 * PI),
+      (-200 * (ang - 4 * PI)) / (2 * PI),
+      0,
+      100
+    );
+  }
 }
 
 function gameEnd() {
