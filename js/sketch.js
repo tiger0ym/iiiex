@@ -270,13 +270,13 @@ function draw() {
       } else {
         textSize(30);
       }
-      fill("#FF40FF");
+      fill(255,64,255);
       strokeWeight(10);
       stroke(255,255,255);
       textAlign(CENTER);
       text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
-      fill("#FF40FF");
+      fill(255,64,255);
       strokeWeight(5);
       stroke(255, 255, 255);
       textSize(40);
