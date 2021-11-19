@@ -6,12 +6,12 @@ btn.addEventListener("click", () => {
   if (!BGM.paused) {
     btn.innerHTML = "再生"; // 「再生ボタン」に切り替え
     BGM.pause();
-    btn.style.color = "#e4823d";
-    btn.style.backgroundColor = "#ffffff";
+    btn.style.color = "#ffffff";
+    btn.style.backgroundColor = "#e4823d";
   } else {
     btn.innerHTML = "一時停止"; // 「一時停止ボタン」に切り替え
     BGM.play();
-    btn.style.color = "#ffffff";
-    btn.style.backgroundColor = "#e4823d";
+    btn.style.color = "#e4823d";
+    btn.style.backgroundColor = "#ffffff";
   }
 });
