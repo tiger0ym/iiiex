@@ -84,6 +84,8 @@ let userAgent;
 
 let secondPerDay = 6;
 
+let greatArray = [[], [], [], []];
+
 function preload() {
   //data
   jsonData = loadJSON("./data/10days_interval300.json");
@@ -117,7 +119,10 @@ function preload() {
   alarmSound = loadSound("./sound/alarm.mp3");
   sleepSound = loadSound("./sound/sleep.mp3");
   bedSound = loadSound("./sound/bed.mp3");
-  BGM = loadSound("./sound/test_sound.wav");
+  heartSound = loadSound("./sound/heart.mp3");
+  runSound = loadSound("./sound/running.wav");
+  silentSound = loadSound("./sound/silent.mp3");
+  BGM = loadSound("./sound/sound_1119.wav");
 }
 
 function setup() {
@@ -173,6 +178,13 @@ function setup() {
     ]);
   }
 
+  //greatArray
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < arrayLanes[i].length; j++) {
+      greatArray[i].push(false);
+    }
+  }
+
   //emojis配列に絵文字を入れる
   emojis[0] = imgKey;
   for (let i = 0; i < arrayLanes[1].length; i++) {
@@ -180,10 +192,24 @@ function setup() {
       random([imgRiceball, imgCake, imgFish, imgHotdog, imgCurry])
     );
   }
+  /*
   for (let i = 0; i < arrayLanes[2].length; i++) {
     emojis[2].push(random([imgBicycle, imgHeart, imgWalk]));
+  }*/
+  let laneJmode = 0;
+  for (let i = 0; i < arrayLanes[2].length; i++) {
+    if (laneJmode === 0) {
+      laneJmode = 1;
+      emojis[2].push(imgBicycle);
+    } else if (laneJmode === 1) {
+      laneJmode = 2;
+      emojis[2].push(imgHeart);
+    } else {
+      laneJmode = 0;
+      emojis[2].push(imgWalk);
+    }
   }
-  //emojis[2] = imgBicycle;
+
   let isAwake2 = true;
   for (let i = 0; i < arrayLanes[3].length; i++) {
     if (isAwake2) {
@@ -228,6 +254,9 @@ function setup() {
   eatSound.playMode("sustain");
   bicycleSound.playMode("sustain");
   BGM.playMode("sustain");
+  heartSound.playMode("sustain");
+  runSound.playMode("sustain");
+  silentSound.playMode("sustain");
 }
 
 function draw() {
@@ -276,7 +305,7 @@ function draw() {
     drawLane(i);
   }
   //ゲーム終了&時計が12時 → 余韻タイムスタート
-  if (frame > endingTime * fps && frame % (fps * 5) === 0) {
+  if (frame > endingTime * fps && frame % (fps * (secondPerDay / 2)) === 0) {
     isStart = false;
     isYoin = true;
   }
@@ -474,6 +503,7 @@ function drawBG() {
   pop();
 
   //背景に色つける
+  /*
   if (frame > 0) {
     noStroke();
     let colorBG;
@@ -514,6 +544,7 @@ function drawBG() {
       rect(xLines[0], 0, laneWidth * 4, windowHeight);
     }
   }
+  */
   //枠線
   strokeWeight(5);
   stroke(70, 70, 70);
@@ -676,6 +707,7 @@ function keyPressed() {
 function touchStarted() {
   if (!isStart) {
     isStart = true;
+    silentSound.play();
   } else {
     for (let tap = 0; tap < touches.length; tap++) {
       for (let i = 0; i < 4; i++) {
@@ -686,79 +718,11 @@ function touchStarted() {
     }
   }
 }
-/*
-//クリックを離したとき，指を離したときに実行される
-function mouseClicked() {
-  onPress = false;
-}
 
-//PC..クリックしたとき,スマホ..タップしたときと指を離したときに実行される
-function mousePressed() {
-  if (!isTapDevice()) {
-    for (let i = 0; i < 4; i++) {
-      if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-        lanePressed(i);
-      }
-    }
-  } else {
-    if (!isStart) {
-      isStart = true;
-      //BGM.loop();
-    } else {
-      let isSafari;
-      if (
-        userAgent.indexOf("msie") != -1 ||
-        userAgent.indexOf("trident") != -1
-      ) {
-        //IE向けの記述
-        isSafari = false;
-      } else if (userAgent.indexOf("edge") != -1) {
-        //旧Edge向けの記述
-        isSafari = false;
-      } else if (
-        userAgent.indexOf("chrome") != -1 ||
-        userAgent.indexOf("crios") != -1
-      ) {
-        //Google Chrome向けの記述
-        if (window === window.parent) {
-          isSafari = false;
-        } else {
-          isSafari = true;
-        }
-      } else if (userAgent.indexOf("safari") != -1) {
-        //Safari向けの記述
-        isSafari = true;
-      } else if (userAgent.indexOf("firefox") != -1) {
-        //FireFox向けの記述
-        isSafari = false;
-      } else {
-        //その他のブラウザ向けの記述
-        isSafari = false;
-      }
-
-      if (isSafari) {
-        for (let i = 0; i < 4; i++) {
-          if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-            lanePressed(i);
-          }
-        }
-      } else {
-        if (!onPress) {
-          for (let i = 0; i < 4; i++) {
-            if (xLines[i] < mouseX && mouseX < xLines[i + 1]) {
-              lanePressed(i);
-            }
-          }
-          onPress = true;
-        }
-      }
-    }
-  }
-}
-*/
 function lanePressed(laneNum) {
   framesPressed[laneNum] = 6;
   let great = false;
+  let hitIndex;
   for (let i = 0; i < arrayLanes[laneNum].length; i++) {
     if (
       isTapDevice() &&
@@ -766,23 +730,32 @@ function lanePressed(laneNum) {
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
+      hitIndex = i;
     } else if (
       !isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
         (emojiHeight * 1.5) / (2 * yVelocity)
     ) {
       great = true;
+      hitIndex = i;
     }
   }
   if (great) {
     isGreat[laneNum] = true;
+    greatArray[laneNum][hitIndex] = true;
     resultArray[laneNum][0] += 1;
     if (laneNum === 0) {
       keySound.play();
     } else if (laneNum === 1) {
       eatSound.play();
     } else if (laneNum === 2) {
-      bicycleSound.play();
+      if (hitIndex % 3 === 1) {
+        heartSound.play();
+      } else if (hitIndex % 3 === 2) {
+        runSound.play();
+      } else {
+        bicycleSound.play();
+      }
     } else if (laneNum === 3) {
       bedSound.play();
     }
@@ -810,18 +783,22 @@ function gameEnd() {
   for (let i = 0; i < 4; i++) {
     resultArray[i][1] = arrayLanes[i].length - resultArray[i][0];
   }
+  let greatTimes = [0, 0, 0, 0];
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < arrayLanes[i].length; j++) {
+      if (greatArray[i][j]) {
+        greatTimes[i]++;
+      }
+    }
+  }
+
   var resultJSON = {
-    great: [
-      resultArray[0][0],
-      resultArray[1][0],
-      resultArray[2][0],
-      resultArray[3][0],
-    ],
+    great: [greatTimes[0], greatTimes[1], greatTimes[2], greatTimes[3]],
     miss: [
-      resultArray[0][1],
-      resultArray[1][1],
-      resultArray[2][1],
-      resultArray[3][1],
+      arrayLanes[0].length - greatTimes[0],
+      arrayLanes[1].length - greatTimes[1],
+      arrayLanes[2].length - greatTimes[2],
+      arrayLanes[3].length - greatTimes[3],
     ],
   };
   BGM.pause();

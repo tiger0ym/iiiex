@@ -24,10 +24,12 @@ body {
   flex-direction: column;
   align-items: center;
   width: 90%;
+  /*
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
   animation-delay: 1s;
+  */
 }
 .sec-contain-wrapper.not-embedded {
   width: 90%;
@@ -37,36 +39,39 @@ body {
   width: 90%;
   /*font-size: 40px;*/
 }
-.fade1{
-    animation-name: fade;
-    animation-duration: 2s;
-    animation-iteration-count: 1;
-    animation-delay: 2.2s;
-}
-.img-explanation {
-    max-width: 90%;
-    max-width: 100%;
-  /* width: 420px;  */
-  height: 520px;
+/*
+.fade1 {
   animation-name: fade;
   animation-duration: 2s;
   animation-iteration-count: 1;
-  animation-delay: 3.4s;
+  animation-delay: 2.2s;
 }
-
-@keyframes fade{
-  0%{
+*/
+.img-explanation {
+  /*max-width: 90%;*/
+  max-width: 50%; /*変えるかも*/
+  /* width: 420px;  */
+  /*height: 520px;*/
+  /*
+  animation-name: fade;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 3.4s;*/
+}
+/*
+@keyframes fade {
+  0% {
     opacity: 0;
   }
-  100%{
+  100% {
     opacity: 1;
   }
-}
-.sec-title{
-    /* position:relative; */
-    /* align-items:center; */
-     margin-left: auto;
-    margin-right: auto;
+}*/
+.sec-title {
+  /* position:relative; */
+  /* align-items:center; */
+  margin-left: auto;
+  margin-right: auto;
 }
 /*title*/
 /*
@@ -146,7 +151,7 @@ body {
 }
 
 .sec-title.not-embedded {
-    /* display: inline-block; */
+  /* display: inline-block; */
   display: block;
   width: 300px;
   position: relative;
@@ -189,7 +194,7 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 100px auto;
+  margin: 20px auto;
   padding: 1em 2em;
   width: 300px;
   color: #333;
@@ -205,8 +210,9 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 100px auto;
+  margin: 10px auto;
   padding: 1em 2em;
+  /* width: 150px; */
   width: 150px;
   color: #333;
   font-size: 20px;

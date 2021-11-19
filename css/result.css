@@ -23,19 +23,17 @@ body {
   width: 100%;
 }
 
-.btn-frame button{
+.btn-frame button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   outline: none;
   padding: 0;
   appearance: none;
-
 }
 .result-wrapper {
   display: flex;
 }
-
 
 .result-content {
   width: 100px;
@@ -196,9 +194,11 @@ body {
 #caption-k {
   display: none;
 }
+/*
 .img-frame {
-  min-height: 510px;
+  min-height: 5100px;
 }
+*/
 .caption-frame {
   min-height: 110px;
   margin-top: 0;
@@ -207,24 +207,29 @@ body {
   background-color: #e4823d;
 }
 
-#caption-d p{
+#caption-d p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
-#caption-f p{
+#caption-f p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
-#caption-j p{
+#caption-j p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
-#caption-k p{
+#caption-k p {
   margin-top: 0px;
   margin-bottom: 0px;
+}
+
+.shindenzu-wrapper {
+  margin-top: 50px;
+  width: 100%;
 }
 
 .btn-frame {
@@ -236,4 +241,10 @@ body {
   width: 60px;
   height: 60px;
   font-size: 15px;
+}
+
+#BGMbtn {
+  color: #ffffff;
+  background-color: #e4823d;
+  width: 70px;
 }

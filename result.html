@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>デイリズム！</title>
+    <link rel="icon" href="./image/main1.ico">
     <link
       href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css"
       rel="stylesheet"
@@ -29,13 +30,6 @@
   <body oncontextmenu="return false;" oncopy="return false;">
     <div id="wrapper">
       <div class="sec-title-wrapper">
-        <p class="sec-title">生活リズム、指で触れた？</p>
-      </div>
-      <div class="sec-contain-wrapper">
-        <div id="parent"></div>
-      </div>
-
-      <div class="sec-title-wrapper">
         <p class="sec-title">生活リズム、いろいろ</p>
       </div>
       <div class="sec-contain-wrapper">
@@ -51,27 +45,27 @@
         <div class="caption-frame">
           <div id="caption-d">
             <p class="caption-title"><b>レーンD（1列目）：外出</b></p>
-            <p>
+            <p class="caption-content">
               我が家のスマートロックの施錠/解錠履歴から、僕の外出・帰宅リズムを抽出しました。
               コロナ禍の自粛期間中はリズム譜にできるほどの記録がとれなかったので今年夏以降のデータを利用しました。
             </p>
           </div>
           <div id="caption-f">
             <p class="caption-title"><b>レーンF（2列目）：食事</b></p>
-            <p>
+            <p class="caption-content">
               スマホに記録された起床や就寝の時間データなどを利用して，行動パターンから食事のリズムを推定しました。
             </p>
           </div>
           <div id="caption-j">
             <p class="caption-title"><b>レーンJ（3列目）：活動</b></p>
-            <p>
+            <p class="caption-content">
               スマートウォッチで取得した心拍数・消費エ
               ネルギー・環境音などを組み合わせ、僕の活動量を表現しました。この画像は消費エネルギーのデータです。
             </p>
           </div>
           <div id="caption-k">
             <p class="caption-title"><b>レーンK（4列目）：睡眠</b></p>
-            <p>
+            <p class="caption-content">
               スマホの睡眠解析アプリで取得した起床と就寝のリズムです。
               ゲーム背景の動きと連動しているのに気がつきましたか？
             </p>
@@ -83,13 +77,23 @@
           <img src="./image/lanej.png" id="img-j" width="100%" />
           <img src="./image/lanek.png" id="img-k" width="100%" />
         </div>
+      
+        <div class="shindenzu-wrapper">
+          <p>
+            サウンドは心電図を元に作成されました
+          </p>
+          <audio id="BGM" src="./sound/sound_1119.wav"></audio>
+          <button id="BGMbtn">再生</button>
+          <img src="./image/shindenzu.png" width="100%" />
+        </div>
       </div>
+      <div>
       <div class="replay btn">
         <a href="./game.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
       </div>
     </div>
     <script src="js/resultImage.js"></script>
-    <script src="./js/result.js"></script>
     <script src="js/resultMobileImg.js"></script>
+    <script src="js/resultAudio.js"></script>
   </body>
 </html>

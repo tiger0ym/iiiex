@@ -3,27 +3,49 @@
   <head>
     <meta charset="utf-8" />
     <title>デイリズム！</title>
-    <link rel="stylesheet" type="text/css" href="./css/result.css" />
+    <link rel="icon" href="./image/main1.ico" />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width:801px)"
+      type="text/css"
+      href="./css/preresult.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width:800px)"
+      type="text/css"
+      href="./css/preresult_mobile.css"
+    />
     <link
       href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css"
       rel="stylesheet"
     />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body oncontextmenu="return false;" oncopy="return false;">
     <div id="wrapper">
-      <div class="sec-title-wrapper"><p class="sec-title">僕の生活リズム、感じた？</p></div>
-      <div class="sec-contain-wrapper">
-        <p>ねこねこ</p>
-        <p>ねこねこ</p>
+      <div class="sec-title-wrapper">
+        <p class="sec-title">生活リズムを体感できましたか？</p>
       </div>
-            <p id="percent"></p>
+      <div class="result2-wrapper">
+        <div class="result2-content">
+          <img src="./image/prer1_2.png" class="result2-img" />
+          <!--<p class="result2-caption">
+            太陽とご飯が横並び・・・僕は、起きてすぐに朝ご飯をたべる
+          </p>-->
+        </div>
+        <div class="result2-content">
+          <img src="./image/prer2_1.png" class="result2-img" />
+          <!--<p class="result2-caption">起きる-鍵-ご飯-鍵・・・僕が外食したとき</p>-->
+        </div>
+      </div>
+
       <div class="btn result">
         <a href="./result.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
       </div>
-            <div class="btn replay">
+      <div class="btn replay">
         <a href="./game.html" style="color: rgba(0, 0, 0, 0)">transparent</a>
       </div>
     </div>
-    <script src="./js/result.js"></script>
   </body>
 </html>

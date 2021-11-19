@@ -19,17 +19,16 @@ body {
 }
 
 .sec-contain-wrapper {
-  position: absolute;
+  position: relative;
+  width: 250px;
   top: 65%;
-  display: inline-block;
   height: 80px; /*リボンの高さ*/
   line-height: 50px; /*リボンの高さ*/
   text-align: center;
   padding: 0 30px; /*横の大きさ*/
+  margin: 0 auto;
   font-size: 18px; /*文字の大きさ*/
-  background: #6ce46c; /*塗りつぶし色*/
-  color: #fff; /*文字色*/
-  box-sizing: border-box;
+  color: #6ce46c; /*文字色*/
 }
 
 .result-wrapper {
@@ -46,15 +45,22 @@ body {
 }
 .loading-content {
   transform: translate(-50%, -50%);
-  width: 200px;
+  width: 400px;
+  text-align: center;
 }
 .loading-img {
   margin: 0 36px;
 }
 .loading-text {
-  width: 200px;
+  width: 100%;
   color: #ffb681;
   text-align: center;
-  font-size: 50px;
+  font-size: 60px;
   margin-top: 30px;
+  margin-bottom: 0px;
+}
+.loading-sound {
+  color: #6ce46c;
+  font-size: 35px;
+  width: 100%;
 }

@@ -202,9 +202,16 @@ body {
 #caption-k {
   display: none;
 }
+/*
 .img-frame {
   min-height: 110px;
 }
+*/
+.shindenzu-wrapper {
+  margin-top: 50px;
+  width: 100%;
+}
+
 .caption-frame {
   min-height: 180px;
   background-color: #e4823d;
@@ -223,4 +230,12 @@ body {
   border-bottom: none;
   width: 25%;
   height: 25%;
+}
+.caption-content {
+  margin-bottom: 0;
+}
+#BGMbtn {
+  color: #ffffff;
+  background-color: #e4823d;
+  width: 70px;
 }

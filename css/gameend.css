@@ -71,7 +71,7 @@ body {
 }
 
 .result a::before {
-  content: "結果詳細と解説へ";
+  content: "解説へ";
   padding: 20px 0 0 40px;
   color: black;
   position: absolute;
@@ -120,6 +120,24 @@ body {
   font-size: 50px;
 }
 
+.result-wrapper {
+  display: flex;
+}
+
+.result-content {
+  width: 100px;
+  text-align: right;
+}
+
+.result-content1 {
+  width: 150px;
+}
+
+.score-title {
+  font-size: 30px;
+  margin-top: 150px;
+}
+
 @media only screen and (max-width: 800px) {
   #your-rate {
     font-size: 35px;
@@ -139,5 +157,19 @@ body {
 
   #your-rate {
     font-size: 30px;
+  }
+
+  .result-content {
+    width: 60px;
+    text-align: right;
+  }
+
+  .result-content1 {
+    width: 150px;
+  }
+
+  .score-title {
+    font-size: 30px;
+    margin-top: 50px;
   }
 }
