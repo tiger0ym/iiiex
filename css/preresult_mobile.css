@@ -99,7 +99,7 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 1em 2em;
   width: 150px;
   color: #333;
@@ -192,9 +192,9 @@ body {
   width: 50%;
 }
 .result2-img {
-  width: 80%;
+  width: 90%;
   position: relative;
-  left: 10%;
+  left: 5%;
 }
 .result2-caption {
   width: 80%;

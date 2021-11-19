@@ -125,7 +125,7 @@ body {
   transition: 0.2s;
 }
 
-.btn a::after {
+.result a::after {
   content: "";
   width: 5px;
   height: 5px;
@@ -134,6 +134,14 @@ body {
   transform: rotate(45deg);
 }
 
+.replay a::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+  transform: rotate(45deg);
+}
 .btn a:hover::before {
   top: 0;
   left: 0;
@@ -203,9 +211,9 @@ body {
   width: 50%;
 }
 .result2-img {
-  width: 80%;
+  width: 90%;
   position: relative;
-  left: 10%;
+  left: 5%;
 }
 .result2-caption {
   width: 80%;
