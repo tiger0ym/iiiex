@@ -231,3 +231,6 @@ body {
   width: 25%;
   height: 25%;
 }
+.caption-content {
+  margin-bottom: 0;
+}
