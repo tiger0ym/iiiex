@@ -135,7 +135,7 @@ body {
 
 .score-title {
   font-size: 30px;
-  margin-top: 150px;
+  margin-top: 50px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -156,7 +156,7 @@ body {
   }
 
   #your-rate {
-    font-size: 30px;
+    font-size: 25px;
   }
 
   .result-content {

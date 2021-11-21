@@ -270,13 +270,13 @@ function draw() {
       } else {
         textSize(30);
       }
-      fill(0, 0, 0);
+      fill(255,64,255);
       strokeWeight(10);
-      stroke(38, 221, 38);
+      stroke(255,255,255);
       textAlign(CENTER);
       text("タップしてスタート", windowWidth / 2, windowHeight / 2);
     } else {
-      fill(0, 0, 0);
+      fill(255,64,255);
       strokeWeight(5);
       stroke(255, 255, 255);
       textSize(40);
@@ -319,6 +319,7 @@ function draw() {
   }
   //短針が1周したらゲーム開始，音楽鳴らす
   if (frame === 0) {
+    BGM.amp(0.5);
     BGM.loop();
   }
   //余韻モード
@@ -644,7 +645,12 @@ function drawLane(laneNum) {
     }
 
     //4日目からスピードアップ
-    yVelocity = 10;
+    if (isTapDevice() && !isEmbedded()) {
+      yVelocity = 20;
+    } else {
+      yVelocity = 10;
+    }
+
     /*
     if (arrayLanes[laneNum][i][0] < 30000) {
       if (isTapDevice()) {
@@ -739,37 +745,41 @@ function lanePressed(laneNum) {
     if (
       isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
-        (emojiHeight * 1.5) / (2 * yVelocity)
+        (emojiHeight * 1.2) / (2 * yVelocity)
     ) {
       great = true;
       hitIndex = i;
     } else if (
       !isTapDevice() &&
       abs(fps * (arrayLanes[laneNum][i][0] / 1000) - frame) <
-        (emojiHeight * 1.5) / (2 * yVelocity)
+        (emojiHeight * 1.2) / (2 * yVelocity)
     ) {
       great = true;
       hitIndex = i;
     }
   }
   if (great) {
-    isGreat[laneNum] = true;
-    greatArray[laneNum][hitIndex] = true;
-    resultArray[laneNum][0] += 1;
-    if (laneNum === 0) {
-      keySound.play();
-    } else if (laneNum === 1) {
-      eatSound.play();
-    } else if (laneNum === 2) {
-      if (hitIndex % 3 === 1) {
-        heartSound.play();
-      } else if (hitIndex % 3 === 2) {
-        runSound.play();
-      } else {
-        bicycleSound.play();
+    if (!greatArray[laneNum][hitIndex]) {
+      isGreat[laneNum] = true;
+      greatArray[laneNum][hitIndex] = true;
+      resultArray[laneNum][0] += 1;
+      if (laneNum === 0) {
+        keySound.play();
+      } else if (laneNum === 1) {
+        eatSound.play();
+      } else if (laneNum === 2) {
+        if (hitIndex % 3 === 1) {
+          heartSound.play();
+        } else if (hitIndex % 3 === 2) {
+          runSound.play();
+        } else {
+          bicycleSound.play();
+        }
+      } else if (laneNum === 3) {
+        bedSound.play();
       }
-    } else if (laneNum === 3) {
-      bedSound.play();
+    } else {
+      isGreat[laneNum] = false;
     }
   } else {
     isGreat[laneNum] = false;
