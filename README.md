@@ -24,7 +24,7 @@
 
 <hr>
 
- - [東京大学制作展2021](https://iiiexhibition.com/)に出展した作品です。
+ - [東京大学制作展2021](https://iiiexhibition.com/log/i3e23/)に出展した作品です。
  - 体験は[こちら](https://tiger0ym.github.io/iiiex/)から
 
 
